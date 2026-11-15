@@ -1,0 +1,38 @@
+<template>
+  <style>
+    
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzMono"; font-weight: 700; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; overflow: hidden; background: transparent; }
+    .cv { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="s5-wrap" style="position:absolute;inset:0">
+      <canvas id="s5-cv" class="cv" width="1080" height="1920"></canvas>
+    </div>
+
+  </div>
+  <script>
+    (function () {
+      const ctx = document.getElementById('s5-cv').getContext('2d');
+      const draw = (t) => PHOTO.render(ctx, 38 + t);
+      PHOTO.load().then(function () {
+        const tl = gsap.timeline({ paused: true });
+        const clock = { t: 0 };
+        tl.to(clock, { t: 8.6, duration: 8.6, ease: 'none', onUpdate: function () { draw(clock.t); } }, 0);
+
+        draw(0);
+        window.__timelines["s5"] = tl;
+      });
+    })();
+  </script>
+</template>
