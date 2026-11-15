@@ -58,48 +58,58 @@ Character turnaround and pose sheet of the SANALAB golden neuron mascot named Sa
 
 ---
 
-## 4. Сегіз сурет промпты (image)
+## 4. Сегіз сурет промпты (image) — «жарқыраған ми» стилінде
+
+**Стиль үлгісі:** түнгі бөлмеде ұйықтап жатқан әйел, басының үстінде мөлдір, көгілдір жарықтан жасалған ми; терең көк фондағы, ішінде алтын-қызғылт сары нейрон ұшқындары бар жарқыраған ми.
+Пайдаланушы жіберген Pinterest суреттері **тек стиль үлгісі** ретінде қолданылады (Midjourney `--sref`), видеоға тікелей қойылмайды — олар басқа авторлардікі.
+
+**Әр промптқа қосылатын стиль бөлігі (STYLE):**
+```
+ethereal translucent holographic brain made of glowing blue light filaments and wispy luminous smoke, tiny star-like particles, warm orange-gold neuron sparks and branching dendrites, deep dark navy background, low-key cinematic lighting, teal and orange color grade, shot on full-frame camera 35mm, shallow depth of field, photorealistic, 8K
+```
 
 **1. HOOK**
 ```
-Extreme cinematic close-up of the same photorealistic woman (from reference) lying in bed in a luxurious moonlit bedroom, she is falling asleep: eyelids heavy and half-closed, eyelashes catching moonlight, head sinking softly into a silk pillow, a loose hair strand across her cheek, cool blue moonlight from the window, warm skin tones, sheer lavender curtain gently glowing, a minimal digital clock showing "23:47" softly out of focus in the upper left, empty negative space in the top and bottom thirds for text, shallow depth of field, teal-gold cinematic grade, photorealistic, 8K --ar 9:16
+Cinematic side-profile shot of the same photorealistic woman (from reference) lying in bed in a dark moody bedroom at night, she is falling asleep, eyelids heavy and half-closed, soft warm bedside lamp glow on the left, cool blue moonlight on her face, rumpled grey-blue bedding, above her head a faint translucent glowing blue brain is just beginning to appear as wisps of light and smoke, digital clock "23:47" softly out of focus, + STYLE --ar 9:16
 ```
 
 **2. ENTER THE BRAIN**
 ```
-Macro cinematic view inside a realistic human brain, detailed cortical folds, glowing golden (#D9B56D) and cyan (#43D9F5) neural pathways, electrical impulses traveling along axons, the golden neuron mascot Sana (from reference) walking along a glowing golden axon in the lower middle of frame and waving, volumetric light, dark navy atmosphere, scientifically plausible, premium CGI, teal-gold grade --ar 9:16
+Glowing human brain in side view floating in darkness, translucent blue luminous outline with detailed cortical folds, inside it hundreds of warm orange-gold neurons fire like tiny stars connected by branching filaments, glowing brain stem with golden nerve roots spreading downward, sparks drifting, the golden neuron mascot Sana (from reference) standing on a glowing golden filament at the bottom and waving, + STYLE --ar 9:16
 ```
 
 **3. SLEEP TRANSITION**
 ```
-Scientific 3D visualization of a human brain in the upper half of frame transitioning from wakefulness to sleep, a glowing EEG-like wave line below the brain that changes from fast dense cyan waves on the left to slow large purple (#7770A8) waves on the right, atmosphere gradually darkening, a dotted orbit ring around the brain, the golden mascot Sana watching the wave curiously from the lower right, cinematic, photorealistic CGI --ar 9:16
+Translucent glowing blue brain floating in the upper half of frame, left side bright with dense fast-firing orange-gold neurons, right side calmer with slow purple light waves, a luminous EEG wave line below the brain changing from fast cyan ripples to slow purple waves, the scene gradually darkening, the mascot Sana watching from the lower right, + STYLE --ar 9:16
 ```
 
 **4. HYPNAGOGIA**
 ```
-Surreal dreamlike environment in deep purple and navy, soft floating golden clocks with moving hands, translucent cyan floating fragments of everyday memories (a tea cup, a window, an open book), drifting lavender clouds, golden particles, the golden mascot Sana floating gently in the center with arms open and an amazed "o" mouth, ethereal lighting, premium cinematic 3D, not cartoonish, teal-gold grade --ar 9:16
+Dreamlike space inside a glowing translucent brain, wisps of blue luminous smoke, floating translucent golden clocks and faint holographic memory fragments (a tea cup, a window, an open book), drifting star particles, purple and navy haze, the mascot Sana floating in the center with an amazed face and open arms, surreal yet photorealistic, + STYLE --ar 9:16
 ```
 
 **5. HIPPOCAMPUS**
 ```
-Transparent glass-like human brain visualization with the anatomically accurate seahorse-shaped hippocampus highlighted in glowing gold deep inside the medial temporal lobe, golden particles flowing along neural pathways into it, the golden mascot Sana in the lower left pointing at it like a teacher, clean space on the right for a label, scientific medical-grade 3D render, dark navy background, cyan accents --ar 9:16
+Glowing translucent blue brain in side view, deep inside the medial temporal lobe the anatomically accurate seahorse-shaped hippocampus shines in bright orange-gold, streams of golden sparks flow through neural filaments into it, the mascot Sana in the lower left pointing at it like a teacher, clean dark space on the right for a label, medical-grade accuracy, + STYLE --ar 9:16
 ```
 
 **6. MEMORY FORMATION**
 ```
-Fragmented glowing memory shards (translucent cyan and gold image fragments of a bedroom, a phone screen, a book page) breaking apart and dissolving into golden and cyan particles that fade into deep navy darkness, strong vignette, the golden mascot Sana in the lower right watching thoughtfully with lowered eyebrows, melancholic cinematic lighting, premium CGI --ar 9:16
+Holographic glowing memory fragments (translucent images of a bedroom, a phone screen, a book page) breaking apart near a translucent blue brain, dissolving into orange-gold and blue star particles that fade into deep darkness, strong vignette, the mascot Sana in the lower right watching thoughtfully, melancholic mood, + STYLE --ar 9:16
 ```
 
 **7. SCIENTIFIC REVEAL**
 ```
-Breathtaking photorealistic human brain floating in the upper center, surrounded by a beautiful interconnected glowing neural network of gold and cyan threads and nodes, the golden mascot Sana in the foreground below the brain facing the viewer with a warm knowing smile and open arms, epic volumetric light, emotional cinematic composition, Netflix science documentary quality, teal-gold grade --ar 9:16
+Breathtaking glowing human brain in the upper center, luminous blue translucent shell, inside thousands of orange-gold neurons and branching dendrites lighting up together, golden nerve filaments spreading outward into a vast glowing neural network with sparks, the mascot Sana in the foreground facing the viewer with a warm smile and open arms, epic emotional lighting, + STYLE --ar 9:16
 ```
 
 **8. BRAND OUTRO**
 ```
-Wide cinematic shot of the same moonlit luxurious bedroom from scene 1, the same woman now fully asleep with a peaceful relaxed face, champagne silk sleepwear, navy blanket with a thin gold trim, soft golden particles rising above the bed into the upper third of frame, empty upper third for a logo, cool moonlight and warm golden glow in harmony, teal-gold grade, photorealistic, 8K --ar 9:16
+Cinematic shot of the same woman (from reference) now fully asleep in side profile in the dark moody bedroom, peaceful face, grey-blue bedding, warm lamp glow on the left, above her a large ethereal translucent glowing blue brain made of light filaments and smoke with orange-gold sparks, golden particles rising from the brain into the upper third of frame, empty space at the top for a logo, + STYLE --ar 9:16
 ```
-> SANALAB жазуын генератордан сұрамаңыз — әріптер бұзылады. CapCut-та қосасыз (8-бөлімді қараңыз).
+> SANALAB жазуын генератордан сұрамаңыз — әріптер бұзылады. CapCut-та қосасыз (10-бөлімді қараңыз).
+
+**Midjourney кеңесі:** `--sref <стиль суретінің url> --sw 200` (стиль) және `--cref <әйел парағы> --cw 100` (кейіпкер) бірге. Ми мен адамды бір кадрда шығару қиын болса, екі қабат жасаңыз: бөлмедегі әйел + қара фондағы ми, CapCut-та «Screen» режимімен біріктіріңіз — ми табиғи жарқырайды.
 
 ---
 
