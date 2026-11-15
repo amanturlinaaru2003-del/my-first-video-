@@ -15,3 +15,4 @@ npx hyperframes render -o renders/test-animation.mp4    # export MP4
 ```
 
 Requires Node.js >= 22, FFmpeg and Chrome/Chromium (`npx hyperframes doctor` checks all three).
+- `sleep-video/` — «Неге ұйықтай алмайсың?» (1080×1920, 32 с), cinematic illustrated style. Render: `sleep-video/renders/sleep-video.mp4`.

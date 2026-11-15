@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="kk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --night: #060a16;
+        --ink: #f3f1ec;
+        --gold: #f2c27b;
+        --moon: #dfe8ff;
+        --cool: #8fb6ff;
+        --font-display: "Montserrat", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--night); }
+      #root { position: relative; width: 100%; height: 100%; background: var(--night); font-family: var(--font-display); }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .inner { position: absolute; inset: 0; }
+      svg.full { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+
+      /* Title */
+      #title { position: absolute; left: 60px; right: 100px; top: 300px; text-align: center; color: var(--ink);
+        font-weight: 800; font-size: 88px; line-height: 1.05; letter-spacing: -0.01em;
+        text-shadow: 0 6px 40px rgba(0, 0, 0, 0.65); }
+      #title .l2 { color: var(--gold); }
+      #title .line { display: block; overflow: hidden; padding: 14px 0 8px; }
+      #title .line span { display: inline-block; }
+
+      /* Captions */
+      #captions { position: absolute; inset: 0; pointer-events: none; z-index: 50; }
+      .cap { position: absolute; left: 90px; right: 170px; top: 1040px; display: flex; justify-content: center; }
+      .cap p { background: rgba(4, 7, 16, 0.58); color: var(--ink); font-weight: 600; font-size: 42px; line-height: 1.3;
+        text-align: center; padding: 18px 34px; border-radius: 22px; border: 1px solid rgba(180, 200, 255, 0.12);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45); }
+      .cap b { color: var(--gold); font-weight: 700; }
+
+      /* Thought cards */
+      .thought { position: absolute; padding: 18px 28px; border-radius: 20px; font-size: 34px; font-weight: 600; color: #e9eeff;
+        background: rgba(30, 44, 90, 0.42); border: 1px solid rgba(150, 190, 255, 0.35);
+        box-shadow: 0 0 40px rgba(90, 140, 255, 0.25); white-space: nowrap; }
+
+      /* Labels */
+      .label { position: absolute; font-size: 36px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+
+      /* Tips */
+      #tipsHead { position: absolute; left: 0; right: 0; top: 300px; text-align: center; font-weight: 800; font-size: 72px; color: var(--ink); }
+      #tipsHead span { color: var(--gold); }
+      .tip { position: absolute; left: 90px; right: 160px; height: 230px; border-radius: 34px; display: flex; align-items: center; gap: 36px;
+        padding: 0 46px; background: linear-gradient(135deg, rgba(40, 54, 100, 0.55), rgba(16, 22, 44, 0.55));
+        border: 1px solid rgba(170, 195, 255, 0.22); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45); }
+      .tip svg { flex: 0 0 120px; width: 120px; height: 120px; }
+      .tip p { color: var(--ink); font-size: 40px; font-weight: 700; line-height: 1.22; }
+      .tip p small { display: block; color: #aab8dc; font-size: 30px; font-weight: 500; margin-top: 6px; }
+
+      #goodnight { position: absolute; left: 0; right: 0; top: 330px; text-align: center; color: var(--ink); font-weight: 800; font-size: 104px;
+        text-shadow: 0 8px 50px rgba(0, 0, 0, 0.5); }
+      #goodnight small { display: block; font-size: 40px; font-weight: 500; color: #ffe3bd; margin-top: 18px; letter-spacing: 0.02em; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="32" data-width="1080" data-height="1920">
+
+      <!-- S1: bedroom wide -->
+      <div id="s1" class="scene clip" data-start="0" data-duration="6.8" data-track-index="0" data-track-kind="graphics" style="z-index:1">
+        <div class="inner" id="s1in">
+          <svg class="full" viewBox="0 0 1080 1920" id="s1svg"><g id="s1cam"></g></svg>
+          <div id="title">
+            <span class="line"><span id="t1">НЕГЕ ҰЙЫҚТАЙ</span></span>
+            <span class="line l2"><span id="t2">АЛМАЙСЫҢ?</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- S2: face close-up -->
+      <div id="s2" class="scene clip" data-start="6.3" data-duration="4.7" data-track-index="0" data-track-kind="graphics" style="z-index:2">
+        <div class="inner" id="s2in"><svg class="full" viewBox="0 0 1080 1920"><g id="s2cam"></g></svg></div>
+      </div>
+
+      <!-- S3: thoughts / neural -->
+      <div id="s3" class="scene clip" data-start="10.5" data-duration="5.9" data-track-index="0" data-track-kind="graphics" style="z-index:3">
+        <div class="inner" id="s3in">
+          <svg class="full" viewBox="0 0 1080 1920"><g id="s3cam"></g></svg>
+          <div class="thought" id="th1" style="left:110px;top:360px">Ертең 09:00 — емтихан</div>
+          <div class="thought" id="th2" style="left:520px;top:470px">Неге олай дедім?</div>
+          <div class="thought" id="th3" style="left:120px;top:900px">Жауап жазбадым…</div>
+          <div class="thought" id="th4" style="left:540px;top:860px">Ол не ойлады?</div>
+          <div class="thought" id="th5" style="left:520px;top:270px">Үлгермей қалсам ше?</div>
+        </div>
+      </div>
+
+      <!-- S4: melatonin -->
+      <div id="s4" class="scene clip" data-start="15.9" data-duration="7.5" data-track-index="0" data-track-kind="graphics" style="z-index:4">
+        <div class="inner" id="s4in">
+          <svg class="full" viewBox="0 0 1080 1920"><g id="s4cam"></g></svg>
+          <div class="label" id="lbPineal" style="left:150px;top:470px;color:var(--gold)">Эпифиз</div>
+          <div class="label" id="lbMel" style="left:560px;top:420px;color:#ffd99a">Мелатонин</div>
+          <div class="label" id="lbMelDown" style="left:560px;top:420px;color:#ff8f8f">Мелатонин ↓</div>
+        </div>
+      </div>
+
+      <!-- S5: tips -->
+      <div id="s5" class="scene clip" data-start="22.9" data-duration="6" data-track-index="0" data-track-kind="graphics" style="z-index:5">
+        <div class="inner" id="s5in">
+          <svg class="full" viewBox="0 0 1080 1920"><g id="s5bg"></g></svg>
+          <div id="tipsHead">Не <span>істеу керек?</span></div>
+          <div class="tip" id="tip1" style="top:470px">
+            <svg viewBox="0 0 120 120" fill="none" stroke="#f2c27b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="34" y="12" width="52" height="96" rx="10" /><line x1="52" y1="96" x2="68" y2="96" />
+              <line x1="16" y1="104" x2="104" y2="16" stroke="#ff8f8f" />
+            </svg>
+            <p>1 сағат бұрын — экрансыз<small>Көк жарық мелатонинді басады</small></p>
+          </div>
+          <div class="tip" id="tip2" style="top:740px">
+            <svg viewBox="0 0 120 120" fill="none" stroke="#f2c27b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 14h58l18 18v74H22z" /><path d="M80 14v18h18" /><line x1="36" y1="52" x2="84" y2="52" /><line x1="36" y1="70" x2="84" y2="70" /><line x1="36" y1="88" x2="66" y2="88" />
+            </svg>
+            <p>Ойларыңды қағазға жаз<small>Ертеңгі тізім — ми босайды</small></p>
+          </div>
+          <div class="tip" id="tip3" style="top:1010px">
+            <svg viewBox="0 0 120 120" fill="none" stroke="#f2c27b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M78 18a42 42 0 1 0 26 66A34 34 0 0 1 78 18z" /><path d="M30 26l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" stroke-width="4" />
+            </svg>
+            <p>Қараңғы, салқын бөлме<small>Шамамен 18–20 °C</small></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- S6: asleep -->
+      <div id="s6" class="scene clip" data-start="28.4" data-duration="3.6" data-track-index="0" data-track-kind="graphics" style="z-index:6">
+        <div class="inner" id="s6in">
+          <svg class="full" viewBox="0 0 1080 1920" style="background:#2d2a4e"><g id="s6cam"></g></svg>
+          <div id="goodnight"><span id="gn1" style="display:inline-block">Тыныш түн.</span><small id="gn2">Ұйқы — ең жақсы дәрі</small></div>
+        </div>
+      </div>
+
+      <!-- Captions -->
+      <div id="captions" class="clip" data-start="0" data-duration="32" data-track-index="1" data-track-kind="captions">
+        <div class="cap clip" id="c1" data-start="2.4" data-duration="3.9"><p>Сағат <b>02:47</b>. Денең шаршаған,<br />бірақ ұйқы жоқ.</p></div>
+        <div class="cap clip" id="c2" data-start="6.8" data-duration="3.7"><p>Себебі түнде миың <b>тынбайды</b>.</p></div>
+        <div class="cap clip" id="c3" data-start="10.9" data-duration="2.5"><p>Ертеңгі істер, айтылмай<br />қалған сөздер…</p></div>
+        <div class="cap clip" id="c4" data-start="13.5" data-duration="2.7"><p>…бәрі қайта-қайта <b>орала береді</b>.</p></div>
+        <div class="cap clip" id="c5" data-start="16.4" data-duration="3.3"><p>Қараңғыда эпифиз <b>мелатонин</b><br />бөледі — ұйқы гормонын.</p></div>
+        <div class="cap clip" id="c6" data-start="19.9" data-duration="3.2"><p>Ал телефонның <b>көк жарығы</b><br />оны тежейді.</p></div>
+      </div>
+    </div>
+
+    <script>
+      // ---------- deterministic helpers ----------
+      function rng(seed) {
+        return function () {
+          seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
+          let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+      const NS = "http://www.w3.org/2000/svg";
+      const $ = (s) => document.querySelector(s);
+      const put = (sel, html) => { $(sel).insertAdjacentHTML("beforeend", html); };
+
+      // Head profile, upright, facing right, in a 400x500 box.
+      const HEAD = "M190,40 C270,35 310,90 305,150 C304,170 318,180 318,195 C318,205 308,212 310,222 L350,268 C356,276 345,288 330,290 C324,292 322,298 322,304 C330,310 334,318 326,324 C320,328 320,332 326,336 C330,344 324,352 316,356 C312,362 318,372 322,386 C326,404 300,420 270,422 C250,424 240,440 245,500 L130,500 C120,450 90,420 70,380 C30,310 30,160 80,90 C110,55 150,40 190,40 Z";
+      const HAIR = "M70,350 C28,270 36,128 108,66 C160,26 252,28 298,84 C314,104 316,126 308,142 C282,126 246,122 220,138 C196,152 186,186 172,214 C156,246 120,262 104,290 C92,312 84,332 70,350 Z";
+      const BRAIN = "M78,232 C52,170 78,92 150,70 C212,52 286,80 298,142 C306,190 290,232 258,250 C238,262 214,258 198,272 C182,286 148,292 118,282 C98,274 86,256 78,232 Z";
+
+      // A moonlit, realistic-proportioned head. p = id prefix.
+      function head(p, opt) {
+        opt = opt || {};
+        const closed = !!opt.closed;
+        const warm = !!opt.warm;
+        const lit = warm ? "#e8c2a4" : "#c9bcc6";
+        const rim = warm ? "#ffd7b0" : "#dfe8ff";
+        return `
+        <defs>
+          <linearGradient id="${p}skin" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#1d1517"/><stop offset="0.45" stop-color="#4a3634"/>
+            <stop offset="0.8" stop-color="${warm ? "#a9785f" : "#8a716f"}"/><stop offset="1" stop-color="${lit}"/>
+          </linearGradient>
+          <radialGradient id="${p}cheek" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#c06b5e" stop-opacity="0.35"/><stop offset="1" stop-color="#c06b5e" stop-opacity="0"/></radialGradient>
+          <linearGradient id="${p}hair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d0a0b"/><stop offset="0.7" stop-color="#1e1717"/><stop offset="1" stop-color="#4b4250"/></linearGradient>
+          <clipPath id="${p}clip"><path d="${HEAD}"/></clipPath>
+          <filter id="${p}soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4"/></filter>
+          <filter id="${p}soft2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.2"/></filter>
+        </defs>
+        <path d="${HEAD}" fill="url(#${p}skin)"/>
+        <g clip-path="url(#${p}clip)">
+          <ellipse cx="262" cy="300" rx="46" ry="36" fill="url(#${p}cheek)"/>
+          <path d="${HEAD}" fill="none" stroke="${rim}" stroke-width="10" stroke-opacity="0.55" filter="url(#${p}soft)"/>
+          <path d="${HEAD}" fill="none" stroke="${rim}" stroke-width="2.5" stroke-opacity="0.7" filter="url(#${p}soft2)"/>
+          <path d="M120,420 C170,440 220,430 262,418" stroke="#000" stroke-opacity="0.35" stroke-width="18" fill="none" filter="url(#${p}soft)"/>
+        </g>
+        <ellipse cx="160" cy="258" rx="22" ry="36" fill="#3d2c2b"/>
+        <path d="M168,232 C150,240 150,276 166,284" stroke="#1f1615" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#${p}soft2)"/>
+        <path d="${HAIR}" fill="url(#${p}hair)"/>
+        <path d="M110,70 C170,34 250,40 296,86" stroke="${rim}" stroke-opacity="0.35" stroke-width="5" fill="none" filter="url(#${p}soft)"/>
+        <path d="M276,190 Q294,180 314,188" stroke="#170f10" stroke-width="7" stroke-linecap="round" fill="none" filter="url(#${p}soft2)"/>
+        ${closed ? `
+        <path d="M282,212 Q296,220 308,212" stroke="#1a1112" stroke-width="3.2" stroke-linecap="round" fill="none" filter="url(#${p}soft2)"/>
+        <path d="M290,216 l-4,5 M298,218 l-2,6 M305,216 l0,5" stroke="#1a1112" stroke-width="1.6" stroke-linecap="round"/>` : `
+        <g id="${p}eye">
+          <path d="M282,210 Q296,199 309,207 Q297,217 282,210 Z" fill="#cfd5e2"/>
+          <circle id="${p}iris" cx="301" cy="208" r="5.4" fill="#22180f"/>
+          <circle cx="303" cy="206" r="1.6" fill="#ffffff"/>
+          <path d="M281,209 Q296,197 310,206" stroke="#120b0c" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <path id="${p}lid" d="M280,211 Q296,196 311,207 Q296,203 280,211 Z" fill="#6d5552"/>
+        </g>`}
+        <path d="M322,330 Q318,331 314,332" stroke="#3a2222" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <path d="M328,282 Q322,288 316,286" stroke="#2a1b1b" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.8"/>`;
+      }
+
+      // ---------- S1: bedroom ----------
+      (function () {
+        const r = rng(7);
+        let stars = ""; for (let i = 0; i < 22; i++) stars += `<circle cx="${620 + r() * 320}" cy="${500 + r() * 220}" r="${0.8 + r() * 1.6}" fill="#fff" opacity="${0.35 + r() * 0.5}"/>`;
+        let dust = ""; for (let i = 0; i < 46; i++) { const t = r(); const x = 760 - t * 470 + (r() - 0.5) * 200; const y = 760 + t * 340 + (r() - 0.5) * 120; dust += `<circle class="dust" cx="${x}" cy="${y}" r="${1 + r() * 2.4}" fill="#e6eeff" opacity="${0.15 + r() * 0.45}"/>`; }
+        put("#s1cam", `
+        <defs>
+          <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101a33"/><stop offset="0.6" stop-color="#0a1124"/><stop offset="1" stop-color="#05080f"/></linearGradient>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1d44"/><stop offset="1" stop-color="#28407a"/></linearGradient>
+          <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e9f0ff" stop-opacity="0.55"/><stop offset="1" stop-color="#e9f0ff" stop-opacity="0"/></radialGradient>
+          <radialGradient id="moonFace" cx="0.4" cy="0.38" r="0.65"><stop offset="0" stop-color="#ffffff"/><stop offset="0.7" stop-color="#dfe6f5"/><stop offset="1" stop-color="#b9c3da"/></radialGradient>
+          <linearGradient id="shaft" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd0ff" stop-opacity="0.32"/><stop offset="1" stop-color="#bcd0ff" stop-opacity="0"/></linearGradient>
+          <linearGradient id="curtain" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0b1430"/><stop offset="0.3" stop-color="#1a2a55"/><stop offset="0.55" stop-color="#0d1736"/><stop offset="0.8" stop-color="#1c2c58"/><stop offset="1" stop-color="#0a1229"/></linearGradient>
+          <linearGradient id="blanket" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d6f9c"/><stop offset="0.25" stop-color="#2d3c66"/><stop offset="1" stop-color="#121a33"/></linearGradient>
+          <linearGradient id="pillow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9d4ee"/><stop offset="1" stop-color="#55617f"/></linearGradient>
+          <radialGradient id="clockGlow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff6a4a" stop-opacity="0.45"/><stop offset="1" stop-color="#ff6a4a" stop-opacity="0"/></radialGradient>
+          <filter id="blur30" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="30"/></filter>
+          <filter id="blur8" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+          <filter id="blur3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+          <radialGradient id="vig" cx="0.5" cy="0.45" r="0.75"><stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.75"/></radialGradient>
+        </defs>
+        <rect width="1080" height="1920" fill="url(#wall)"/>
+        <g id="win">
+          <rect x="590" y="470" width="380" height="500" fill="url(#sky)"/>
+          ${stars}
+          <circle cx="840" cy="580" r="140" fill="url(#moonGlow)"/>
+          <circle id="moon" cx="840" cy="580" r="46" fill="url(#moonFace)"/>
+          <circle cx="826" cy="566" r="9" fill="#c6cde0" opacity="0.6"/><circle cx="856" cy="596" r="6" fill="#c6cde0" opacity="0.5"/>
+          <path d="M590,900 C660,860 720,880 790,850 C860,820 920,850 970,830 L970,970 L590,970 Z" fill="#081022" opacity="0.9"/>
+          <rect x="590" y="470" width="380" height="500" fill="none" stroke="#1d2a4c" stroke-width="18"/>
+          <line x1="780" y1="470" x2="780" y2="970" stroke="#1d2a4c" stroke-width="12"/>
+          <line x1="590" y1="720" x2="970" y2="720" stroke="#1d2a4c" stroke-width="12"/>
+          <rect x="570" y="966" width="420" height="22" rx="4" fill="#26355e"/>
+        </g>
+        <path d="M520,420 C540,700 530,900 560,1010 L610,1010 C590,880 600,640 580,420 Z" fill="url(#curtain)"/>
+        <path d="M990,420 C1000,700 1010,900 1000,1010 L1080,1010 L1080,420 Z" fill="url(#curtain)"/>
+        <rect x="500" y="404" width="600" height="18" rx="9" fill="#1b2442"/>
+        <polygon id="shaftPoly" points="600,480 965,480 520,1330 40,1330" fill="url(#shaft)" filter="url(#blur30)"/>
+        <g id="dust">${dust}</g>
+        <!-- nightstand + clock -->
+        <rect x="-20" y="1090" width="170" height="560" fill="#0c1222"/><rect x="0" y="1260" width="130" height="8" rx="4" fill="#1a2440"/><rect x="0" y="1440" width="130" height="8" rx="4" fill="#1a2440"/>
+        <rect x="-20" y="1090" width="170" height="14" fill="#1a2440"/>
+        <circle cx="70" cy="1050" r="120" fill="url(#clockGlow)" id="clockGlowC"/>
+        <rect x="10" y="1012" width="124" height="70" rx="12" fill="#0a0d16" stroke="#232c45" stroke-width="3"/>
+        <text x="72" y="1062" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="38" fill="#ff5a42" id="clockTxt" data-layout-allow-overflow>02:47</text>
+        <!-- bed -->
+        <rect x="120" y="880" width="40" height="760" rx="8" fill="#1a1a2a"/>
+        <rect x="150" y="1180" width="960" height="420" fill="#0f1426"/><rect x="150" y="1560" width="960" height="40" fill="#1a2240"/>
+        <path d="M150,1200 C300,1200 600,1210 1080,1200 L1080,1240 L150,1240 Z" fill="#2a3556"/>
+        <g id="pillowG"><path d="M160,1105 C150,1060 200,1040 280,1045 C380,1048 450,1060 470,1100 C480,1140 470,1196 440,1200 C360,1210 240,1208 180,1198 C160,1180 162,1140 160,1105 Z" fill="url(#pillow)"/>
+        <path d="M200,1090 C260,1100 320,1080 380,1100" stroke="#8e9ab8" stroke-width="3" fill="none" opacity="0.5"/></g>
+        <g id="s1headWrap" transform="translate(178,1186) rotate(-90) scale(0.56)"><g id="s1head">${head("a")}</g></g>
+        <g id="s1blanket">
+          <path d="M392,1068 C430,1030 500,1006 570,1004 C640,1002 690,1040 740,1050 C800,1060 850,1012 920,1010 C990,1008 1040,1040 1090,1048 L1090,1540 L360,1540 C350,1300 360,1120 392,1068 Z" fill="url(#blanket)"/>
+          <path d="M392,1068 C430,1030 500,1006 570,1004 C640,1002 690,1040 740,1050 C800,1060 850,1012 920,1010 C990,1008 1040,1040 1090,1048" fill="none" stroke="#c4d2f5" stroke-opacity="0.55" stroke-width="5" filter="url(#blur3)"/>
+          <path d="M520,1120 C560,1180 600,1250 610,1320 M820,1100 C860,1170 880,1240 900,1320 M690,1130 C700,1200 720,1260 720,1320" stroke="#0a1022" stroke-opacity="0.6" stroke-width="10" fill="none" filter="url(#blur8)"/>
+          <path d="M380,1100 C420,1080 470,1086 520,1094" stroke="#9fb0da" stroke-opacity="0.35" stroke-width="16" fill="none" filter="url(#blur8)"/>
+        </g>
+        <rect width="1080" height="1920" fill="url(#vig)"/>
+        <rect y="1640" width="1080" height="280" fill="#070a14"/><polygon points="40,1640 520,1640 700,1920 0,1920" fill="#9fb6ff" opacity="0.07" filter="url(#blur30)"/>
+        `);
+      })();
+
+      // ---------- S2: face close-up ----------
+      (function () {
+        put("#s2cam", `
+        <defs>
+          <linearGradient id="s2bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1430"/><stop offset="1" stop-color="#04060d"/></linearGradient>
+          <linearGradient id="s2pillow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7f8cad"/><stop offset="1" stop-color="#1b2238"/></linearGradient>
+          <filter id="s2blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+          <filter id="s2blurS" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="22"/></filter>
+          <clipPath id="s2headClip"><path d="${HEAD}" transform="translate(130,1420) rotate(-90) scale(2.25)"/></clipPath>
+          <radialGradient id="s2vig" cx="0.5" cy="0.5" r="0.75"><stop offset="0.5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.8"/></radialGradient>
+        </defs>
+        <rect width="1080" height="1920" fill="url(#s2bg)"/>
+        <ellipse cx="560" cy="1400" rx="700" ry="260" fill="url(#s2pillow)" filter="url(#s2blur)"/>
+        <ellipse cx="900" cy="300" rx="260" ry="200" fill="#9fb6ff" opacity="0.12" filter="url(#s2blurS)"/>
+        <g id="s2headWrap" transform="translate(130,1420) rotate(-90) scale(2.25)"><g id="s2head">${head("b")}</g></g>
+        <g clip-path="url(#s2headClip)" id="s2stripes" opacity="0.5">
+          ${[0, 1, 2, 3, 4].map((i) => `<rect x="-200" y="${520 + i * 120}" width="1600" height="44" fill="#dfe8ff" opacity="0.28" transform="rotate(-18 540 900)" filter="url(#s2blur)"/>`).join("")}
+        </g>
+        <path d="M790,1460 C860,1420 980,1430 1100,1450 L1100,1920 L760,1920 Z" fill="#1b2544"/>
+        <rect width="1080" height="1920" fill="url(#s2vig)"/>`);
+      })();
+
+      // ---------- S3 / S4: neural head ----------
+      function neuralHead(p, seed) {
+        const r = rng(seed);
+        const nodes = [];
+        const inBrain = (x, y) => ((x - 188) / 112) ** 2 + ((y - 168) / 98) ** 2 < 1;
+        while (nodes.length < 64) { const x = 70 + r() * 240, y = 60 + r() * 220; if (inBrain(x, y)) nodes.push([x, y]); }
+        let links = "", imp = [], nd = "";
+        nodes.forEach((a, i) => {
+          nodes.forEach((b, j) => {
+            if (j <= i) return; const d = Math.hypot(a[0] - b[0], a[1] - b[1]);
+            if (d < 46) { links += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/>`; imp.push([a, b]); }
+          });
+          nd += `<circle class="${p}node" cx="${a[0]}" cy="${a[1]}" r="${1.6 + r() * 1.8}"/>`;
+        });
+        let gyri = "";
+        for (let i = 0; i < 26; i++) { const x = 85 + r() * 200, y = 70 + r() * 190; if (!inBrain(x, y)) continue; gyri += `<path d="M${x},${y} q${12 + r() * 14},${-14 + r() * 28} ${26 + r() * 20},${-6 + r() * 12} t${20 + r() * 16},${-4 + r() * 8}"/>`; }
+        const impulses = imp.filter((_, k) => k % 3 === 0).slice(0, 34);
+        const impSvg = impulses.map((l, k) => `<circle class="${p}imp" id="${p}imp${k}" cx="${l[0][0]}" cy="${l[0][1]}" r="2.6" fill="#ffffff" filter="url(#${p}g2)"/>`).join("");
+        return {
+          impulses,
+          svg: `
+          <defs>
+            <radialGradient id="${p}brainFill" cx="0.5" cy="0.45" r="0.6"><stop offset="0" stop-color="#5a74ff" stop-opacity="0.55"/><stop offset="0.7" stop-color="#3a3fb8" stop-opacity="0.25"/><stop offset="1" stop-color="#1d1f70" stop-opacity="0.1"/></radialGradient>
+            <linearGradient id="${p}headFill" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a1024" stop-opacity="0.9"/><stop offset="1" stop-color="#15204a" stop-opacity="0.75"/></linearGradient>
+            <filter id="${p}g6" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+            <filter id="${p}g2" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <clipPath id="${p}bclip"><path d="${BRAIN}"/></clipPath>
+          </defs>
+          <path d="${HEAD}" fill="url(#${p}headFill)"/>
+          <path d="${HEAD}" fill="none" stroke="#7fa6ff" stroke-width="5" stroke-opacity="0.5" filter="url(#${p}g6)"/>
+          <path d="${HEAD}" fill="none" stroke="#b9ceff" stroke-width="1.2" stroke-opacity="0.85"/>
+          <g id="${p}brain">
+            <path d="${BRAIN}" fill="url(#${p}brainFill)" id="${p}brainShape"/>
+            <g clip-path="url(#${p}bclip)" fill="none" stroke="#9fb4ff" stroke-opacity="0.25" stroke-width="1.6">${gyri}</g>
+            <path d="${BRAIN}" fill="none" stroke="#a9b8ff" stroke-opacity="0.55" stroke-width="1.6"/>
+            <path d="M118,282 C110,300 128,316 156,312 C176,308 182,290 172,282" fill="#3a3fb8" fill-opacity="0.3" stroke="#a9b8ff" stroke-opacity="0.45" stroke-width="1.4"/>
+            <g stroke="#8fb0ff" stroke-opacity="0.35" stroke-width="0.9">${links}</g>
+            <g fill="#cfe0ff">${nd}</g>
+            <g>${impSvg}</g>
+          </g>`,
+        };
+      }
+
+      const n3 = neuralHead("n", 21);
+      (function () {
+        const r = rng(3);
+        let bgStars = ""; for (let i = 0; i < 90; i++) bgStars += `<circle cx="${r() * 1080}" cy="${r() * 1920}" r="${0.6 + r() * 1.8}" fill="#b8c8ff" opacity="${0.1 + r() * 0.4}"/>`;
+        put("#s3cam", `
+          <defs><radialGradient id="s3bg" cx="0.5" cy="0.42" r="0.7"><stop offset="0" stop-color="#16205a"/><stop offset="0.6" stop-color="#090e2a"/><stop offset="1" stop-color="#03050f"/></radialGradient>
+          <radialGradient id="s3halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#6b7dff" stop-opacity="0.5"/><stop offset="1" stop-color="#6b7dff" stop-opacity="0"/></radialGradient></defs>
+          <rect width="1080" height="1920" fill="url(#s3bg)"/>${bgStars}
+          <circle id="s3halo" cx="480" cy="680" r="420" fill="url(#s3halo)"/>
+          <g transform="translate(110,320) scale(2.0)"><g id="s3head">${n3.svg}</g></g>`);
+      })();
+
+      const n4 = neuralHead("m", 21);
+      (function () {
+        const r = rng(11);
+        let mols = "";
+        for (let i = 0; i < 26; i++) {
+          const a = r() * Math.PI * 2, d = 40 + r() * 110;
+          const tx = 195 + Math.cos(a) * d * 1.1, ty = 205 + Math.sin(a) * d * 0.85;
+          mols += `<g class="mol" data-tx="${tx.toFixed(1)}" data-ty="${ty.toFixed(1)}" transform="translate(195 215)"><polygon class="molp" points="0,-7 6,-3.5 6,3.5 0,7 -6,3.5 -6,-3.5" fill="none" stroke="#ffd18a" stroke-width="1.8" filter="url(#m g2)"/></g>`.replace("#m g2", "#mg2");
+        }
+        put("#s4cam", `
+          <defs><radialGradient id="s4bg" cx="0.45" cy="0.4" r="0.75"><stop offset="0" stop-color="#2a1f5c"/><stop offset="0.6" stop-color="#0d0c2c"/><stop offset="1" stop-color="#040410"/></radialGradient>
+            <radialGradient id="pinealGlow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffcf7a" stop-opacity="0.9"/><stop offset="1" stop-color="#ffcf7a" stop-opacity="0"/></radialGradient>
+            <radialGradient id="pinealBody" cx="0.4" cy="0.35" r="0.7"><stop offset="0" stop-color="#ffe7b8"/><stop offset="1" stop-color="#c98a3c"/></radialGradient>
+            <linearGradient id="beam" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#6fb8ff" stop-opacity="0.75"/><stop offset="1" stop-color="#6fb8ff" stop-opacity="0"/></linearGradient>
+            <filter id="beamBlur" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="18"/></filter>
+            <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfe6ff"/><stop offset="1" stop-color="#5b9dff"/></linearGradient>
+          </defs>
+          <rect width="1080" height="1920" fill="url(#s4bg)"/>
+          <g id="s4zoom">
+            <g transform="translate(110,320) scale(2.0)"><g id="s4head">${n4.svg}
+              <circle id="pinGlow" cx="195" cy="215" r="34" fill="url(#pinealGlow)"/>
+              <path id="pineal" d="M195,203 C203,205 206,214 202,222 C199,228 191,228 188,222 C184,214 187,205 195,203 Z" fill="url(#pinealBody)"/>
+              <g id="mols">${mols}</g>
+            </g></g>
+          </g>
+          <g id="phoneG" opacity="0">
+            <polygon id="beamPoly" points="930,640 930,900 640,800 640,700" fill="url(#beam)" filter="url(#beamBlur)"/>
+            <g transform="translate(880,600) rotate(8)">
+              <rect x="0" y="0" width="150" height="300" rx="26" fill="#0b0e18" stroke="#3a4462" stroke-width="4"/>
+              <rect x="10" y="14" width="130" height="272" rx="18" fill="url(#screen)"/>
+            </g>
+          </g>
+          <line id="pinLine" x1="300" y1="530" x2="490" y2="745" stroke="#f2c27b" stroke-width="2.5" opacity="0"/>
+          `);
+      })();
+
+      // ---------- S5 background ----------
+      put("#s5bg", `<defs><linearGradient id="s5g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#121a3c"/><stop offset="1" stop-color="#05070f"/></linearGradient>
+        <radialGradient id="s5moon" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#f2e6ff" stop-opacity="0.35"/><stop offset="1" stop-color="#f2e6ff" stop-opacity="0"/></radialGradient></defs>
+        <rect width="1080" height="1920" fill="url(#s5g)"/><circle id="s5glow" cx="900" cy="230" r="360" fill="url(#s5moon)"/><circle cx="900" cy="230" r="54" fill="#e8eeff" opacity="0.85"/>`);
+
+      // ---------- S6: asleep, dawn ----------
+      put("#s6cam", `
+        <defs>
+          <linearGradient id="s6bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d2a4e"/><stop offset="0.6" stop-color="#5a4458"/><stop offset="1" stop-color="#1b1526"/></linearGradient>
+          <radialGradient id="dawn" cx="0.85" cy="0.15" r="0.8"><stop offset="0" stop-color="#ffc58a" stop-opacity="0.75"/><stop offset="1" stop-color="#ffc58a" stop-opacity="0"/></radialGradient>
+          <linearGradient id="s6blanket" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c49f95"/><stop offset="0.3" stop-color="#6c5670"/><stop offset="1" stop-color="#241d33"/></linearGradient>
+          <linearGradient id="s6pillow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e2d6"/><stop offset="1" stop-color="#7d6a79"/></linearGradient>
+          <filter id="s6blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter>
+        </defs>
+        <rect x="-200" y="-200" width="1480" height="2320" fill="url(#s6bg)"/>
+        <rect id="dawnR" x="-200" y="-200" width="1480" height="2320" fill="url(#dawn)"/>
+        <ellipse cx="420" cy="1320" rx="520" ry="150" fill="url(#s6pillow)" filter="url(#s6blur)"/>
+        <g transform="translate(150,1350) rotate(-90) scale(1.45)"><g id="s6head">${head("c", { closed: true, warm: true })}</g></g>
+        <g id="s6blanketG"><path d="M640,1330 C650,1080 760,960 900,968 C990,972 1050,985 1100,990 L1100,1920 L600,1920 C600,1600 610,1420 640,1330 Z" fill="url(#s6blanket)"/>
+        <path d="M640,1330 C650,1080 760,960 900,968 C990,972 1050,985 1100,990" stroke="#ffd9b8" stroke-opacity="0.6" stroke-width="6" fill="none" filter="url(#s6blur)"/></g>
+        <rect x="-200" y="1500" width="1480" height="620" fill="#0d0a14" opacity="0.6"/>`);
+
+      // ---------- Timeline ----------
+      const tl = gsap.timeline({ paused: true });
+      const fadeIn = (sel, at, d = 0.5) => tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d, ease: "power1.inOut" }, at);
+
+      // S1: hook on frame 0, slow push-in toward the face, blinks, glance at clock.
+      tl.fromTo("#s1cam", { scale: 1.0 }, { scale: 1.32, svgOrigin: "120 1080", duration: 6.8, ease: "sine.inOut" }, 0);
+      tl.to(["#t1", "#t2"], { yPercent: -115, duration: 0.6, ease: "power3.in", stagger: 0.08 }, 5.6);
+      tl.fromTo("#shaftPoly", { opacity: 0.75 }, { opacity: 1, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+      gsap.utils.toArray("#s1cam .dust").forEach((d, i) => {
+        const r = rng(100 + i);
+        tl.to(d, { x: (r() - 0.5) * 40, y: -10 - r() * 40, opacity: "+=" + (r() * 0.2), duration: 6.8, ease: "sine.inOut" }, 0);
+      });
+      tl.set("#alid", { scaleY: 0, svgOrigin: "296 199" }, 0);
+      [0.9, 3.1, 5.2].forEach((t) => tl.to("#alid", { scaleY: 1.45, duration: 0.09, ease: "power2.in", yoyo: true, repeat: 1 }, t));
+      tl.to("#airis", { attr: { cx: 297, cy: 210 }, duration: 0.35, ease: "power2.inOut" }, 2.2);
+      tl.to("#airis", { attr: { cx: 301, cy: 208 }, duration: 0.4, ease: "power2.inOut" }, 4.3);
+      // breathing: blanket chest rises
+      tl.fromTo("#s1blanket", { y: 0 }, { y: -6, svgOrigin: "600 1300", duration: 1.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+      tl.fromTo("#clockGlowC", { opacity: 0.7 }, { opacity: 1, duration: 0.8, yoyo: true, repeat: 7, ease: "sine.inOut" }, 0);
+
+      // S2: close-up, restless eye, blinds light drifts.
+      fadeIn("#s2in", 6.3, 0.5);
+      tl.fromTo("#s2cam", { scale: 1.06 }, { scale: 1.16, svgOrigin: "560 760", duration: 4.7, ease: "sine.inOut" }, 6.3);
+      tl.fromTo("#s2stripes", { x: -30, y: 0 }, { x: 40, y: 20, duration: 4.7, ease: "none" }, 6.3);
+      tl.to("#biris", { attr: { cx: 296, cy: 210 }, duration: 0.25, ease: "power2.inOut" }, 7.4);
+      tl.to("#biris", { attr: { cx: 303, cy: 206 }, duration: 0.25, ease: "power2.inOut" }, 8.3);
+      tl.to("#biris", { attr: { cx: 300, cy: 209 }, duration: 0.3, ease: "power2.inOut" }, 9.2);
+      tl.set("#blid", { scaleY: 0, svgOrigin: "296 199" }, 0);
+      [7.9, 9.9].forEach((t) => tl.to("#blid", { scaleY: 1.45, duration: 0.1, ease: "power2.in", yoyo: true, repeat: 1 }, t));
+      tl.fromTo("#s2head", { rotation: 0 }, { rotation: -1.2, svgOrigin: "60 260", duration: 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.6);
+
+      // S3: neural activity + thoughts.
+      fadeIn("#s3in", 10.5, 0.6);
+      tl.fromTo("#s3cam", { scale: 1.08 }, { scale: 1.0, svgOrigin: "480 700", duration: 5.9, ease: "power2.out" }, 10.5);
+      tl.fromTo("#nbrainShape", { opacity: 0.5 }, { opacity: 1, duration: 0.6, yoyo: true, repeat: 8, ease: "sine.inOut" }, 10.6);
+      tl.fromTo("#s3halo", { opacity: 0.4, scale: 0.9, svgOrigin: "480 680" }, { opacity: 1, scale: 1.1, duration: 0.7, yoyo: true, repeat: 7, ease: "sine.inOut" }, 10.6);
+      function impulses(n, p, start, end) {
+        n.impulses.forEach((l, k) => {
+          const r = rng(500 + k);
+          const dur = 0.35 + r() * 0.45;
+          const reps = Math.floor((end - start - 0.3) / (dur * 2));
+          const fwd = k % 2 === 0;
+          const a = fwd ? l[0] : l[1], b = fwd ? l[1] : l[0];
+          tl.fromTo("#" + p + "imp" + k, { attr: { cx: a[0], cy: a[1] }, opacity: 0.2 }, { attr: { cx: b[0], cy: b[1] }, opacity: 1, duration: dur, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, reps) }, start + r() * 0.3);
+        });
+      }
+      impulses(n3, "n", 10.5, 16.4);
+      ["#th1", "#th2", "#th3", "#th4", "#th5"].forEach((s, i) => {
+        const r = rng(40 + i);
+        const t0 = 10.9 + i * 0.42;
+        tl.fromTo(s, { opacity: 0, scale: 0.85, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(1.6)" }, t0);
+        tl.to(s, { x: (r() - 0.5) * 60, y: -20 - r() * 30, duration: 13.45 - t0 - 0.55, ease: "sine.inOut" }, t0 + 0.55);
+        // "they keep coming back": pulled into the head, then return
+        tl.to(s, { x: 430 - parseFloat($(s).style.left) - 150, y: 700 - parseFloat($(s).style.top), scale: 0.4, opacity: 0, duration: 0.6, ease: "power2.in" }, 13.5 + i * 0.12);
+        tl.to(s, { x: (r() - 0.5) * 40, y: 0, scale: 1, opacity: 1, duration: 0.7, ease: "power3.out" }, 14.2 + i * 0.15);
+        tl.to(s, { opacity: 0.0, duration: 0.4 }, 15.8);
+      });
+      tl.to("#nbrain", { scale: 1.06, svgOrigin: "188 170", duration: 0.25, yoyo: true, repeat: 3, ease: "power2.out" }, 14.0);
+
+      // S4: calm brain, zoom to pineal, melatonin release, then phone suppresses it.
+      fadeIn("#s4in", 15.9, 0.6);
+      tl.set("#mbrain", { opacity: 0.55 }, 15.9);
+      impulses(n4, "m", 15.9, 23.4);
+      tl.fromTo("#s4zoom", { scale: 1 }, { scale: 1.45, svgOrigin: "500 750", duration: 2.2, ease: "power2.inOut" }, 16.0);
+      tl.fromTo("#pinGlow", { opacity: 0, scale: 0.6, svgOrigin: "195 215" }, { opacity: 1, scale: 1.25, duration: 1.2, ease: "sine.out" }, 16.6);
+      tl.fromTo("#pineal", { scale: 0.8, svgOrigin: "195 215" }, { scale: 1.15, duration: 0.6, yoyo: true, repeat: 3, ease: "sine.inOut" }, 16.6);
+      tl.fromTo("#pinLine", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 16.9);
+      tl.fromTo("#lbPineal", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 16.9);
+      gsap.utils.toArray("#mols .mol").forEach((m, i) => {
+        const tx = +m.dataset.tx, ty = +m.dataset.ty;
+        tl.fromTo(m, { x: 195, y: 215, opacity: 0, scale: 0.4, rotation: 0 }, { x: tx, y: ty, opacity: 1, scale: 1, rotation: 120, duration: 1.6, ease: "power2.out" }, 17.3 + i * 0.05);
+        tl.to(m, { y: ty - 6, rotation: 200, duration: 1.5, ease: "sine.inOut" }, 18.95 + i * 0.05);
+        tl.to(m, { opacity: 0.0, scale: 0.2, x: 195 + (tx - 195) * 0.4, y: 215 + (ty - 215) * 0.4, duration: 1.0, ease: "power2.in" }, 20.6 + i * 0.03);
+      });
+      tl.fromTo("#lbMel", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 17.8);
+      // pull back to reveal the phone
+      tl.to("#s4zoom", { scale: 1.0, duration: 1.0, ease: "power2.inOut" }, 19.5);
+      tl.to(["#lbPineal", "#pinLine"], { opacity: 0, duration: 0.3 }, 19.5);
+      tl.to("#lbMel", { opacity: 0, duration: 0.3 }, 20.4);
+      tl.fromTo("#phoneG", { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 19.9);
+      tl.fromTo("#beamPoly", { opacity: 0.6 }, { opacity: 1, duration: 0.5, yoyo: true, repeat: 4, ease: "sine.inOut" }, 20.4);
+      tl.to("#pinGlow", { opacity: 0.15, scale: 0.6, duration: 1.2, ease: "power2.in" }, 20.6);
+      tl.to("#pineal", { opacity: 0.55, duration: 1.2 }, 20.6);
+      tl.fromTo("#lbMelDown", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 20.7);
+      tl.to("#mbrain", { opacity: 1, duration: 0.8 }, 20.8);
+
+      // S5: tips.
+      fadeIn("#s5in", 22.9, 0.6);
+      tl.fromTo("#tipsHead", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 23.1);
+      ["#tip1", "#tip2", "#tip3"].forEach((s, i) => tl.fromTo(s, { opacity: 0, x: i % 2 ? 120 : -120 }, { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }, 23.6 + i * 1.2));
+      tl.fromTo("#s5glow", { scale: 0.9, svgOrigin: "900 230" }, { scale: 1.1, duration: 6, ease: "sine.inOut" }, 22.9);
+
+      // S6: asleep at dawn.
+      fadeIn("#s6in", 28.4, 0.7);
+      tl.fromTo("#dawnR", { opacity: 0.2 }, { opacity: 1, duration: 3.4, ease: "sine.inOut" }, 28.4);
+      tl.fromTo("#s6cam", { scale: 1.08 }, { scale: 1.0, svgOrigin: "540 1300", duration: 3.6, ease: "sine.out" }, 28.4);
+      tl.fromTo("#s6blanketG", { y: 0 }, { y: -8, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 28.6);
+      tl.fromTo("#gn1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 29.0);
+      tl.fromTo("#gn2", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 29.6);
+
+      // Captions: soft fade in / out.
+      [["#c1", 2.4, 3.9], ["#c2", 6.8, 3.7], ["#c3", 10.9, 2.5], ["#c4", 13.5, 2.7], ["#c5", 16.4, 3.3], ["#c6", 19.9, 3.2]].forEach(([s, st, d]) => {
+        tl.fromTo(s + " p", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, st);
+        tl.to(s + " p", { opacity: 0, duration: 0.25, ease: "power1.in" }, st + d - 0.3);
+      });
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
