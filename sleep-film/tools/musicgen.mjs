@@ -1,0 +1,11 @@
+import { AutoTokenizer, MusicgenForConditionalGeneration, env } from '@huggingface/transformers';
+import wavefile from 'wavefile'; import fs from 'fs';
+env.allowRemoteModels = false; env.localModelPath = new URL('./models/', import.meta.url).pathname;
+const [,, out, n, dt, prompt] = process.argv;
+const id = 'Xenova/musicgen-small';
+const tok = await AutoTokenizer.from_pretrained(id);
+const model = await MusicgenForConditionalGeneration.from_pretrained(id, { dtype: { text_encoder: 'q8', decoder_model_merged: dt, encodec_decode: 'fp32' } });
+const t0 = Date.now();
+const res = await model.generate({ ...tok(prompt), max_new_tokens: +n, do_sample: true, guidance_scale: 3 });
+const w = new wavefile.WaveFile(); w.fromScratch(1, 32000, '32f', res.data); fs.writeFileSync(out, w.toBuffer());
+console.log(out, ((Date.now()-t0)/1000).toFixed(0)+'s', (res.data.length/32000).toFixed(1)+'s audio', 'rss', (process.memoryUsage().rss/1e9).toFixed(1)+'GB');
