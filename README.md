@@ -25,3 +25,11 @@ Requires Node.js >= 22, FFmpeg and Chrome/Chromium (`npx hyperframes doctor` che
 - Music: generated locally with MusicGen-small (Meta, via `Xenova/musicgen-small`; model weights CC BY-NC 4.0, so non-commercial use) by `tools/musicgen.mjs`.
   The requested Pixabay track could not be downloaded automatically; replace `assets/audio/music.wav` with it to swap.
 - Sound effects: bundled with HyperFrames. Font: Montserrat (SIL OFL). GSAP 3.15 is vendored in `lib/`.
+
+## synapse-film — «СИНАПС» (50 s, 9:16 Reels)
+
+- Render: `synapse-film/renders/sinaps.mp4` (1080×1920, 30 fps, H.264 + AAC).
+- One continuous 3D shot inside the brain (`lib/synapse3d.js`, three.js driven by the timeline): neuron forest → a neuron fires and the impulse runs down its axon → macro of a synapse (vesicles, neurotransmitters, receptors) → the whole brain lights up.
+- Re-render: `cd synapse-film && node tools/build.mjs && npx hyperframes check && npx hyperframes render -o renders/sinaps.mp4`
+- Voice: Piper TTS, Kazakh `kk_KZ-issai-high` (ISSAI KazakhTTS, CC BY 4.0), `tools/build_voice.py`.
+- Music: MusicGen-small generated locally (`tools/musicgen.mjs`; weights CC BY-NC 4.0, non-commercial). SFX bundled with HyperFrames.

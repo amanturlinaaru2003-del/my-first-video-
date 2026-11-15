@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="kk" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>СИНАПС</title>
+    <script src="lib/gsap.min.js"></script>
+    <script src="lib/three.min.js"></script>
+    <script src="lib/synapse3d.js"></script>
+    <style>
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #01030a; }
+      #root { position: relative; width: 100%; height: 100%; background: #01030a; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="50" data-width="1080" data-height="1920">
+      <div id="world" data-composition-id="world" data-composition-src="compositions/world.html" data-start="0" data-duration="50" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:1"></div>
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="50" data-track-index="2" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index:20"></div>
+      <audio id="voice" class="clip" src="assets/audio/voice.wav" data-start="0" data-duration="50" data-track-index="3" data-volume="1"></audio>
+      <audio id="music" class="clip" src="assets/audio/music.wav" data-start="0" data-duration="50" data-track-index="4" data-volume="1" data-timeline-role="music"></audio>
+      <audio id="sfx-open" class="clip" src="assets/audio/whoosh-cinematic.mp3" data-start="0" data-duration="5.5" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-fire" class="clip" src="assets/audio/sparkle.mp3" data-start="10.75" data-duration="1.8" data-track-index="6" data-volume="0.5"></audio>
+      <audio id="sfx-fire2" class="clip" src="assets/audio/impact-bass-1.mp3" data-start="10.85" data-duration="2.1" data-track-index="7" data-volume="0.35"></audio>
+      <audio id="sfx-run" class="clip" src="assets/audio/riser.mp3" data-start="11.2" data-duration="4.9" data-track-index="5" data-volume="0.35"></audio>
+      <audio id="sfx-dive" class="clip" src="assets/audio/whoosh-short.mp3" data-start="15.85" data-duration="0.57" data-track-index="6" data-volume="0.6"></audio>
+      <audio id="sfx-arrive" class="clip" src="assets/audio/impact-bass-2.mp3" data-start="16.25" data-duration="2.59" data-track-index="7" data-volume="0.4"></audio>
+      <audio id="sfx-gap" class="clip" src="assets/audio/chime.mp3" data-start="21.55" data-duration="2.54" data-track-index="5" data-volume="0.3"></audio>
+      <audio id="sfx-pop1" class="clip" src="assets/audio/pop.mp3" data-start="24.95" data-duration="0.72" data-track-index="6" data-volume="0.4"></audio>
+      <audio id="sfx-pop2" class="clip" src="assets/audio/pop.mp3" data-start="25.4" data-duration="0.72" data-track-index="7" data-volume="0.35"></audio>
+      <audio id="sfx-pop3" class="clip" src="assets/audio/pop.mp3" data-start="25.85" data-duration="0.72" data-track-index="5" data-volume="0.4"></audio>
+      <audio id="sfx-pop4" class="clip" src="assets/audio/pop.mp3" data-start="26.3" data-duration="0.72" data-track-index="6" data-volume="0.35"></audio>
+      <audio id="sfx-pop5" class="clip" src="assets/audio/pop.mp3" data-start="26.8" data-duration="0.72" data-track-index="7" data-volume="0.4"></audio>
+      <audio id="sfx-pop6" class="clip" src="assets/audio/pop.mp3" data-start="27.25" data-duration="0.72" data-track-index="5" data-volume="0.35"></audio>
+      <audio id="sfx-land" class="clip" src="assets/audio/sparkle.mp3" data-start="30.5" data-duration="1.8" data-track-index="6" data-volume="0.4"></audio>
+      <audio id="sfx-land2" class="clip" src="assets/audio/sparkle.mp3" data-start="32" data-duration="1.8" data-track-index="7" data-volume="0.35"></audio>
+      <audio id="sfx-wave" class="clip" src="assets/audio/whoosh.mp3" data-start="33.8" data-duration="0.57" data-track-index="5" data-volume="0.45"></audio>
+      <audio id="sfx-dive2" class="clip" src="assets/audio/whoosh-cinematic.mp3" data-start="36.3" data-duration="5.5" data-track-index="6" data-volume="0.5"></audio>
+      <audio id="sfx-cascade" class="clip" src="assets/audio/riser.mp3" data-start="39.5" data-duration="6.2" data-track-index="7" data-volume="0.3"></audio>
+      <audio id="sfx-title" class="clip" src="assets/audio/impact-bass-2.mp3" data-start="45.6" data-duration="2.59" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-title2" class="clip" src="assets/audio/chime.mp3" data-start="45.65" data-duration="2.54" data-track-index="6" data-volume="0.3"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
