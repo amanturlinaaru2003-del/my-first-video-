@@ -11,170 +11,36 @@
   @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
   @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
   @font-face { font-family: "KzMono"; font-weight: 700; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
-    #root { position: absolute; inset: 0; overflow: hidden; background: #050c16; }
-    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
-    .cam svg { position: absolute; left: 0; top: 0; overflow: visible; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: transparent; }
+    .cv { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
     
     .s3-label { position:absolute; left:0; top:300px; width:1080px; text-align:center; font-family:"KzSans",sans-serif; opacity:0; }
     .s3-label .big { font-weight:800; font-size:88px; letter-spacing:0.02em; text-shadow:0 0 40px rgba(140,120,255,0.55), 0 6px 20px rgba(0,0,0,0.6); }
     .s3-label .small { margin-top:14px; font-weight:600; font-size:40px; color:#e9e4ff; text-shadow:0 4px 16px rgba(0,0,0,0.7); }
   </style>
   <div id="root" data-composition-id="s3" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
-
     <div id="s3-wrap" style="position:absolute;inset:0;opacity:0">
-    <div id="s3-cam" class="cam"><svg width="1080" height="1920" viewBox="0 0 1080 1920">
-      <defs>
-        
-  <radialGradient id="s3-melaG" cx="40%" cy="30%" r="80%"><stop offset="0" stop-color="#d6deff"/><stop offset="0.6" stop-color="#9aa9f5"/><stop offset="1" stop-color="#6271d6"/></radialGradient>
-  <radialGradient id="s3-melaGlow"><stop offset="0.5" stop-color="#9fb0ff" stop-opacity="0.45"/><stop offset="1" stop-color="#9fb0ff" stop-opacity="0"/></radialGradient>
-        <linearGradient id="s3-bg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#241a66"/><stop offset="0.6" stop-color="#140f45"/><stop offset="1" stop-color="#090722"/></linearGradient>
-        <radialGradient id="s3-neb1"><stop offset="0" stop-color="#7a4dff" stop-opacity="0.55"/><stop offset="1" stop-color="#7a4dff" stop-opacity="0"/></radialGradient>
-        <radialGradient id="s3-neb2"><stop offset="0" stop-color="#29c3d6" stop-opacity="0.4"/><stop offset="1" stop-color="#29c3d6" stop-opacity="0"/></radialGradient>
-        <radialGradient id="s3-cellG" cx="40%" cy="35%"><stop offset="0" stop-color="#fff" stop-opacity="0.35"/><stop offset="1" stop-color="#fff" stop-opacity="0.04"/></radialGradient>
-        <radialGradient id="s3-glandG" cx="40%" cy="35%"><stop offset="0" stop-color="#ffe9b8"/><stop offset="1" stop-color="#d98a4a"/></radialGradient>
-        <radialGradient id="s3-glandGlow"><stop offset="0" stop-color="#c7b2ff" stop-opacity="0.8"/><stop offset="1" stop-color="#c7b2ff" stop-opacity="0"/></radialGradient>
-        <radialGradient id="s3-cortiG" cx="40%" cy="35%"><stop offset="0" stop-color="#ffe08a"/><stop offset="0.55" stop-color="#ff8a2b"/><stop offset="1" stop-color="#e2322b"/></radialGradient>
-        <radialGradient id="s3-cortiGlow"><stop offset="0.4" stop-color="#ff7a2b" stop-opacity="0.55"/><stop offset="1" stop-color="#ff3b2b" stop-opacity="0"/></radialGradient>
-        <filter id="s3-whip" x="-50%" y="-10%" width="200%" height="120%"><feGaussianBlur id="s3-whipB" stdDeviation="0 0"/></filter>
-      </defs>
-      <g filter="url(#s3-whip)">
-      <rect x="-1200" y="-300" width="3480" height="2520" fill="url(#s3-bg)"/>
-      <circle cx="260" cy="520" r="520" fill="url(#s3-neb1)"/><circle cx="880" cy="1300" r="560" fill="url(#s3-neb2)"/><circle cx="-500" cy="900" r="600" fill="url(#s3-neb1)"/>
-      <g id="s3-cells"><g id="s3-cell0" transform="translate(0 0)"><circle cx="148.3" cy="1657.3" r="52.8" fill="url(#s3-cellG)" stroke="#5ad1e8" stroke-opacity="0.45" stroke-width="3"/><circle cx="158.9" cy="1652" r="15.8" fill="#5ad1e8" opacity="0.35"/></g><g id="s3-cell1" transform="translate(0 0)"><circle cx="958.2" cy="1415.2" r="102" fill="url(#s3-cellG)" stroke="#9b7bff" stroke-opacity="0.45" stroke-width="3"/><circle cx="978.6" cy="1405" r="30.6" fill="#9b7bff" opacity="0.35"/></g><g id="s3-cell2" transform="translate(0 0)"><circle cx="231.5" cy="1787" r="51.8" fill="url(#s3-cellG)" stroke="#ff8fc8" stroke-opacity="0.45" stroke-width="3"/><circle cx="241.9" cy="1781.8" r="15.5" fill="#ff8fc8" opacity="0.35"/></g><g id="s3-cell3" transform="translate(0 0)"><circle cx="712" cy="1366.2" r="92.9" fill="url(#s3-cellG)" stroke="#5ad1e8" stroke-opacity="0.45" stroke-width="3"/><circle cx="730.5" cy="1356.9" r="27.9" fill="#5ad1e8" opacity="0.35"/></g><g id="s3-cell4" transform="translate(0 0)"><circle cx="258.5" cy="1821.9" r="65.8" fill="url(#s3-cellG)" stroke="#9b7bff" stroke-opacity="0.45" stroke-width="3"/><circle cx="271.6" cy="1815.3" r="19.7" fill="#9b7bff" opacity="0.35"/></g><g id="s3-cell5" transform="translate(0 0)"><circle cx="839.4" cy="1259.8" r="73" fill="url(#s3-cellG)" stroke="#ff8fc8" stroke-opacity="0.45" stroke-width="3"/><circle cx="854" cy="1252.4" r="21.9" fill="#ff8fc8" opacity="0.35"/></g><g id="s3-cell6" transform="translate(0 0)"><circle cx="586.2" cy="1745.1" r="117.9" fill="url(#s3-cellG)" stroke="#5ad1e8" stroke-opacity="0.45" stroke-width="3"/><circle cx="609.8" cy="1733.3" r="35.4" fill="#5ad1e8" opacity="0.35"/></g><g id="s3-cell7" transform="translate(0 0)"><circle cx="481.9" cy="1700" r="57.1" fill="url(#s3-cellG)" stroke="#9b7bff" stroke-opacity="0.45" stroke-width="3"/><circle cx="493.3" cy="1694.3" r="17.1" fill="#9b7bff" opacity="0.35"/></g><g id="s3-cell8" transform="translate(0 0)"><circle cx="770.5" cy="673.8" r="44.3" fill="url(#s3-cellG)" stroke="#ff8fc8" stroke-opacity="0.45" stroke-width="3"/><circle cx="779.3" cy="669.3" r="13.3" fill="#ff8fc8" opacity="0.35"/></g></g>
-      <g transform="translate(180 300)"><g id="s3-hex0" data-dir="1" transform="rotate(0)" fill="none" stroke="#8fe9ff" stroke-width="4" opacity="0.4"><path d="M0 -50 L43 -25 L43 25 L0 50 L-43 25 L-43 -25Z"/><path d="M43 -25 L86 -50 L129 -25 L129 25 L86 50 L43 25"/><circle cx="0" cy="-50" r="7" fill="#8fe9ff"/><circle cx="129" cy="25" r="7" fill="#8fe9ff"/></g></g><g transform="translate(900 620)"><g id="s3-hex1" data-dir="-1" transform="rotate(0)" fill="none" stroke="#8fe9ff" stroke-width="4" opacity="0.4"><path d="M0 -50 L43 -25 L43 25 L0 50 L-43 25 L-43 -25Z"/><path d="M43 -25 L86 -50 L129 -25 L129 25 L86 50 L43 25"/><circle cx="0" cy="-50" r="7" fill="#8fe9ff"/><circle cx="129" cy="25" r="7" fill="#8fe9ff"/></g></g><g transform="translate(130 1500)"><g id="s3-hex2" data-dir="-1" transform="rotate(0)" fill="none" stroke="#8fe9ff" stroke-width="4" opacity="0.4"><path d="M0 -50 L43 -25 L43 25 L0 50 L-43 25 L-43 -25Z"/><path d="M43 -25 L86 -50 L129 -25 L129 25 L86 50 L43 25"/><circle cx="0" cy="-50" r="7" fill="#8fe9ff"/><circle cx="129" cy="25" r="7" fill="#8fe9ff"/></g></g><g transform="translate(-420 600)"><g id="s3-hex3" data-dir="1" transform="rotate(0)" fill="none" stroke="#8fe9ff" stroke-width="4" opacity="0.4"><path d="M0 -50 L43 -25 L43 25 L0 50 L-43 25 L-43 -25Z"/><path d="M43 -25 L86 -50 L129 -25 L129 25 L86 50 L43 25"/><circle cx="0" cy="-50" r="7" fill="#8fe9ff"/><circle cx="129" cy="25" r="7" fill="#8fe9ff"/></g></g>
-      <!-- pineal gland -->
-      <g transform="translate(540 1330)">
-        <circle id="s3-glandGlowC" r="230" fill="url(#s3-glandGlow)"/>
-        <path d="M0 -92 C56 -80 84 -20 70 34 C60 80 26 104 0 108 C-26 104 -60 80 -70 34 C-84 -20 -56 -80 0 -92Z" fill="url(#s3-glandG)"/>
-        <g fill="none" stroke="#b5703a" stroke-width="5" opacity="0.7"><path d="M-50 -30 Q0 -10 50 -30"/><path d="M-62 10 Q0 30 62 10"/><path d="M-54 50 Q0 70 54 50"/><path d="M-20 -80 Q-30 0 -16 100"/><path d="M20 -80 Q30 0 16 100"/></g>
-        <text id="s3-epi" y="170" text-anchor="middle" font-family="KzSans" font-weight="600" font-size="34" fill="#d9ccff" opacity="0">эпифиз</text>
-      </g>
-      <!-- melatonin -->
-      <g id="s3-mela" transform="translate(540 1330) scale(0.1) rotate(0)">
-        
-  <g id="s3-melaSq" transform="scale(1 1)">
-    <ellipse cx="0" cy="0" rx="150" ry="140" fill="url(#s3-melaGlow)"/>
-    <path d="M0 -105 C80 -105 118 -40 118 20 C118 80 66 108 0 108 C-66 108 -118 80 -118 20 C-118 -40 -80 -105 0 -105Z" fill="url(#s3-melaG)"/>
-    <ellipse cx="-30" cy="-50" rx="40" ry="24" fill="#fff" opacity="0.28"/>
-    <path d="M12 52 a26 26 0 1 0 0 -2 a20 20 0 1 1 0 2z" fill="#f6e7a8" opacity="0.85" transform="rotate(-20 0 60)"/>
-    <g id="s3-melaSleepy" opacity="1" fill="none" stroke="#2a2a5a" stroke-width="6" stroke-linecap="round">
-      <path d="M-56 -4 Q-38 12 -20 -4"/><path d="M20 -4 Q38 12 56 -4"/>
-    </g>
-    <g id="s3-melaAwake" opacity="0">
-      <circle cx="-38" cy="-6" r="20" fill="#fff"/><circle cx="38" cy="-6" r="20" fill="#fff"/>
-      <circle cx="-38" cy="-4" r="8" fill="#1d1d3a"/><circle cx="38" cy="-4" r="8" fill="#1d1d3a"/>
-    </g>
-    <ellipse cx="-66" cy="24" rx="16" ry="9" fill="#ff9ab8" opacity="0.6"/><ellipse cx="66" cy="24" rx="16" ry="9" fill="#ff9ab8" opacity="0.6"/>
-    <g transform="translate(0 32)"><ellipse id="s3-melaMouth" cx="0" cy="0" rx="12" ry="4" fill="#3b2050" transform="scale(1 1)"/></g>
-    <g transform="translate(-20 -96)"><g id="s3-melaCap" transform="rotate(0)">
-      <path d="M-70 14 Q-30 -40 30 -36 Q80 -30 120 30 Q90 10 60 4 Q0 -4 -70 14Z" fill="#2c3a8a"/>
-      <path d="M-74 10 Q0 -10 66 4 L66 18 Q0 4 -74 26Z" fill="#e8ecff"/>
-      <circle cx="124" cy="34" r="16" fill="#ffe27a"/>
-    </g></g>
-  </g>
-        <g transform="translate(118 30)"><g id="s3-wand" transform="rotate(0)"><line x1="0" y1="0" x2="62" y2="-56" stroke="#e8d7a8" stroke-width="7" stroke-linecap="round"/><path transform="translate(70 -64) scale(1.6)" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#ffe27a"/></g></g>
-        <ellipse cx="-118" cy="34" rx="18" ry="24" fill="#8a98ec"/>
-      </g>
-      <g id="s3-sparks"><path id="s3-sp0" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(0.9)"/><path id="s3-sp1" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1.2)"/><path id="s3-sp2" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(0.6)"/><path id="s3-sp3" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1)"/><path id="s3-sp4" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1.3)"/><path id="s3-sp5" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(0.9)"/><path id="s3-sp6" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1.1)"/><path id="s3-sp7" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(0.9)"/><path id="s3-sp8" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(0.6)"/><path id="s3-sp9" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1)"/><path id="s3-sp10" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1.3)"/><path id="s3-sp11" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1.1)"/><path id="s3-sp12" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1)"/><path id="s3-sp13" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1.2)"/><path id="s3-sp14" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1)"/><path id="s3-sp15" class="s3-sp" d="M0 -14 L4 -4 L14 0 L4 4 L0 14 L-4 4 L-14 0 L-4 -4Z" fill="#fff2a8" opacity="0" transform="translate(0 0) scale(1.3)"/></g>
-      <!-- cortisol -->
-      <g id="s3-corti" transform="translate(1500 860) scale(1) rotate(0)">
-        <g id="s3-cortiJ" transform="translate(0 0)">
-          <circle r="230" fill="url(#s3-cortiGlow)"/>
-          <path d="M0 -146L23.8 -88.9L66 -114.3L65.1 -65.1L126.4 -73L88.9 -23.8L132 0L88.9 23.8L126.4 73L65.1 65.1L66 114.3L23.8 88.9L0 146L-23.8 88.9L-66 114.3L-65.1 65.1L-126.4 73L-88.9 23.8L-132 0L-88.9 -23.8L-126.4 -73L-65.1 -65.1L-66 -114.3L-23.8 -88.9Z" fill="url(#s3-cortiG)" stroke="#c4271f" stroke-width="5"/>
-          <path d="M-8 -132 L-30 -190 L-6 -184 L-22 -232 L22 -170 L0 -174 L14 -132Z" fill="#ffe14d" stroke="#d09a12" stroke-width="3"/>
-          <circle cx="-38" cy="-16" r="30" fill="#fff"/><circle cx="38" cy="-16" r="30" fill="#fff"/>
-          <circle id="s3-cpL" cx="-34" cy="-14" r="10" fill="#2a0d0d"/><circle id="s3-cpR" cx="42" cy="-14" r="10" fill="#2a0d0d"/>
-          <path d="M-74 -58 L-12 -40" stroke="#5a1410" stroke-width="12" stroke-linecap="round"/><path d="M74 -58 L12 -40" stroke="#5a1410" stroke-width="12" stroke-linecap="round"/>
-          <path d="M-52 34 Q0 84 52 34 Z" fill="#5a1410"/><path d="M-46 38 L46 38 L40 48 L-40 48Z" fill="#fff"/>
-          <g fill="none" stroke="#ffe14d" stroke-width="6" stroke-linecap="round" id="s3-arcs" opacity="0"><path d="M-150 -90 l-24 -10 l10 -16 l-26 -12"/><path d="M150 -70 l24 -14 l-6 -18 l28 -10"/><path d="M140 110 l30 6 l-4 20 l28 6"/></g>
-        </g>
-      </g>
-      <path id="s3-zap" d="M380 860 L320 900 L350 910 L270 960 L300 968 L200 1020" fill="none" stroke="#fff27a" stroke-width="12" stroke-linejoin="round" opacity="0"/>
-      </g>
-    </svg></div>
-    <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0;pointer-events:none"><defs><radialGradient id="s3-v" cx="50%" cy="46%" r="72%"><stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#01040a" stop-opacity="0.8"/></radialGradient></defs><rect width="1080" height="1920" fill="url(#s3-v)"/></svg>
-    <div class="s3-label" id="s3-labM"><div class="big" style="color:#c9d2ff">МЕЛАТОНИН</div><div class="small">ұйқы гормоны · қараңғыда бөлінеді</div></div>
-    <div class="s3-label" id="s3-labC"><div class="big" style="color:#ffb15c">КОРТИЗОЛ</div><div class="small">сергектік гормоны · стресс көтереді</div></div>
-    <div id="s3-white" style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#ffffff 0%,#e7dcff 45%,#b9a3ff 100%)"></div>
+      <canvas id="s3-cv" class="cv" width="1080" height="1920"></canvas>
+      <div class="s3-label" id="s3-labM"><div class="big" style="color:#c9d2ff">МЕЛАТОНИН</div><div class="small">ұйқы гормоны · қараңғыда бөлінеді</div></div>
+      <div class="s3-label" id="s3-labC"><div class="big" style="color:#ffb15c">КОРТИЗОЛ</div><div class="small">сергектік гормоны · стресс көтереді</div></div>
+      <div id="s3-white" style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#ffffff 0%,#efe6ff 45%,#c2adff 100%)"></div>
     </div>
   </div>
   <script>
     (function () {
-    
-  function A(tl,id,attrs,t,d,ease){ tl.to('#'+id,{attr:attrs,duration:d,ease:ease||'power2.inOut'},t); }
-  function R(tl,id,deg,t,d,ease){ A(tl,id,{transform:'rotate('+deg+')'},t,d,ease); }
-  function TR(tl,id,x,y,t,d,ease){ A(tl,id,{transform:'translate('+x+' '+y+')'},t,d,ease); }
-  function UP(tl,p,slide,lean,t,d,ease){ A(tl,p+'-upper',{transform:'translate(0 '+slide+') rotate('+lean+')'},t,d,ease); }
-  function ARMP(tl,p,s,pose,t,d,ease){ R(tl,p+'-u'+s,pose.u,t,d,ease); R(tl,p+'-f'+s,pose.f,t+d*0.12,d*0.88,ease); }
-  function ARMK(tl,p,s,mv,t,d){ var n=mv.u.length-1; tl.to('#'+p+'-u'+s,{keyframes:mv.u.slice(1).map(function(v){return {attr:{transform:'rotate('+v+')'},duration:d/n,ease:'none'};})},t); tl.to('#'+p+'-f'+s,{keyframes:mv.f.slice(1).map(function(v){return {attr:{transform:'rotate('+v+')'},duration:d/n,ease:'none'};})},t); }
-  function PROPK(tl,id,arr,t,d){ var n=arr.length-1; tl.to('#'+id,{keyframes:arr.slice(1).map(function(v){return {attr:{transform:v},duration:d/n,ease:'none'};})},t); }
-  function lids(tl,p,s,t,d,ease){ A(tl,p+'-lidL',{transform:'scale(1 '+s+')'},t,d,ease); A(tl,p+'-lidR',{transform:'scale(1 '+s+')'},t+0.02,d,ease); }
-  function blink(tl,p,t,rest){ ['L','R'].forEach(function(s,i){ var o=i*0.012; tl.to('#'+p+'-lid'+s,{attr:{transform:'scale(1 1)'},duration:0.07,ease:'power2.in'},t+o); tl.to('#'+p+'-lid'+s,{attr:{transform:'scale(1 '+rest+')'},duration:0.12,ease:'power2.out'},t+o+0.07); }); }
-  function look(tl,p,x,y,t,d){ TR(tl,p+'-pupL',x,y,t,d||0.22,'power3.out'); TR(tl,p+'-pupR',x,y,t+0.02,d||0.22,'power3.out'); }
-  function mouth(tl,p,shape,t,d){ A(tl,p+'-mouth',{d:M[shape]},t,d||0.25); A(tl,p+'-mclipPath',{d:M[shape]},t,d||0.25); }
-  function brows(tl,p,l,r,t,d){ R(tl,p+'-browL',l,t,d||0.3); R(tl,p+'-browR',r,t+0.04,d||0.3); }
-  function neck(tl,p,deg,t,d,ease){ R(tl,p+'-neck',deg,t,d,ease); }
-  function yoyo(tl,sel,fromV,toV,start,end,period){ var n=Math.max(1,Math.floor((end-start)/(period/2))); toV.duration=period/2; toV.yoyo=true; toV.repeat=n-1; if(!toV.ease) toV.ease='sine.inOut'; tl.fromTo(sel,fromV,toV,start); }
-  function INIT(sel,vars){ gsap.set(sel,vars); tl.set(sel,vars,0); }
-  function camSet(tl,el,fx,fy,s){ INIT(el,{x:540-fx*s,y:960-fy*s,scale:s,transformOrigin:'0 0'}); }
-  function camTo(tl,el,fx,fy,s,t,d,ease){ tl.to(el,{x:540-fx*s,y:960-fy*s,scale:s,duration:d,ease:ease||'power2.inOut'},t); }
-  function breathe(tl,p,start,end,period,amt){ yoyo(tl,'#'+p+'-chest',{attr:{transform:'translate(0 0)'}},{attr:{transform:'translate(0 '+(-amt)+')'}},start,end,period); }
-  function dustDrift(tl,cls,start,end){ var els=document.querySelectorAll('.'+cls); for(var i=0;i<els.length;i++){ var ph=(i*0.37)%1; yoyo(tl,els[i],{y:0,x:0},{y:-24-(i%5)*6,x:(i%2?10:-10)},start+ph*0.6,end,3.2+(i%4)*0.7); } }
-
-    const M = {"grin":"M-56 106 Q0 126 56 106 Q0 158 -56 106 Z","flat":"M-34 118 Q0 121 34 118 Q0 129 -34 118 Z","frown":"M-36 126 Q0 106 36 126 Q0 115 -36 126 Z","o":"M-17 112 Q0 94 17 112 Q0 142 -17 112 Z","smile":"M-40 110 Q0 136 40 110 Q0 124 -40 110 Z","sleep":"M-24 117 Q0 129 24 117 Q0 123 -24 117 Z"};
-    const SPARKS = [{"dx":97.8,"dy":173.2,"s":0.9,"d":0},{"dx":-1.5,"dy":139.4,"s":1.2,"d":0.2},{"dx":53,"dy":171.2,"s":0.6,"d":0.3},{"dx":-2.9,"dy":200.5,"s":1,"d":0.5},{"dx":-54,"dy":263.9,"s":1.3,"d":0.7},{"dx":17.7,"dy":161.6,"s":0.9,"d":0.9},{"dx":-45.4,"dy":259.6,"s":1.1,"d":1},{"dx":20,"dy":279.6,"s":0.9,"d":1.2},{"dx":40.7,"dy":249.2,"s":0.6,"d":1.4},{"dx":111.7,"dy":275.2,"s":1,"d":1.5},{"dx":13.8,"dy":290.8,"s":1.3,"d":1.7},{"dx":108.5,"dy":125.6,"s":1.1,"d":1.9},{"dx":-105.3,"dy":293.1,"s":1,"d":2},{"dx":123.5,"dy":311,"s":1.2,"d":2.2},{"dx":76.6,"dy":180.4,"s":1,"d":2.4},{"dx":118.9,"dy":151.9,"s":1.3,"d":2.6}];
-    const tl = gsap.timeline({ paused: true });
-
-    const cam='#s3-cam';
-    tl.fromTo('#s3-wrap',{opacity:0},{opacity:1,duration:0.2,ease:'none'},0);
-    tl.fromTo('#s3-white',{opacity:1},{opacity:0,duration:0.8,ease:'power2.out'},0.15);
-    camSet(tl,cam,540,1240,1.2);
-    camTo(tl,cam,520,980,1.12,0.2,3.0,'power2.inOut');
-    camTo(tl,cam,560,930,1.06,3.2,5.2,'sine.inOut');
-    // living world: drifting cells, turning molecules, glowing gland
-    for (var i=0;i<9;i++) yoyo(tl,'#s3-cell'+i,{attr:{transform:'translate(0 0)'}},{attr:{transform:'translate('+((i%2?1:-1)*(30+i*4))+' '+(-40-i*5)+')'}},0,10.6,4.2+(i%3));
-    for (var h=0;h<4;h++){ var dir=+document.getElementById('s3-hex'+h).getAttribute('data-dir'); tl.fromTo('#s3-hex'+h,{attr:{transform:'rotate(0)'}},{attr:{transform:'rotate('+(dir*70)+')'},duration:10.6,ease:'none'},0); }
-    yoyo(tl,'#s3-glandGlowC',{opacity:0.6},{opacity:1},0,10.6,1.1);
-    tl.fromTo('#s3-epi',{opacity:0},{opacity:0.85,duration:0.5},3.4);
-    // melatonin is released in the dark: it hatches from the gland, yawns and floats up
-    tl.fromTo('#s3-mela',{attr:{transform:'translate(540 1330) scale(0.1) rotate(0)'}},{attr:{transform:'translate(500 1060) scale(1.05) rotate(-6)'},duration:1.1,ease:'back.out(1.5)'},0.55);
-    tl.to('#s3-mela',{attr:{transform:'translate(450 860) scale(1) rotate(4)'},duration:2.2,ease:'sine.inOut'},1.65);
-    tl.to('#s3-mela',{attr:{transform:'translate(420 840) scale(1) rotate(-3)'},duration:1.9,ease:'sine.inOut'},3.85);
-    yoyo(tl,'#s3-melaSq',{attr:{transform:'scale(1 1)'}},{attr:{transform:'scale(1.04 0.96)'}},1.6,7.4,0.9);
-    yoyo(tl,'#s3-melaCap',{attr:{transform:'rotate(0)'}},{attr:{transform:'rotate(7)'}},1.0,7.4,1.1);
-    tl.to('#s3-melaMouth',{attr:{transform:'scale(1.6 5)'},duration:0.35,ease:'power2.out'},1.9);
-    tl.to('#s3-melaMouth',{attr:{transform:'scale(1 1)'},duration:0.4,ease:'power2.inOut'},2.6);
-    yoyo(tl,'#s3-wand',{attr:{transform:'rotate(0)'}},{attr:{transform:'rotate(-24)'}},2.4,7.2,0.6);
-    // stardust from the wand (sleepiness spreading)
-    SPARKS.forEach(function(s,i){ var t0=2.5+s.d; var wx=450+118+70, wy=860+30-64;
-      tl.fromTo('#s3-sp'+i,{opacity:0,attr:{transform:'translate('+wx+' '+wy+') scale('+s.s+')'}},{keyframes:[{opacity:1,duration:0.15},{attr:{transform:'translate('+(wx+s.dx)+' '+(wy+s.dy)+') scale('+(s.s*0.5)+')'},opacity:0,duration:1.6,ease:'power1.in'}]},t0);
-    });
-    tl.fromTo('#s3-labM',{opacity:0,filter:'blur(8px)'},{opacity:1,filter:'blur(0px)',duration:0.3,ease:'power2.out'},1.2);
-    tl.to('#s3-labM',{opacity:0,filter:'blur(8px)',duration:0.2,ease:'power2.in'},5.05);
-    // stress: cortisol bursts in
-    tl.to('#s3-corti',{attr:{transform:'translate(760 900) scale(1) rotate(-8)'},duration:0.55,ease:'expo.out'},5.3);
-    camTo(tl,cam,600,930,1.0,5.25,0.4,'power2.out');
-    tl.fromTo(cam,{rotation:0},{keyframes:[{rotation:-1.2,duration:0.05},{rotation:1,duration:0.06},{rotation:-0.6,duration:0.06},{rotation:0,duration:0.08}]},5.4);
-    yoyo(tl,'#s3-cortiJ',{attr:{transform:'translate(0 0)'}},{attr:{transform:'translate(5 -3)'}},5.4,10.6,0.08);
-    tl.fromTo('#s3-arcs',{opacity:0},{keyframes:[{opacity:1,duration:0.05},{opacity:0.2,duration:0.1},{opacity:1,duration:0.05},{opacity:0.4,duration:0.15}],repeat:9},5.6);
-    tl.fromTo('#s3-labC',{opacity:0,filter:'blur(8px)'},{opacity:1,filter:'blur(0px)',duration:0.3,ease:'power2.out'},5.85);
-    // ...raises: it swells
-    tl.to('#s3-corti',{attr:{transform:'translate(760 900) scale(1.3) rotate(4)'},duration:0.6,ease:'back.out(2)'},6.55);
-    tl.to('#s3-mela',{attr:{transform:'translate(380 850) scale(0.92) rotate(-8)'},duration:0.8,ease:'power2.inOut'},6.6);
-    // ...keeps you alert and chases sleep away
-    tl.fromTo('#s3-zap',{opacity:0},{keyframes:[{opacity:1,duration:0.04},{opacity:0.2,duration:0.06},{opacity:1,duration:0.04},{opacity:0,duration:0.2}]},7.45);
-    tl.set('#s3-melaSleepy',{opacity:0},7.55); tl.set('#s3-melaAwake',{opacity:1},7.55);
-    tl.to('#s3-melaSq',{attr:{transform:'scale(0.85 1.2)'},duration:0.12,ease:'power2.out'},7.55);
-    tl.to('#s3-melaCap',{attr:{transform:'rotate(-40)'},duration:0.3,ease:'back.out(2)'},7.55);
-    tl.to('#s3-mela',{attr:{transform:'translate(-420 900) scale(0.85) rotate(-18)'},duration:1.2,ease:'power3.in'},8.4);
-    tl.to('#s3-corti',{attr:{transform:'translate(-260 900) scale(1.15) rotate(-20)'},duration:1.3,ease:'power2.in'},8.75);
-    tl.to(['#s3-cpL','#s3-cpR'],{attr:{cx:'-=10'},duration:0.2},8.6);
-    tl.to('#s3-labC',{opacity:0,filter:'blur(8px)',duration:0.2,ease:'power2.in'},9.6);
-    // whip pan out
-    camTo(tl,cam,200,930,1.0,9.2,0.85,'power2.in');
-    tl.to(cam,{x:'+=900',duration:0.5,ease:'power3.in'},10.05);
-    tl.fromTo('#s3-whipB',{attr:{stdDeviation:'0 0'}},{attr:{stdDeviation:'60 0'},duration:0.45,ease:'power2.in'},10.05);
-    window.__timelines["s3"] = tl;
+      const W = F3D.makeHormWorld(document.getElementById('s3-cv'));
+      const tl = gsap.timeline({ paused: true });
+      const clock = { t: 0 };
+      tl.to(clock, { t: 10.6, duration: 10.6, ease: 'none', onUpdate: function () { W.renderAt(clock.t); } }, 0);
+      tl.fromTo('#s3-wrap', { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'none' }, 0);
+      tl.fromTo('#s3-white', { opacity: 1 }, { opacity: 0, duration: 0.8, ease: 'power2.out' }, 0.15);
+      tl.fromTo('#s3-labM', { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 0.3, ease: 'power2.out' }, 1.2);
+      tl.to('#s3-labM', { opacity: 0, filter: 'blur(8px)', duration: 0.2, ease: 'power2.in' }, 5.05);
+      tl.fromTo('#s3-labC', { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 0.3, ease: 'power2.out' }, 5.85);
+      tl.to('#s3-labC', { opacity: 0, filter: 'blur(8px)', duration: 0.2, ease: 'power2.in' }, 9.6);
+      tl.fromTo('#s3-cv', { filter: 'blur(0px)' }, { filter: 'blur(14px)', duration: 0.5, ease: 'power2.in' }, 10.05);
+      W.renderAt(0);
+      window.__timelines["s3"] = tl;
     })();
   </script>
 </template>

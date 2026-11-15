@@ -12,14 +12,11 @@
   @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
   @font-face { font-family: "KzMono"; font-weight: 700; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
     #root { position: absolute; inset: 0; overflow: hidden; background: transparent; }
-    .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
-    .cam svg { position: absolute; left: 0; top: 0; overflow: visible; }
-    
+    .cv { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
     .cg { position:absolute; left:0; top:1120px; width:1080px; text-align:center; opacity:0; visibility:hidden; }
     .pill { display:inline-block; max-width:860px; padding:14px 30px 16px; border-radius:24px; background:rgba(5,10,26,0.58); color:#fffaf0; font-family:"KzSans",sans-serif; font-weight:600; font-size:54px; line-height:1.22; text-shadow:0 2px 10px rgba(0,0,0,0.5); }
   </style>
   <div id="root" data-composition-id="captions" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
-
     <div class="cg" id="cap-c0"><span class="pill">Шаршадың...</span></div>
     <div class="cg" id="cap-c1"><span class="pill">бірақ неге ұйықтай</span></div>
     <div class="cg" id="cap-c2"><span class="pill">алмай жатырсың?</span></div>
@@ -52,39 +49,14 @@
   </div>
   <script>
     (function () {
-    
-  function A(tl,id,attrs,t,d,ease){ tl.to('#'+id,{attr:attrs,duration:d,ease:ease||'power2.inOut'},t); }
-  function R(tl,id,deg,t,d,ease){ A(tl,id,{transform:'rotate('+deg+')'},t,d,ease); }
-  function TR(tl,id,x,y,t,d,ease){ A(tl,id,{transform:'translate('+x+' '+y+')'},t,d,ease); }
-  function UP(tl,p,slide,lean,t,d,ease){ A(tl,p+'-upper',{transform:'translate(0 '+slide+') rotate('+lean+')'},t,d,ease); }
-  function ARMP(tl,p,s,pose,t,d,ease){ R(tl,p+'-u'+s,pose.u,t,d,ease); R(tl,p+'-f'+s,pose.f,t+d*0.12,d*0.88,ease); }
-  function ARMK(tl,p,s,mv,t,d){ var n=mv.u.length-1; tl.to('#'+p+'-u'+s,{keyframes:mv.u.slice(1).map(function(v){return {attr:{transform:'rotate('+v+')'},duration:d/n,ease:'none'};})},t); tl.to('#'+p+'-f'+s,{keyframes:mv.f.slice(1).map(function(v){return {attr:{transform:'rotate('+v+')'},duration:d/n,ease:'none'};})},t); }
-  function PROPK(tl,id,arr,t,d){ var n=arr.length-1; tl.to('#'+id,{keyframes:arr.slice(1).map(function(v){return {attr:{transform:v},duration:d/n,ease:'none'};})},t); }
-  function lids(tl,p,s,t,d,ease){ A(tl,p+'-lidL',{transform:'scale(1 '+s+')'},t,d,ease); A(tl,p+'-lidR',{transform:'scale(1 '+s+')'},t+0.02,d,ease); }
-  function blink(tl,p,t,rest){ ['L','R'].forEach(function(s,i){ var o=i*0.012; tl.to('#'+p+'-lid'+s,{attr:{transform:'scale(1 1)'},duration:0.07,ease:'power2.in'},t+o); tl.to('#'+p+'-lid'+s,{attr:{transform:'scale(1 '+rest+')'},duration:0.12,ease:'power2.out'},t+o+0.07); }); }
-  function look(tl,p,x,y,t,d){ TR(tl,p+'-pupL',x,y,t,d||0.22,'power3.out'); TR(tl,p+'-pupR',x,y,t+0.02,d||0.22,'power3.out'); }
-  function mouth(tl,p,shape,t,d){ A(tl,p+'-mouth',{d:M[shape]},t,d||0.25); A(tl,p+'-mclipPath',{d:M[shape]},t,d||0.25); }
-  function brows(tl,p,l,r,t,d){ R(tl,p+'-browL',l,t,d||0.3); R(tl,p+'-browR',r,t+0.04,d||0.3); }
-  function neck(tl,p,deg,t,d,ease){ R(tl,p+'-neck',deg,t,d,ease); }
-  function yoyo(tl,sel,fromV,toV,start,end,period){ var n=Math.max(1,Math.floor((end-start)/(period/2))); toV.duration=period/2; toV.yoyo=true; toV.repeat=n-1; if(!toV.ease) toV.ease='sine.inOut'; tl.fromTo(sel,fromV,toV,start); }
-  function INIT(sel,vars){ gsap.set(sel,vars); tl.set(sel,vars,0); }
-  function camSet(tl,el,fx,fy,s){ INIT(el,{x:540-fx*s,y:960-fy*s,scale:s,transformOrigin:'0 0'}); }
-  function camTo(tl,el,fx,fy,s,t,d,ease){ tl.to(el,{x:540-fx*s,y:960-fy*s,scale:s,duration:d,ease:ease||'power2.inOut'},t); }
-  function breathe(tl,p,start,end,period,amt){ yoyo(tl,'#'+p+'-chest',{attr:{transform:'translate(0 0)'}},{attr:{transform:'translate(0 '+(-amt)+')'}},start,end,period); }
-  function dustDrift(tl,cls,start,end){ var els=document.querySelectorAll('.'+cls); for(var i=0;i<els.length;i++){ var ph=(i*0.37)%1; yoyo(tl,els[i],{y:0,x:0},{y:-24-(i%5)*6,x:(i%2?10:-10)},start+ph*0.6,end,3.2+(i%4)*0.7); } }
-
-    const M = {"grin":"M-56 106 Q0 126 56 106 Q0 158 -56 106 Z","flat":"M-34 118 Q0 121 34 118 Q0 129 -34 118 Z","frown":"M-36 126 Q0 106 36 126 Q0 115 -36 126 Z","o":"M-17 112 Q0 94 17 112 Q0 142 -17 112 Z","smile":"M-40 110 Q0 136 40 110 Q0 124 -40 110 Z","sleep":"M-24 117 Q0 129 24 117 Q0 123 -24 117 Z"};
-    const G = [{"id":"c0","s":0.45,"e":1.35},{"id":"c1","s":1.3,"e":2.62},{"id":"c2","s":2.574,"e":3.87},{"id":"c3","s":5.35,"e":7.29},{"id":"c4","s":7.236000000000001,"e":8.49},{"id":"c5","s":8.443,"e":10.34},{"id":"c6","s":10.29,"e":11.05},{"id":"c7","s":11.001,"e":11.97},{"id":"c8","s":11.924000000000001,"e":13.69},{"id":"c9","s":15.25,"e":18.38},{"id":"c10","s":18.327,"e":20.21},{"id":"c11","s":20.159000000000002,"e":20.94},{"id":"c12","s":20.894000000000002,"e":22.41},{"id":"c13","s":22.363000000000003,"e":23.58},{"id":"c14","s":23.526,"e":24.71},{"id":"c15","s":25.25,"e":26.29},{"id":"c16","s":26.236,"e":28.01},{"id":"c17","s":27.956,"e":28.73},{"id":"c18","s":28.682,"e":30.46},{"id":"c19","s":30.414,"e":31.21},{"id":"c20","s":31.162,"e":32.13},{"id":"c21","s":32.083,"e":33.51},{"id":"c22","s":33.458,"e":34.97},{"id":"c23","s":34.923,"e":36.18},{"id":"c24","s":38.35,"e":39.65},{"id":"c25","s":39.602,"e":41.03},{"id":"c26","s":40.983000000000004,"e":42.26},{"id":"c27","s":42.213,"e":43.52},{"id":"c28","s":43.468999999999994,"e":45.06}];
-    const tl = gsap.timeline({ paused: true });
-
-    G.forEach(function(g){
-      var el='#cap-'+g.id;
-      tl.set(el,{visibility:'visible'},g.s);
-      tl.fromTo(el,{opacity:0,y:10,filter:'blur(6px)'},{opacity:1,y:0,filter:'blur(0px)',duration:0.16,ease:'power2.out'},g.s);
-      tl.to(el,{opacity:0,duration:0.12,ease:'power2.in'},g.e-0.12);
-      tl.set(el,{opacity:0,visibility:'hidden'},g.e);
-    });
-    window.__timelines["captions"] = tl;
+      const G = [{"id":"c0","s":0.45,"e":1.31},{"id":"c1","s":1.26,"e":2.53},{"id":"c2","s":2.48,"e":3.72},{"id":"c3","s":5.35,"e":6.92},{"id":"c4","s":6.87,"e":8.16},{"id":"c5","s":8.11,"e":10.05},{"id":"c6","s":10,"e":10.78},{"id":"c7","s":10.73,"e":11.73},{"id":"c8","s":11.68,"e":13.48},{"id":"c9","s":15.25,"e":17.85},{"id":"c10","s":17.8,"e":19.43},{"id":"c11","s":19.38,"e":20.19},{"id":"c12","s":20.14,"e":21.71},{"id":"c13","s":21.66,"e":22.91},{"id":"c14","s":22.86,"e":24.08},{"id":"c15","s":25.25,"e":26.19},{"id":"c16","s":26.14,"e":27.77},{"id":"c17","s":27.72,"e":28.43},{"id":"c18","s":28.38,"e":30.04},{"id":"c19","s":29.99,"e":30.91},{"id":"c20","s":30.86,"e":31.99},{"id":"c21","s":31.94,"e":33.53},{"id":"c22","s":33.48,"e":35.36},{"id":"c23","s":35.31,"e":36.82},{"id":"c24","s":38.35,"e":39.51},{"id":"c25","s":39.46,"e":40.86},{"id":"c26","s":40.81,"e":42.14},{"id":"c27","s":42.09,"e":43.21},{"id":"c28","s":43.16,"e":44.54}];
+      const tl = gsap.timeline({ paused: true });
+      G.forEach(function (g) { var el = '#cap-' + g.id;
+        tl.set(el, { visibility: 'visible' }, g.s);
+        tl.fromTo(el, { opacity: 0, y: 10, filter: 'blur(6px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.16, ease: 'power2.out' }, g.s);
+        tl.to(el, { opacity: 0, duration: 0.12, ease: 'power2.in' }, g.e - 0.12);
+        tl.set(el, { opacity: 0, visibility: 'hidden' }, g.e); });
+      window.__timelines["captions"] = tl;
     })();
   </script>
 </template>
