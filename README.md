@@ -25,3 +25,10 @@ Requires Node.js >= 22, FFmpeg and Chrome/Chromium (`npx hyperframes doctor` che
 - Music: generated locally with MusicGen-small (Meta, via `Xenova/musicgen-small`; model weights CC BY-NC 4.0, so non-commercial use) by `tools/musicgen.mjs`.
   The requested Pixabay track could not be downloaded automatically; replace `assets/audio/music.wav` with it to swap.
 - Sound effects: bundled with HyperFrames. Font: Montserrat (SIL OFL). GSAP 3.15 is vendored in `lib/`.
+
+## TikTok video styles skill
+
+`.claude/skills/tiktok-video-styles/SKILL.md` holds 10 ready visual styles for vertical 1080×1920 videos
+(pixel art, chalkboard, glowing sketch, PS2 graphics, comic, flat vector, lines on black, cinematic CGI,
+brick constructor, toy 3D) plus the shared rules for editing, sound, format and checks. Ask e.g.
+«Смонтируй видео в стиле «Комикс». Тема: …» and Claude follows that style.
