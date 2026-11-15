@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0e1116;
+        --ink: #f4f1ea;
+        --accent: #ff5a36;
+        --muted: #8a93a3;
+        --font-display: "Montserrat", sans-serif;
+        --font-body: "Inter", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: var(--ground);
+        font-family: var(--font-body);
+      }
+      #card {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+      }
+      #bar {
+        width: 220px;
+        height: 12px;
+        border-radius: 6px;
+        background: var(--accent);
+        transform-origin: left center;
+      }
+      #headline {
+        display: flex;
+        gap: 34px;
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 150px;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        color: var(--ink);
+      }
+      .word-mask {
+        overflow: hidden;
+        padding-bottom: 12px;
+      }
+      .word {
+        display: inline-block;
+      }
+      .word.hot {
+        color: var(--accent);
+      }
+      #sub {
+        font-size: 44px;
+        font-weight: 400;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="6"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div id="card" class="clip" data-start="0" data-duration="6" data-track-index="0" data-track-kind="graphics">
+        <div id="bar"></div>
+        <div id="headline">
+          <span class="word-mask"><span id="w1" class="word">My</span></span>
+          <span class="word-mask"><span id="w2" class="word">First</span></span>
+          <span class="word-mask"><span id="w3" class="word hot">Video</span></span>
+        </div>
+        <p id="sub">Made with HyperFrames + GSAP</p>
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Enter: accent bar draws in, words rise from their masks, subtitle fades up.
+      tl.fromTo("#bar", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+      tl.fromTo(
+        ".word",
+        { yPercent: 110 },
+        { yPercent: 0, duration: 0.8, ease: "power4.out", stagger: 0.14 },
+        0.45
+      );
+      tl.fromTo("#sub", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.3);
+
+      // Hold, with a subtle push-in on the headline.
+      tl.fromTo("#headline", { scale: 1 }, { scale: 1.04, duration: 3.2, ease: "none" }, 1.0);
+
+      // Exit: everything leaves before the 6 s end.
+      tl.to(".word", { yPercent: -110, duration: 0.5, ease: "power3.in", stagger: 0.08 }, 4.9);
+      tl.to("#sub", { opacity: 0, y: -16, duration: 0.4, ease: "power2.in" }, 4.9);
+      tl.to("#bar", { scaleX: 0, transformOrigin: "right center", duration: 0.5, ease: "power3.in" }, 5.1);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
