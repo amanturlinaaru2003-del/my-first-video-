@@ -28,12 +28,31 @@
     add(root, new T3.CylinderGeometry(0.048, 0.055, 0.12, 20), mSkin, 0, 1.52, 0);
     const head = new T3.Group(); head.position.set(0, 1.64, 0.005); root.add(head);
     add(head, new T3.SphereGeometry(0.1, 32, 24), mSkin, 0, 0, 0, 0.9, 1.15, 1.0);
-    add(head, new T3.SphereGeometry(0.06, 20, 16), mSkin, 0, -0.06, 0.03, 1.0, 0.8, 0.95);     // jaw
-    add(head, new T3.ConeGeometry(0.016, 0.045, 12), mSkin, 0, -0.005, 0.105, 1, 1, 1).rotation.x = Math.PI / 2; // nose
+    add(head, new T3.SphereGeometry(0.06, 20, 16), mSkin, 0, -0.055, 0.015, 1.0, 0.8, 0.9);     // jaw
+    add(head, new T3.SphereGeometry(0.016, 16, 12), mSkin, 0, -0.012, 0.1, 0.85, 1.25, 1.1); // nose
     [-1, 1].forEach((s) => add(head, new T3.SphereGeometry(0.022, 12, 10), mSkin, s * 0.09, 0, 0, 0.5, 1, 0.8)); // ears
-    if (!ghost) [-1, 1].forEach((s) => add(head, new T3.SphereGeometry(0.011, 10, 8), M('eye', () => new T3.MeshStandardMaterial({ color: 0x1a1410, roughness: 0.2 })), s * 0.035, 0.02, 0.092));
-    const hcap = new T3.SphereGeometry(0.106, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.55);
-    add(head, hcap, mHair, 0, 0.012, -0.008, 0.93, 1.18, 1.04);
+    // face: eyes (white, iris, pupil, eyelid, brow) and mouth (lips)
+    const lids = [];
+    if (!ghost) {
+      const white = M('eyeW', () => new T3.MeshPhysicalMaterial({ color: 0xf4f1ec, roughness: 0.15, clearcoat: 1 }));
+      const iris = M('iris', () => new T3.MeshStandardMaterial({ color: 0x5a3a22, roughness: 0.3 }));
+      const pupil = M('pupil', () => new T3.MeshStandardMaterial({ color: 0x050505, roughness: 0.1 }));
+      const brow = M('brow', () => new T3.MeshStandardMaterial({ color: 0x2a1c14, roughness: 0.8 }));
+      [-1, 1].forEach((s) => {
+        const eye = new T3.Group(); eye.position.set(s * 0.034, 0.016, 0.08); head.add(eye);
+        add(eye, new T3.SphereGeometry(0.016, 20, 14), white, 0, 0, 0);
+        add(eye, new T3.CircleGeometry(0.0078, 20), iris, 0, 0, 0.0161);
+        add(eye, new T3.CircleGeometry(0.0038, 16), pupil, 0, 0, 0.0163);
+        const lid = add(eye, new T3.SphereGeometry(0.0172, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2), mSkin, 0, 0, 0); lid.rotation.x = -0.35; lids.push(lid);
+        const b = add(head, cap(0.0045, 0.03, 6), brow, s * 0.037, 0.047, 0.094); b.rotation.z = Math.PI / 2 + s * 0.12;
+      });
+      const lipM = M('lip', () => new T3.MeshStandardMaterial({ color: 0xb4675c, roughness: 0.45 }));
+      const up = add(head, new T3.TorusGeometry(0.016, 0.0033, 8, 20, Math.PI), lipM, 0, -0.05, 0.091, 1, 0.3, 1); up.rotation.z = 0;
+      const lo = add(head, new T3.TorusGeometry(0.014, 0.004, 8, 20, Math.PI), lipM, 0, -0.051, 0.09, 1, 0.4, 1); lo.rotation.z = Math.PI;
+      add(head, new T3.BoxGeometry(0.028, 0.002, 0.004), M('mouthLine', () => new T3.MeshStandardMaterial({ color: 0x3a1512, roughness: 0.6 })), 0, -0.0505, 0.094);
+    }
+    const hcap = new T3.SphereGeometry(0.106, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.47);
+    const hc = add(head, hcap, mHair, 0, 0.016, -0.01, 0.94, 1.18, 1.05); hc.rotation.x = -0.2;
     // arms: shoulder → elbow → hand, each joint a pivot group
     const arms = [-1, 1].map((s) => {
       const sh = new T3.Group(); sh.position.set(s * 0.215, 1.39, 0); root.add(sh);
@@ -56,6 +75,7 @@
       return { hp, kn, s };
     });
     const H = { group: root, arms, legs, head, mat: gm || mGown, ghost };
+    H.eyes = function (closed) { lids.forEach((l) => { l.rotation.x = -0.35 + closed * 1.95; }); };
     // pose: 'stand' | 'lie' (arms along the body, palms down)
     H.pose = function (p = 'stand', k = 0) {
       arms.forEach(({ sh, el, s }) => { sh.rotation.set(0, 0, s * (p === 'lie' ? 0.12 : 0.08 + k)); el.rotation.set(p === 'lie' ? 0 : -0.15, 0, 0); });

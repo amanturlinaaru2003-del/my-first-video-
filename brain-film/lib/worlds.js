@@ -55,13 +55,14 @@
     const STOP = 1.05;
     const HX = 60, hosp = C.hospital(); hosp.group.position.set(HX, 0, 0); S.scene.add(hosp.group);
     const shots = [
-      { t: a, p: [HX + 1.7, 2.3, 3.5], q: [HX + 1.3, 2.05, 2.9], l: [HX - 0.25, 0.75, -0.35] },
+      { t: a, p: [HX + 0.1, 1.55, -0.2], q: [HX + 0.18, 1.62, 0.0], l: [HX, 0.86, -0.78], fov: 26 },
+      { t: 1.25, p: [HX + 1.5, 2.2, 3.1], q: [HX + 1.3, 2.05, 2.9], l: [HX - 0.25, 0.75, -0.35] },
       { t: g(1), p: [1.6, -1.2, 9.0], q: [0.9, -1.0, 7.8], l: [0, -1.0, 0], burst: false },
     ];
     return { renderAt(T) {
       const beat = H.beatAt(T, 78, STOP);
       const life = 1 - smooth(STOP, STOP + 0.6, T);
-      hosp.set(T, { amp: 1, ecg: { bpm: 78, stop: STOP } });
+      hosp.set(T, { amp: 1, ecg: { bpm: 78, stop: STOP } }); hosp.patient.eyes(smooth(STOP - 0.1, STOP + 0.35, T));
       H.set(T, { beat, life });
       streams.forEach((s) => s.set(T, 0.3 + 0.7 * life, 0.35 * life + 0.02));
       B.set(T, { act: 1 - smooth(2.4, 3.6, T) * 0.4, rotY: 0.4 + T * 0.1 });
