@@ -42,3 +42,11 @@ Same night-mall style. «ЭНЕРГЕТИК ІШЕДІ» drinks a can, his batte
 - Render: `energy-film/renders/energetik.mp4`. Re-render: `cd energy-film && node tools/build.mjs && npx hyperframes render -o renders/out.mp4`
 - Drawing: `lib/mall.js` (adds the cans, water bottle, battery/heart-rate HUD and speed lines); scenes: `tools/build.mjs`.
 - Music: MusicGen-small, generated locally (CC BY-NC 4.0 weights, non-commercial). Swap `assets/audio/music.wav` to change it.
+
+## coma-film — «10 БАНКА» (50 s, 9:16)
+
+One day, ten energy drinks: 07:00 bedroom → 08:10 road → 10:30 class → 12:00 work → 13:30 lunch → 21:00 gaming → 03:00 night (HUD counts cans 1/10…10/10 and heart rate up to 175 BPM). He stands, gets dizzy, collapses. POV in the ambulance (eyelids opening and closing, medics, slow ECG), CPR wide shot, coma prayer («Осыдан тірі шықсам, енді ешқашан энергетик ішпеймін»), wakes in hospital and raises his hands — «Тәубе. Денсаулық — бір-ақ рет беріледі.»
+
+- Render: `coma-film/renders/10-banka.mp4`. Re-render: `cd coma-film && node tools/build.mjs && npx hyperframes render -o renders/out.mp4`
+- Drawing (sets, rig, HUD, ECG, eyelids): `lib/life.js`; scene timing, text and sound placement: `tools/build.mjs`.
+- Music: two MusicGen-small tracks generated locally (CC BY-NC 4.0 weights, non-commercial). Heartbeats are built from the bundled HyperFrames bass hit; other effects are the bundled HyperFrames library (`assets/audio/CREDITS.md`).
