@@ -34,3 +34,11 @@ Original short in a minimalist night-mall style: МОТИВАЦИЯ, ЭГО, Қ�
 - Re-render: `cd escalator-film && node tools/build.mjs && npx hyperframes check && npx hyperframes render -o renders/out.mp4`
 - All drawing is in `lib/mall.js` (canvas, one shared character rig and mall set); scene timing and camera moves are in `tools/build.mjs`. Character labels: `LABELS` at the top of `lib/mall.js`.
 - Music: generated locally with MusicGen-small (Meta, `Xenova/musicgen-small`; weights CC BY-NC 4.0, so non-commercial use). Replace `assets/audio/music.wav` to swap it. Sound effects are bundled with HyperFrames.
+
+## energy-film — «ЭНЕРГЕТИК» (29 s, 9:16)
+
+Same night-mall style. «ЭНЕРГЕТИК ІШЕДІ» drinks a can, his battery jumps to 100 %, he sprints up the stairs, crashes halfway (battery 6 %, 150+ BPM), tries a second can and crashes again. «ЭНЕРГЕТИК ІШПЕЙДІ» drinks water and walks at an even pace (70 %, 72 BPM), passes him and reaches the top. Closing: «Энергетик — қарызға алынған қуат. Нағыз қуат — ұйқы, су, қозғалыс.»
+
+- Render: `energy-film/renders/energetik.mp4`. Re-render: `cd energy-film && node tools/build.mjs && npx hyperframes render -o renders/out.mp4`
+- Drawing: `lib/mall.js` (adds the cans, water bottle, battery/heart-rate HUD and speed lines); scenes: `tools/build.mjs`.
+- Music: MusicGen-small, generated locally (CC BY-NC 4.0 weights, non-commercial). Swap `assets/audio/music.wav` to change it.
