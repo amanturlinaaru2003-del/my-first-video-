@@ -1,0 +1,47 @@
+<template>
+  <style>
+    
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzMono"; font-weight: 700; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; overflow: hidden; background: transparent; }
+    .cv { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    
+    #s6-scrim { position:absolute; left:90px; top:280px; width:900px; height:300px; border-radius:150px; background:radial-gradient(ellipse at 50% 50%, rgba(2,6,20,0.62) 0%, rgba(2,6,20,0.35) 55%, rgba(2,6,20,0) 75%); opacity:0; }
+    #s6-text { position:absolute; left:0; top:330px; width:1080px; text-align:center; font-family:"KzSans",sans-serif; font-weight:800; font-size:70px; line-height:1.2; color:#fff6e2; text-shadow:0 0 34px rgba(255,236,180,0.45), 0 6px 22px rgba(0,0,0,0.6); }
+    #s6-text .ln:nth-child(2) { color:#ffdca6; }
+    .fw { display:inline-block; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="s6-wrap" style="position:absolute;inset:0">
+      <canvas id="s6-cv" class="cv" width="1080" height="1920"></canvas>
+    </div>
+    <div id="s6-scrim"></div>
+    <div id="s6-text">
+      <div class="ln"><span class="fw" id="s6-w1">Ұйқыңды</span> <span class="fw" id="s6-w2">бағала.</span></div>
+      <div class="ln"><span class="fw" id="s6-w3">Денеңе</span> <span class="fw" id="s6-w4">демалыс</span> <span class="fw" id="s6-w5">бер.</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const ctx = document.getElementById('s6-cv').getContext('2d');
+      const draw = (t) => PHOTO.render(ctx, 46 + t);
+      PHOTO.load().then(function () {
+        const tl = gsap.timeline({ paused: true });
+        const clock = { t: 0 };
+        tl.to(clock, { t: 4, duration: 4, ease: 'none', onUpdate: function () { draw(clock.t); } }, 0);
+        tl.fromTo('#s6-scrim', { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.25);
+        [['#s6-w1', 0.32], ['#s6-w2', 0.72], ['#s6-w3', 1.7], ['#s6-w4', 2.05], ['#s6-w5', 2.6]].forEach(function (w) { tl.fromTo(w[0], { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 0.35, ease: 'power2.out' }, w[1]); });
+        draw(0);
+        window.__timelines["s6"] = tl;
+      });
+    })();
+  </script>
+</template>

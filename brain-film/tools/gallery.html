@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8" />
+<title>Кейіпкерлер</title>
+<script src="../lib/three.min.js"></script>
+<script src="../lib/narration.js"></script>
+<script src="../lib/cine.js"></script>
+<script src="../lib/people.js"></script>
+<script src="../lib/characters.js"></script>
+<style>
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("../assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("../assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0400-045F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("../assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF; }
+  html, body { margin: 0; background: #0b0f17; }
+  #out { display: block; }
+</style>
+</head>
+<body>
+<canvas id="out" width="1200" height="1860"></canvas>
+<script>
+(async function () {
+  await document.fonts.load('800 40px KzSans', 'ӘҒҚҢӨҰҮҺІ0123'); await document.fonts.load('800 40px KzSans', '0123456789ABC');
+  const LIST = [
+    ['patient', 'Науқас'], ['doctor', 'Дәрігер'], ['nurse', 'Мейірбике'],
+    ['surgeon', 'Хирург'], ['elder', 'Қарт адам'], ['woman', 'Әйел'],
+    ['child', 'Бала'], ['kazakh', 'Ұлттық киім'], ['spirit', 'Жарқыраған жан'.slice(0, 11)],
+  ];
+  const TW = 400, TH = 620, out = document.getElementById('out').getContext('2d');
+  const cv = document.createElement('canvas'); cv.width = TW; cv.height = TH - 80;
+  const r = new THREE.WebGLRenderer({ canvas: cv, antialias: true, preserveDrawingBuffer: true });
+  r.setPixelRatio(1); r.setSize(TW, TH - 80, false); r.outputColorSpace = THREE.SRGBColorSpace; r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.05;
+  const es = new THREE.Scene(); es.add(new THREE.Mesh(new THREE.SphereGeometry(10, 16, 8), new THREE.MeshBasicMaterial({ color: 0x404a5a, side: THREE.BackSide })));
+  const pm = new THREE.PMREMGenerator(r); const env = pm.fromScene(es, 0.04).texture;
+  for (let i = 0; i < LIST.length; i++) {
+    const [key, label] = LIST[i];
+    const sc = new THREE.Scene(); sc.background = new THREE.Color(0x141b27); sc.environment = env;
+    const key1 = new THREE.DirectionalLight(0xffe2c8, 2.4); key1.position.set(2, 3, 3); sc.add(key1);
+    const rim = new THREE.DirectionalLight(0x8fb4ff, 2.0); rim.position.set(-2, 2.5, -3); sc.add(rim);
+    sc.add(new THREE.HemisphereLight(0x8899bb, 0x221a14, 0.6));
+    const floor = new THREE.Mesh(new THREE.CircleGeometry(1.2, 48), new THREE.MeshStandardMaterial({ color: 0x232b38, roughness: 0.6 })); floor.rotation.x = -Math.PI / 2; sc.add(floor);
+    const H = CINE.character(key); H.group.rotation.y = -0.35; sc.add(H.group);
+    if (key === 'spirit') { const g = CINE.glow(0x9fd4ff, 2.6, 0.5, 0.4); g.position.set(0, 1.0, -0.3); sc.add(g); }
+    const cam = new THREE.PerspectiveCamera(30, TW / (TH - 80), 0.05, 50);
+    const hgt = key === 'child' ? 1.25 : 1.85; cam.position.set(0.4, hgt * 0.62, hgt * 2.05); cam.lookAt(0, hgt * 0.5, 0);
+    r.render(sc, cam);
+    const x = (i % 3) * TW, y = Math.floor(i / 3) * TH;
+    out.drawImage(cv, x, y);
+    out.fillStyle = '#0b0f17'; out.fillRect(x, y + TH - 80, TW, 80);
+    out.fillStyle = '#ffd21f'; out.font = '800 40px KzSans'; out.textAlign = 'left'; out.fillText(String(i + 1), x + 22, y + TH - 26);
+    out.fillStyle = '#ffffff'; out.font = '800 30px KzSans'; out.fillText(label.toUpperCase(), x + 70, y + TH - 28);
+    out.strokeStyle = '#0b0f17'; out.lineWidth = 6; out.strokeRect(x, y, TW, TH);
+  }
+  document.title = 'READY';
+})();
+</script>
+</body>
+</html>

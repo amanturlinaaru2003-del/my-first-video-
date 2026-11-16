@@ -1,0 +1,3 @@
+<!doctype html><html><head><meta charset="utf-8"><script src="../lib/three.min.js"></script><script src="../lib/film3d.js"></script><script src="../lib/photo2d.js"></script></head>
+<body style="margin:0;background:#000"><canvas id="c" width="1080" height="1920"></canvas>
+<script>window.ready = PHOTO.load('../assets/photo/').then(()=>true); window.shot = (T)=>{ PHOTO.render(document.getElementById('c').getContext('2d'), T); return document.getElementById('c').toDataURL('image/jpeg',0.85); };</script></body></html>

@@ -1,0 +1,44 @@
+<template>
+  <style>
+@font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+@font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2080-209F; }
+@font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+@font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2080-209F; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #03060d; }
+    #c2-cv { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .vig { position: absolute; inset: 0; background: radial-gradient(ellipse 75% 62% at 50% 46%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.72) 100%); pointer-events: none; }
+    .num { position: absolute; left: 90px; top: 330px; width: 860px; text-align: center; opacity: 0; font-family: "KzSans", sans-serif; }
+    .nv { font-weight: 800; font-size: 150px; line-height: 1; color: #ffffff; letter-spacing: -2px; text-shadow: 0 0 40px rgba(120,180,255,0.55), 0 6px 26px rgba(0,0,0,0.8); }
+    .ns { margin-top: 14px; font-weight: 800; font-size: 40px; letter-spacing: 6px; color: #ffd21f; text-shadow: 0 3px 14px rgba(0,0,0,0.8); }
+    #endcard { position: absolute; left: 90px; top: 560px; width: 860px; text-align: center; opacity: 0; font-family: "KzSans", sans-serif; font-weight: 800; color: #fff; }
+    #endcard .e1 { font-size: 120px; text-shadow: 0 0 40px rgba(255,200,120,0.5); }
+    #endcard .e2 span { display: inline-block; margin-top: 18px; padding: 6px 34px 14px; background: #ffd21f; color: #0b0b0b; font-size: 130px; border-radius: 10px; }
+  </style>
+  <div id="root" data-composition-id="c2" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <canvas id="c2-cv" width="1080" height="1920"></canvas>
+    <div class="vig"></div>
+    <div class="num" id="c2-n0"><div class="nv">2%</div><div class="ns">ДЕНЕ САЛМАҒЫ</div></div>
+    <div class="num" id="c2-n1"><div class="nv">20%</div><div class="ns">ОТТЕГІ</div></div>
+    <div class="num" id="c2-n2"><div class="nv">86 000 000 000</div><div class="ns">НЕЙРОН</div></div>
+
+  </div>
+  <script>
+    (function () {
+      const world = WORLDS.c2(document.getElementById('c2-cv'), 3.797, 25.669);
+      const tl = gsap.timeline({ paused: true });
+      const clock = { t: 0 };
+      tl.to(clock, { t: 21.872, duration: 21.872, ease: 'none', onUpdate: function () { world.renderAt(3.797 + clock.t); } }, 0);
+      tl.fromTo('#c2-n0', { opacity: 0, scale: 0.86, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: 'back.out(2)' }, 2.027);
+      tl.to('#c2-n0', { opacity: 0, scale: 1.08, duration: 0.22, ease: 'power2.in' }, 4.054);
+      tl.fromTo('#c2-n1', { opacity: 0, scale: 0.86, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: 'back.out(2)' }, 5.401);
+      tl.to('#c2-n1', { opacity: 0, scale: 1.08, duration: 0.22, ease: 'power2.in' }, 7.714);
+      tl.fromTo('#c2-n2', { opacity: 0, scale: 0.86, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: 'back.out(2)' }, 8.036);
+      tl.to('#c2-n2', { opacity: 0, scale: 1.08, duration: 0.22, ease: 'power2.in' }, 11.197);
+
+      world.renderAt(3.797);
+      window.__timelines["c2"] = tl;
+    })();
+  </script>
+</template>

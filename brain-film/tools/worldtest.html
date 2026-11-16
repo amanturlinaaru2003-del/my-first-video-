@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset="utf-8">
+<script src="../lib/three.min.js"></script><script src="../lib/narration.js"></script><script src="../lib/cine.js"></script><script src="../lib/organs.js"></script><script src="../lib/people.js"></script><script src="../lib/characters.js"></script><script src="../lib/worlds.js"></script>
+</head><body><script>
+(async function(){ const log=[]; const b=NAR.bounds;
+ for (let i=1;i<=9;i++){ const cv=document.createElement('canvas'); cv.width=1080; cv.height=1920; const t0=performance.now();
+  try { const w=WORLDS['c'+i](cv,b[i-1],b[i]); const t1=performance.now(); w.renderAt((b[i-1]+b[i])/2); log.push('c'+i+' build '+Math.round(t1-t0)+'ms render '+Math.round(performance.now()-t1)+'ms'); } catch(e){ log.push('c'+i+' ERROR '+e.message+' '+(e.stack||'').split('\n')[1]); } }
+ document.title='DONE:'+log.join(' | '); })();
+</script></body></html>
