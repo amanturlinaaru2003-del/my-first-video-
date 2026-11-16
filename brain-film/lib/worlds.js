@@ -36,7 +36,14 @@
       new T3.CatmullRomCurve3([[0.1, -2.5, 0.3], [0.25, -1.9, 0.35], [0.22, -1.2, 0.2], [0.15, -0.55, 0.05], [0.1, 0.05, 0]].map((q) => new T3.Vector3(...q))),
       new T3.CatmullRomCurve3([[-0.1, -2.5, 0.3], [-0.3, -1.9, 0.25], [-0.25, -1.2, 0.1], [-0.18, -0.55, -0.1], [-0.12, 0.0, -0.1]].map((q) => new T3.Vector3(...q))),
     ];
-    const streams = curves.map((c, i) => { const s = C.stream(c, 170, { radius: 0.06, size: 0.06, seed: 10 + i }); S.scene.add(s.group); return s; });
+    const streams = curves.map((c, i) => { const s = C.oxyStream(c, 190, { radius: 0.06, size: 0.06, seed: 10 + i }); S.scene.add(s.group); return s; });
+    // the vessels branch inside the brain and carry oxygen into it
+    const R0 = rng(77);
+    for (let k = 0; k < 7; k++) {
+      const a = (k / 7) * Math.PI * 2 + 0.3, end = [Math.cos(a) * 0.55, 0.15 + R0() * 0.3, Math.sin(a) * 0.75];
+      const c = new T3.CatmullRomCurve3([[(k % 2 ? 0.1 : -0.12), -0.02, 0], [end[0] * 0.4, -0.25 + R0() * 0.1, end[2] * 0.4], [end[0] * 0.85, end[1] - 0.15, end[2] * 0.85], end].map((q) => new T3.Vector3(...q)));
+      const s = C.oxyStream(c, 60, { radius: 0.022, size: 0.035, seed: 30 + k, marks: false }); S.scene.add(s.group); streams.push(s);
+    }
     return { B, H, fig, streams };
   }
   // deep neuron "space" far from the body set: what we fly into for close-ups
@@ -53,7 +60,7 @@
     const S = C.stage(cv, { fog: 0.05, seed: 1 , floorY: -14.2 });
     const { B, H, fig, streams } = bodySet(S);
     const STOP = 1.05;
-    const HX = 60, hosp = C.hospital(); hosp.group.position.set(HX, 0, 0); S.scene.add(hosp.group);
+    const HX = 60, hosp = C.hospital({ staff: [['doctor', -0.72, 0.25, Math.PI / 2 + 0.25]] }); hosp.group.position.set(HX, 0, 0); S.scene.add(hosp.group);
     const shots = [
       { t: a, p: [HX + 0.1, 1.55, -0.2], q: [HX + 0.18, 1.62, 0.0], l: [HX, 0.86, -0.78], fov: 26 },
       { t: 1.25, p: [HX + 1.5, 2.2, 3.1], q: [HX + 1.3, 2.05, 2.9], l: [HX - 0.25, 0.75, -0.35] },
@@ -62,7 +69,7 @@
     return { renderAt(T) {
       const beat = H.beatAt(T, 78, STOP);
       const life = 1 - smooth(STOP, STOP + 0.6, T);
-      hosp.set(T, { amp: 1, ecg: { bpm: 78, stop: STOP } }); hosp.patient.eyes(smooth(STOP - 0.1, STOP + 0.35, T));
+      hosp.set(T, { amp: 1, ecg: { bpm: 78, stop: STOP } }); hosp.staff[0].head.rotation.y = 0.6 * smooth(STOP, STOP + 0.4, T);
       H.set(T, { beat, life });
       streams.forEach((s) => s.set(T, 0.3 + 0.7 * life, 0.35 * life + 0.02));
       B.set(T, { act: 1 - smooth(2.4, 3.6, T) * 0.4, rotY: 0.4 + T * 0.1 });
@@ -112,7 +119,7 @@
     const S = C.stage(cv, { fog: 0.04, seed: 3 , floorY: -14.2 });
     const { B, H, fig, streams } = bodySet(S);
     const NS = [30, 0, 0], F = neuronSpace(S, NS, 11);
-    const hosp = C.hospital(); hosp.group.position.set(-26, 0, 0); S.scene.add(hosp.group);
+    const hosp = C.hospital({ staff: [['nurse', -0.55, 0.45, Math.PI * 0.85]] }); hosp.group.position.set(-26, 0, 0); S.scene.add(hosp.group);
     const shots = [
       { t: a, p: [2.0, -1.2, 8.0], q: [1.4, -1.1, 7.2], l: [0, -1.0, 0] },                  // heart stops, blood stops
       { t: g(17), p: [0, 0.3, 4.4], q: [0, 0.2, 3.3], l: [0, 0.1, 0] },                     // consciousness fades
@@ -165,7 +172,7 @@
     manH.mesh.position.set(9, 0.4, -2); S.scene.add(manH.mesh);
     const beds = []; for (let i = 0; i < 4; i++) {
       const bd = C.bed(); bd.group.position.set(-2.4 + i * 1.6, -2.2, -24); S.scene.add(bd.group);
-      const f = C.patient(); bd.group.add(f.group);
+      const f = C.patient({ preset: ['comaElder', 'woman', 'patient', 'kazakh'][i] }); f.eyes && f.eyes(1); bd.group.add(f.group);
       const gl = C.glow(0xffc46a, 1.4, 0, 0.35); gl.position.set(-2.4 + i * 1.6, -1.1, -24.75); S.scene.add(gl);
       beds.push({ f, gl, lit: i === 1 || i === 2 });
     }
@@ -282,13 +289,17 @@
     [[-0.9, 1], [0.9, 1], [0, 1]].forEach(([x], i) => { const cu = new T3.CatmullRomCurve3([[LAB[0] + x * 0.6, 1.6, 0], [LAB[0] + x * 1.6, 2.4, -0.6], [LAB[0] + x * 3.2, 1.0, -1.8], [LAB[0] + x * 3.6, -2.2, -2]].map((q) => new T3.Vector3(...q))); S.scene.add(new T3.Mesh(new T3.TubeGeometry(cu, 40, 0.05, 10), cap)); });
     const yale = C.holo(2.6, 0.7, 760, 200, (ctx, w, h) => { ctx.font = '800 96px KzSans, sans-serif'; ctx.fillStyle = '#9fd4ff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.shadowColor = '#5fb0ff'; ctx.shadowBlur = 18; ctx.fillText('ЙЕЛЬ · 2019', w / 2, h / 2); }, 0xffffff);
     yale.mesh.position.set(LAB[0], 2.25, 0.4);
+    // the ward where the doctor does chest compressions
+    const WX = 30, ward = C.hospital({ staff: [['doctor', 0.5, -0.38, -Math.PI / 2]] }); ward.group.position.set(WX, 0, 0); S.scene.add(ward.group);
+    const doc = ward.staff[0];
     const shots = [
       { t: a, p: [0.6, 0.4, 3.4], q: [0.3, 0.3, 2.7], l: [0, 0.1, 0] },
       { t: g(74), p: [0, 0.6, 4.6], q: [0, 0.6, 3.8], l: [0, 0.55, 0] },
       { t: g(77), p: [LAB[0] + 2.4, 1.4, 6.8], q: [LAB[0] + 1.4, 1.0, 5.6], l: [LAB[0], 0.6, 0], burst: true },
       { t: g(79), p: [LAB[0] + 1.2, 0.3, 3.2], q: [LAB[0] + 0.5, 0.2, 2.5], l: [LAB[0], 0, 0] },
       { t: g(83), p: [LAB[0] - 2, 0.8, 6.4], q: [LAB[0] - 1.2, 0.6, 5.6], l: [LAB[0], 0, 0] },
-      { t: g(85), p: [1.6, -2.3, 4.2], q: [1.0, -2.2, 3.4], l: [0, -2.4, 0], burst: true },
+      { t: g(85), p: [WX + 1.9, 1.75, 1.7], q: [WX + 1.5, 1.6, 1.3], l: [WX + 0.1, 0.9, -0.4], burst: true },
+      { t: g(86), p: [1.4, -2.3, 3.6], q: [0.9, -2.2, 3.0], l: [0, -2.4, 0], burst: true },
       { t: g(87), p: [0.8, -0.8, 6.6], q: [0.4, -0.6, 5.8], l: [0, -0.9, 0] },
     ];
     return { renderAt(T) {
@@ -312,6 +323,7 @@
       liquid.material.opacity = 0.25 + 0.15 * Math.sin(T * 1.3);
       yale.mesh.material.opacity = pulse(T, g(77) + 0.3, ge(78) + 0.6, 0.3) * 0.95;
       S.warm.intensity = 5 + beat * 40;
+      C.cprPose(doc, T, 110); ward.set(T, { amp: 0.0001, ecg: { bpm: 110, stop: T < g(86) ? -1 : 999 }, dim: 0.85 });
       const burst = cam(S, T, shots, b);
       fin(S, T, a, b, burst);
     } };
@@ -321,7 +333,7 @@
   W.c8 = function (cv, a, b) {
     const S = C.stage(cv, { fog: 0.035, seed: 8 });
     // hospital bed + body + rising ghost
-    const hosp = C.hospital(); hosp.group.position.set(0, -2.2, 0); S.scene.add(hosp.group);
+    const hosp = C.hospital({ staff: [['doctor', 0.95, 0.3, -Math.PI / 2 - 0.3], ['nurse', -0.6, 0.6, Math.PI * 0.8]] }); hosp.group.position.set(0, -2.2, 0); S.scene.add(hosp.group);
     const ghost = C.patient({ ghost: true }); hosp.group.add(ghost.group);
     // tunnel of light rings
     const TZ = -20; const rings = [];
@@ -331,7 +343,7 @@
     }
     const end = C.glow(0xfff6e6, 18, 1, 0.3); end.position.set(0, 0, TZ - 60); S.scene.add(end);
     // ten figures, one lit (≈10 %)
-    const ten = []; for (let i = 0; i < 10; i++) { const f = C.human({ shirt: [0x86a8bd, 0x9c6b5a, 0x6f8f6a, 0xc9b28a, 0x5b6f9c, 0x8a6f9c, 0xb7b7b7, 0x7a9c9a, 0xa0544c, 0x4f6178][i], pants: i % 2 ? 0x2c3442 : 0x4a4038 }); const ang = (i / 10) * Math.PI * 2; f.group.position.set(40 + Math.sin(ang) * 2.6, -2.2, Math.cos(ang) * 2.6); f.idle(i * 3.1, 1); f.group.rotation.y = ang + Math.PI; S.scene.add(f.group); ten.push(f); }
+    const ten = []; for (let i = 0; i < 10; i++) { const f = C.character(['patient', 'doctor', 'nurse', 'elder', 'woman', 'child', 'kazakh', 'surgeon', 'woman', 'patient'][i]); const ang = (i / 10) * Math.PI * 2; f.group.position.set(40 + Math.sin(ang) * 2.6, -2.2, Math.cos(ang) * 2.6); f.idle(i * 3.1, 1); f.group.rotation.y = ang + Math.PI; S.scene.add(f.group); ten.push(f); }
     const tenL = new T3.SpotLight(0xcfe2ff, 60, 14, 0.7, 0.6, 1.5); tenL.position.set(40, 6, 3); tenL.target.position.set(40, -2, 0); S.scene.add(tenL, tenL.target);
     const lit = C.glow(0xffd27a, 3.4, 0, 0.35); lit.position.copy(ten[0].group.position); lit.position.y = -0.8; S.scene.add(lit);
     const B = C.brain(); B.group.position.set(-40, 0, 0); S.scene.add(B.group);
@@ -349,7 +361,7 @@
       rings.forEach((r, i) => { r.rotation.z = T * 0.3 + i * 0.2; r.material.opacity = 0.35 + 0.35 * Math.sin(T * 4 - i * 0.5); });
       end.material.opacity = 1; end.scale.setScalar(18 + smooth(g(92), ge(92), T) * 30);
       lit.material.opacity = smooth(g(98), g(98) + 0.5, T) * (0.8 + 0.2 * Math.sin(T * 7));
-      ten[0].mat.emissive.set(0xffa040); ten[0].mat.emissiveIntensity = smooth(g(98), g(98) + 0.5, T) * 0.8;
+      ten[0].mat.emissive && ten[0].mat.emissive.set(0xffa040); ten[0].mat.emissiveIntensity = smooth(g(98), g(98) + 0.5, T) * 0.8;
       const flick = 0.5 + 0.5 * noise3(T * 6, 1, 1);
       B.set(T, { act: 0.25 + flick * 0.5, surge: smooth(g(101), ge(102), T) * 0.7 * flick, mix: smooth(g(101), ge(102), T), rotY: T * 0.12, shell: 0.5 });
       const burst = cam(S, T, shots, b);

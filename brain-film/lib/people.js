@@ -166,7 +166,7 @@
   };
 
   // a patient lying on a bed whose group sits at the bed origin (head toward −z)
-  C.patient = function (o = {}) { const h = C.human(Object.assign({ pose: 'lie' }, o)); h.group.rotation.x = -Math.PI / 2; h.group.position.set(0, 0.74, 0.88); return h; };
+  C.patient = function (o = {}) { const h = o.preset && C.character ? C.character(o.preset) : C.human(Object.assign({ pose: 'lie' }, o)); h.pose('lie'); h.group.rotation.x = -Math.PI / 2; h.group.position.set(0, 0.74, 0.88); return h; };
 
   // ------------------------------------------------------------------ the ward: 5 m × 6 m room around the bed (bed centre at origin, floor y = 0)
   C.hospital = function (o = {}) {
@@ -191,7 +191,8 @@
     const moon = new T3.PointLight(0x7fa6ff, 3, 5, 1.8); moon.position.set(W / 2 - 0.4, 1.7, -0.9); g.add(moon);
     // bed + patient
     const bed = C.bed(); g.add(bed.group);
-    const patient = o.patient === false ? null : C.patient(); if (patient) g.add(patient.group);
+    const patient = o.patient === false ? null : C.patient({ preset: o.preset || 'comaElder' }); if (patient) g.add(patient.group);
+    const staff = (o.staff || []).map(([name, x, z, ry]) => { const h = C.character(name); h.group.position.set(x, 0, z); h.group.rotation.y = ry || 0; g.add(h.group); return h; });
     // monitor on a stand at the head of the bed (left)
     const mon = C.monitor(); mon.group.scale.setScalar(0.42); mon.group.position.set(-0.95, 1.55, -1.0); mon.group.rotation.y = 0.45; g.add(mon.group);
     // IV drip (right)
@@ -212,7 +213,7 @@
     const glass = new T3.Mesh(new T3.CylinderGeometry(0.035, 0.03, 0.12, 16), new T3.MeshPhysicalMaterial({ color: 0xffffff, transparent: true, opacity: 0.35, roughness: 0.05 })); glass.position.set(1.2, 0.66, -1.0); g.add(glass);
     // monitor glow spills onto the wall
     const spill = C.glow(0x40ff90, 1.6, 0.25, 0.3); spill.position.set(-1.05, 1.55, -1.25); g.add(spill);
-    const R = { group: g, bed, patient, monitor: mon, spill, lights: [l1, l2] };
+    const R = { group: g, bed, patient, staff, monitor: mon, spill, lights: [l1, l2] };
     R.set = function (T, s = {}) {
       mon.set(T, s.amp != null ? s.amp : 1, null, s.ecg);
       spill.material.color.set((s.amp != null ? s.amp : 1) < 0.05 ? 0xff4040 : 0x40ff90);

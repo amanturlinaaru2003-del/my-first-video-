@@ -111,7 +111,9 @@ W('index.html', `<!doctype html>
     <script src="lib/three.min.js"></script>
     <script src="lib/narration.js"></script>
     <script src="lib/cine.js"></script>
+    <script src="lib/organs.js"></script>
     <script src="lib/people.js"></script>
+    <script src="lib/characters.js"></script>
     <script src="lib/worlds.js"></script>
     <style>
 ${FONT}

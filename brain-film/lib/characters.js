@@ -11,6 +11,7 @@
   function partsBy(H, test) { const out = []; H.group.traverse((m) => { if (m.isMesh && test(m)) out.push(m); }); return out; }
   const isHair = (m) => m.material && m.material.color && m.material.color.getHex() === 0x2a1c14 && Math.abs(m.material.roughness - 0.7) < 1e-6;
   function hairColor(H, color) { const mat = std(color, { roughness: 0.7 }); partsBy(H, isHair).forEach((m) => { m.material = mat; }); return mat; }
+  function browColor(H, color) { const mat = std(color, { roughness: 0.8 }); partsBy(H, (m) => m.material && m.material.color && m.material.color.getHex() === 0x2a1c14 && Math.abs(m.material.roughness - 0.8) < 1e-6).forEach((m) => { m.material = mat; }); }
   function bald(H) { partsBy(H, isHair).forEach((m) => { m.visible = false; }); }
   function skinTone(H, color) { const ref = H.head.children[0].material; const mat = ref.clone(); mat.color.set(color); partsBy(H, (m) => m.material === ref).forEach((m) => { m.material = mat; }); }
   function sleeves(H, mat, r1 = 0.056, r2 = 0.05) { H.arms.forEach(({ sh, el }) => { add(sh, cap(r1, 0.22), mat, 0, -0.15, 0); add(el, cap(r2, 0.18), mat, 0, -0.11, 0); }); }
@@ -80,11 +81,26 @@
     doctor: () => { const H = C.human({ shirt: 0x8fb3e0, pants: 0x2c3442 }); X.coat(H); X.stethoscope(H); X.glasses(H); return H; },
     nurse: () => { const H = C.human({ shirt: 0x58b3b0, pants: 0x58b3b0 }); skinTone(H, 0xe6b394); const hm = hairColor(H, 0x4a2a18); X.bun(H, hm); X.nurseCap(H); return H; },
     surgeon: () => { const H = C.human({ shirt: 0x4f9a8a, pants: 0x4f9a8a }); X.surgical(H); return H; },
-    elder: () => { const H = C.human({ shirt: 0x8a6a4a, pants: 0x4a4038 }); hairColor(H, 0xd9d9d9); X.beard(H, 0xe6e6e6); X.glasses(H, 0x7a6a50); X.cane(H); return H; },
+    elder: () => { const H = C.human({ shirt: 0x8a6a4a, pants: 0x4a4038 }); hairColor(H, 0xd9d9d9); browColor(H, 0xcfcfcf); X.beard(H, 0xe6e6e6); X.glasses(H, 0x7a6a50); X.cane(H); return H; },
     woman: () => { const H = C.human({ shirt: 0xb83a4a, pants: 0xb83a4a }); skinTone(H, 0xeab99c); const hm = hairColor(H, 0x2a1810); X.longHair(H, hm); X.dress(H, 0xb83a4a); return H; },
     child: () => { const H = C.human({ shirt: 0xf2c230, pants: 0x3a5a8a }); H.head.scale.setScalar(1.3); H.group.scale.setScalar(0.6); hairColor(H, 0x6a4020); return H; },
     kazakh: () => { const H = C.human({ shirt: 0xf0ece0, pants: 0x2a2a2a }); X.chapan(H); X.taqiya(H); X.beard(H, 0x1a120c, false); return H; },
     spirit: () => C.human({ ghost: true }),
+    // the patient in a coma: an old man in hospital pyjamas, eyes closed, oxygen cannula under the nose
+    comaElder: () => {
+      const H = C.human({ shirt: 0x86a8bd, pants: 0x5d7f96 }); hairColor(H, 0xd9d9d9); browColor(H, 0xcfcfcf); X.beard(H, 0xe6e6e6); H.eyes(1);
+      const tubeM = std(0xeaf6ff, { roughness: 0.2, transparent: true, opacity: 0.85 });
+      const c = add(H.head, new T3.TorusGeometry(0.085, 0.004, 8, 48, Math.PI * 1.1), tubeM, 0, -0.035, 0.0, 1.05, 1, 1.15); c.rotation.set(Math.PI / 2, 0, Math.PI * 0.95);
+      [-1, 1].forEach((sg) => add(H.head, cap(0.004, 0.008, 6), tubeM, sg * 0.007, -0.037, 0.106).rotation.x = Math.PI / 2);
+      return H;
+    },
+  };
+  // doctor doing chest compressions (bpm), standing at the bed side
+  C.cprPose = function (H, T, bpm = 110) {
+    const ph = (T * bpm / 60) % 1, push = Math.exp(-Math.pow((ph - 0.25) / 0.16, 2));
+    H.group.rotation.order = 'YXZ'; H.group.rotation.x = 0.55 + push * 0.12;
+    H.arms.forEach(({ sh, el, s }) => { sh.rotation.set(-1.15 - push * 0.05, 0, -s * 0.28); el.rotation.set(-0.1, 0, 0); });
+    H.head.rotation.x = 0.25;
   };
   C.X = X;
   C.character = function (name) { return (PRESETS[name] || PRESETS.patient)(); };
