@@ -1,0 +1,51 @@
+<template>
+  <style>
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0b0d18; }
+    canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .fontwarm { position:absolute; left:100px; top:400px; opacity:0; font-family:"KzSans"; font-weight:600; }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920" data-duration="4.8">
+    <canvas id="s4-cv" width="1080" height="1920"></canvas>
+    <span class="fontwarm">ҚӘМОТИВАЦИЯ</span>
+  </div>
+  <script>
+    (function () {
+      const M = window.Mall, P = M.P, E = M.ease, lerp = M.lerp, D = M.D;
+const FG = [{ x: -260, y: -120, r: 190, a: 0.32 }, { x: 640, y: 700, r: 260, a: 0.22 }, { x: 900, y: -900, r: 150, a: 0.25 }];
+function follow(s, dx, dy) { const p = P(s); return { x: p.x + dx, y: p.y + dy }; }
+      function state(t) {
+      const tc = 2.6;
+      const t0 = 13.0;
+      const bt = t < tc ? t : tc + 0.12 * (1 - Math.exp(-(t - tc) * 8));
+      const belt = 60 * (t0 + bt);
+      let power = 1;
+      if (t >= tc) { const k = Math.floor((t - tc) / 0.07); power = [0.15, 1, 0.1, 0.8, 0.05, 0.4, 0][Math.min(k, 6)]; }
+      const dt = t - tc;
+      const lurch = dt > 0 ? 0.3 * Math.exp(-dt * 5) * Math.sin(dt * 13) : 0;
+      const z = lerp(0.95, 0.5, E(t, 0, 2.3));
+      return {
+        cam: { x: lerp(1281.7175976009694, 1180, E(t, 0, 2.3)), y: lerp(-890, -700, E(t, 0, 2.3)), zoom: z, ay: 0.52 },
+        belt, power, bgBlur: lerp(9, 4, E(t, 0, 2.3)),
+        chars: [
+          { kind: 'disc', s0: 420, w: 0, near: 'pocket', far: 'hang', lurch: lurch * 0.4 },
+          { kind: 'fear', s0: 700, w: 0, near: 'rail', far: 'rail', lean: 0.22, tilt: 0.3, tremble: 1.5 + (dt > 0 ? 2 : 0), lurch },
+          { kind: 'motiv', s0: 1000, w: 0, near: 'rail', far: 'rail', lurch, tilt: dt > 0.6 ? 0.25 * E(t, tc + 0.6, tc + 1.2) : 0 },
+          { kind: 'ego', s0: 1450, w: 0, near: dt > 0.9 ? 'phoneEar' : 'phoneUp', far: 'rail', tilt: -0.16, lurch, glow: true },
+        ],
+      };
+      }
+      const tl = M.mount('s4-cv', 's4', 4.8, state);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s4"] = tl;
+    })();
+  </script>
+</template>

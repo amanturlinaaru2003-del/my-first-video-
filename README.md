@@ -25,3 +25,12 @@ Requires Node.js >= 22, FFmpeg and Chrome/Chromium (`npx hyperframes doctor` che
 - Music: generated locally with MusicGen-small (Meta, via `Xenova/musicgen-small`; model weights CC BY-NC 4.0, so non-commercial use) by `tools/musicgen.mjs`.
   The requested Pixabay track could not be downloaded automatically; replace `assets/audio/music.wav` with it to swap.
 - Sound effects: bundled with HyperFrames. Font: Montserrat (SIL OFL). GSAP 3.15 is vendored in `lib/`.
+
+## escalator-film — «ЖОҒАРЫ» (29 s, 9:16)
+
+Original short in a minimalist night-mall style: МОТИВАЦИЯ, ЭГО, ҚОРҚЫНЫШ and ТӘРТІП ride an escalator up; the power cuts out, the escalator stops, and only ТӘРТІП keeps walking to the top. Closing line: «Мотивация тоқтап қалады. Тәртіп — жүре береді.»
+
+- Render: `escalator-film/renders/zhogary.mp4` (1080×1920, 30 fps, H.264 + AAC).
+- Re-render: `cd escalator-film && node tools/build.mjs && npx hyperframes check && npx hyperframes render -o renders/out.mp4`
+- All drawing is in `lib/mall.js` (canvas, one shared character rig and mall set); scene timing and camera moves are in `tools/build.mjs`. Character labels: `LABELS` at the top of `lib/mall.js`.
+- Music: generated locally with MusicGen-small (Meta, `Xenova/musicgen-small`; weights CC BY-NC 4.0, so non-commercial use). Replace `assets/audio/music.wav` to swap it. Sound effects are bundled with HyperFrames.

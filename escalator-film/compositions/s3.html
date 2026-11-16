@@ -1,0 +1,43 @@
+<template>
+  <style>
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0b0d18; }
+    canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .fontwarm { position:absolute; left:100px; top:400px; opacity:0; font-family:"KzSans"; font-weight:600; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920" data-duration="3.8">
+    <canvas id="s3-cv" width="1080" height="1920"></canvas>
+    <span class="fontwarm">ҚӘМОТИВАЦИЯ</span>
+  </div>
+  <script>
+    (function () {
+      const M = window.Mall, P = M.P, E = M.ease, lerp = M.lerp, D = M.D;
+const FG = [{ x: -260, y: -120, r: 190, a: 0.32 }, { x: 640, y: 700, r: 260, a: 0.22 }, { x: 900, y: -900, r: 150, a: 0.25 }];
+function follow(s, dx, dy) { const p = P(s); return { x: p.x + dx, y: p.y + dy }; }
+      function state(t) {
+      const belt = 60 * (t + 9.2);
+      const s = 700 + belt + D / 2;
+      const f = follow(s, -40, -205);
+      return {
+        cam: { x: f.x - E(t, 1.8, 3.6) * 150, y: f.y + E(t, 1.8, 3.6) * 40, zoom: lerp(2.45, 2.05, E(t, 1.6, 3.8)), ay: 0.5 },
+        belt, bgBlur: 11, fg: FG,
+        chars: [
+          { kind: 'disc', s0: 420, w: 0, near: 'pocket', far: 'hang', label: E(t, 2.6, 3.1) },
+          { kind: 'fear', s0: 700, w: 0, near: 'rail', far: 'rail', lean: 0.22, tilt: 0.38 - 0.1 * E(t, 1.0, 1.6) + 0.1 * E(t, 2.2, 2.8), tremble: 1.8, label: E(t, 0.1, 0.5) },
+        ],
+      };
+      }
+      const tl = M.mount('s3-cv', 's3', 3.8, state);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s3"] = tl;
+    })();
+  </script>
+</template>
