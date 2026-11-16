@@ -1,0 +1,47 @@
+<template>
+  <style>
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #05060b; }
+    canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .fontwarm { position:absolute; left:100px; top:600px; opacity:0; font-family:"KzSans"; font-weight:600; }
+    .cap { position:absolute; left:140px; width:800px; top:400px; text-align:center; font-family:"KzSans"; font-weight:600; font-size:40px; line-height:1.25; color:#f2eee6; opacity:0; text-shadow:0 3px 18px rgba(0,0,0,0.8); }
+  </style>
+  <div id="root" data-composition-id="ambulance" data-width="1080" data-height="1920" data-duration="3.8">
+    <canvas id="ambulance-cv" width="1080" height="1920"></canvas>
+    <span class="fontwarm">ҚӘМЕН</span>
+    <div id="ambulance-cap" class="cap">Дәрігерлер оның өмірі үшін күресуде</div>
+  </div>
+  <script>
+    (function () {
+      const L = window.Life, E = L.ease, lerp = L.lerp, clamp = L.clamp;
+function shake(t, t0, amp) { if (t < t0) return { x: 0, y: 0 }; const r = L.rng(Math.floor(t * 30) * 17 + 9), k = Math.exp(-(t - t0) * 5) * amp; return { x: (r() * 2 - 1) * k, y: (r() * 2 - 1) * k }; }
+// drinking window helper: returns {near, hold, tilt}
+function sip(t, a, b, rest) { const on = t > a && t < b; return { near: on ? 'drink' : rest, hold: on || (t > a - 0.35 && t < b + 0.3) ? 'can' : null, tilt: on ? -0.32 : 0 }; }
+function hud(time, place, n, t, tn, extra) { return Object.assign({ time, place, n, pop: tn == null ? 99 : t - tn }, extra || {}); }
+      function state(t) {
+  const pump = Math.abs(Math.sin(t * Math.PI * 1.9));
+  const sh = shake(0, 0, 0); const r = L.rng(Math.floor(t * 12) + 4);
+  return { set: 'ambulance', bgBlur: 5, env: { bpm: 38 },
+    cam: { x: 330 + (r() - 0.5) * 6, y: -380 + (r() - 0.5) * 6, zoom: lerp(1.05, 1.15, E(t, 0, 3.8)), ay: 0.62 },
+    chars: [
+      { kind: 'medic', pose: 'stand', x: 660, facing: -1, near: { x: 545, y: -215 + 6 * pump }, far: { x: 560, y: -225 }, hold: 'bag', lean: 0.3, tilt: 0.25 },
+      { kind: 'hero', pose: 'sit', x: 300, facing: -1, seatY: 128, legsOut: true, lean: -1.48, tilt: 0.05, mask: true, pale: true, near: 'hang', far: 'hang', text: 'МЕН', label: 0.9 },
+      { kind: 'doctor', pose: 'stand', x: 250, facing: 1, near: { x: 385, y: -170 + pump * 16 }, far: { x: 377, y: -173 + pump * 16 }, lean: 0.5 + pump * 0.05, tilt: 0.25 },
+    ],
+    hud: hud('03:31', 'ЖЕДЕЛ ЖӘРДЕМ', null, t, null, { placeColor: '#ff7a7a' }) };
+      }
+      const tl = L.mount('ambulance-cv', 'ambulance', 3.8, state);
+      tl.fromTo('#ambulance-cap', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.5);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["ambulance"] = tl;
+    })();
+  </script>
+</template>

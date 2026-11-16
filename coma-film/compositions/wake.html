@@ -1,0 +1,52 @@
+<template>
+  <style>
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #05060b; }
+    canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .fontwarm { position:absolute; left:100px; top:600px; opacity:0; font-family:"KzSans"; font-weight:600; }
+    
+    .end1 { position:absolute; left:0; width:1080px; top:330px; text-align:center; font-family:"KzSans"; font-weight:800; font-size:76px; color:#f0c46a; opacity:0; text-shadow:0 4px 24px rgba(0,0,0,0.7); }
+    .end2 { position:absolute; left:150px; width:780px; top:440px; text-align:center; font-family:"KzSans"; font-weight:600; font-size:52px; line-height:1.22; color:#f2eee6; opacity:0; text-shadow:0 4px 24px rgba(0,0,0,0.75); }
+  </style>
+  <div id="root" data-composition-id="wake" data-width="1080" data-height="1920" data-duration="7.6">
+    <canvas id="wake-cv" width="1080" height="1920"></canvas>
+    <span class="fontwarm">ҚӘМЕН</span>
+    
+    <div id="wake-l1" class="end1">Тәубе.</div>
+    <div id="wake-l2" class="end2">Денсаулық — бір-ақ рет беріледі.</div>
+  </div>
+  <script>
+    (function () {
+      const L = window.Life, E = L.ease, lerp = L.lerp, clamp = L.clamp;
+function shake(t, t0, amp) { if (t < t0) return { x: 0, y: 0 }; const r = L.rng(Math.floor(t * 30) * 17 + 9), k = Math.exp(-(t - t0) * 5) * amp; return { x: (r() * 2 - 1) * k, y: (r() * 2 - 1) * k }; }
+// drinking window helper: returns {near, hold, tilt}
+function sip(t, a, b, rest) { const on = t > a && t < b; return { near: on ? 'drink' : rest, hold: on || (t > a - 0.35 && t < b + 0.3) ? 'can' : null, tilt: on ? -0.32 : 0 }; }
+function hud(time, place, n, t, tn, extra) { return Object.assign({ time, place, n, pop: tn == null ? 99 : t - tn }, extra || {}); }
+      function state(t) {
+  const up = E(t, 1.4, 2.9);
+  return { set: 'hospital', bgBlur: 5, env: { bpm: 72, sun: lerp(0.6, 1.2, E(t, 0, 4)) },
+    cam: { x: 230, y: -380, zoom: lerp(1.25, 1.4, E(t, 0, 7.6)), ay: 0.64 },
+    chars: [
+      { kind: 'doctor', pose: 'stand', x: 560, facing: -1, near: 'chest', far: 'hang', tilt: 0.1, label: E(t, 0.6, 1.0) * (1 - E(t, 4.4, 4.8)) },
+      { kind: 'gown', pose: 'sit', x: 0, seatY: 200, legsOut: true, lean: lerp(-1.45, 0.05, up), tilt: lerp(0, 0.2, up) - (t > 3.1 ? 0.3 * E(t, 3.1, 3.6) : 0), near: t > 3.1 ? 'dua' : 'hang', far: t > 3.1 ? 'dua' : 'hang', label: 1 - E(t, 4.4, 4.8) },
+    ],
+    flash: 0.9 * (1 - E(t, 0, 0.7)),
+    hud: hud('08:00', 'АУРУХАНА', null, t, null, { placeColor: '#9fd8ff', alpha: E(t, 0.3, 0.8) * (1 - E(t, 4.4, 4.8)) }) };
+      }
+      const tl = L.mount('wake-cv', 'wake', 7.6, state);
+      
+    tl.fromTo('#wake-l1', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 4.2);
+    tl.fromTo('#wake-l2', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 4.8);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["wake"] = tl;
+    })();
+  </script>
+</template>

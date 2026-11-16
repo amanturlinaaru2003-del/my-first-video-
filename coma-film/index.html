@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="kk" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>10 БАНКА</title>
+    <script src="lib/gsap.min.js"></script>
+    <script src="lib/life.js"></script>
+    <style>
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #05060b; }
+      #root { position: relative; width: 100%; height: 100%; background: #05060b; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="50" data-width="1080" data-height="1920">
+      <div id="morning" data-composition-id="morning" data-composition-src="compositions/morning.html" data-start="0" data-duration="3.6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:1"></div>
+      <div id="road" data-composition-id="road" data-composition-src="compositions/road.html" data-start="3.6" data-duration="3.2" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="study" data-composition-id="study" data-composition-src="compositions/study.html" data-start="6.8" data-duration="3.2" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:3"></div>
+      <div id="work" data-composition-id="work" data-composition-src="compositions/work.html" data-start="10" data-duration="3.4" data-track-index="4" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:4"></div>
+      <div id="lunch" data-composition-id="lunch" data-composition-src="compositions/lunch.html" data-start="13.4" data-duration="3" data-track-index="5" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:5"></div>
+      <div id="game" data-composition-id="game" data-composition-src="compositions/game.html" data-start="16.4" data-duration="3.6" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:6"></div>
+      <div id="night" data-composition-id="night" data-composition-src="compositions/night.html" data-start="20" data-duration="4" data-track-index="7" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:7"></div>
+      <div id="collapse" data-composition-id="collapse" data-composition-src="compositions/collapse.html" data-start="24" data-duration="4.4" data-track-index="8" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:8"></div>
+      <div id="pov" data-composition-id="pov" data-composition-src="compositions/pov.html" data-start="28.4" data-duration="3.4" data-track-index="9" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:9"></div>
+      <div id="ambulance" data-composition-id="ambulance" data-composition-src="compositions/ambulance.html" data-start="31.8" data-duration="3.8" data-track-index="10" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:10"></div>
+      <div id="coma" data-composition-id="coma" data-composition-src="compositions/coma.html" data-start="35.6" data-duration="6.8" data-track-index="11" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:11"></div>
+      <div id="wake" data-composition-id="wake" data-composition-src="compositions/wake.html" data-start="42.4" data-duration="7.6" data-track-index="12" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:12"></div>
+      <audio id="music-day" class="clip" src="assets/audio/music-day.wav" data-start="0" data-duration="26.45" data-track-index="16" data-volume="0.75" data-timeline-role="music"></audio>
+      <audio id="music-after" class="clip" src="assets/audio/music-after.wav" data-start="28.4" data-duration="21.6" data-track-index="17" data-volume="0.8" data-timeline-role="music"></audio>
+      <audio id="heart-fast" class="clip" src="assets/audio/hb_fast.wav" data-start="20.6" data-duration="6.45" data-track-index="18" data-volume="0.9"></audio>
+      <audio id="heart-slow" class="clip" src="assets/audio/hb_slow.wav" data-start="35.6" data-duration="6.8" data-track-index="18" data-volume="0.7"></audio>
+      <audio id="sfx-morning-0" class="clip" src="assets/audio/click.mp3" data-start="0.95" data-duration="0.37" data-track-index="20" data-volume="0.9"></audio>
+      <audio id="sfx-road-0" class="clip" src="assets/audio/click-soft.mp3" data-start="3.95" data-duration="0.37" data-track-index="21" data-volume="0.8"></audio>
+      <audio id="sfx-road-1" class="clip" src="assets/audio/whoosh.mp3" data-start="5.35" data-duration="0.57" data-track-index="22" data-volume="0.55"></audio>
+      <audio id="sfx-study-0" class="clip" src="assets/audio/click-soft.mp3" data-start="7.35" data-duration="0.37" data-track-index="23" data-volume="0.8"></audio>
+      <audio id="sfx-work-0" class="clip" src="assets/audio/typing.mp3" data-start="10" data-duration="1.5" data-track-index="24" data-volume="0.35"></audio>
+      <audio id="sfx-work-1" class="clip" src="assets/audio/click-soft.mp3" data-start="10.35" data-duration="0.37" data-track-index="20" data-volume="0.8"></audio>
+      <audio id="sfx-work-2" class="clip" src="assets/audio/click-soft.mp3" data-start="11.85" data-duration="0.37" data-track-index="21" data-volume="0.8"></audio>
+      <audio id="sfx-work-3" class="clip" src="assets/audio/typing.mp3" data-start="12.75" data-duration="1.5" data-track-index="22" data-volume="0.35"></audio>
+      <audio id="sfx-lunch-0" class="clip" src="assets/audio/click-soft.mp3" data-start="13.8" data-duration="0.37" data-track-index="23" data-volume="0.8"></audio>
+      <audio id="sfx-game-0" class="clip" src="assets/audio/click-soft.mp3" data-start="17.05" data-duration="0.37" data-track-index="24" data-volume="0.8"></audio>
+      <audio id="sfx-game-1" class="clip" src="assets/audio/click-soft.mp3" data-start="18.45" data-duration="0.37" data-track-index="20" data-volume="0.8"></audio>
+      <audio id="sfx-night-0" class="clip" src="assets/audio/click-soft.mp3" data-start="20.35" data-duration="0.37" data-track-index="21" data-volume="0.8"></audio>
+      <audio id="sfx-night-1" class="clip" src="assets/audio/click-soft.mp3" data-start="21.85" data-duration="0.37" data-track-index="22" data-volume="0.8"></audio>
+      <audio id="sfx-night-2" class="clip" src="assets/audio/key-press.mp3" data-start="23.2" data-duration="0.4" data-track-index="23" data-volume="0.9"></audio>
+      <audio id="sfx-collapse-0" class="clip" src="assets/audio/glitch-1.mp3" data-start="24.9" data-duration="2.64" data-track-index="24" data-volume="0.35"></audio>
+      <audio id="sfx-collapse-1" class="clip" src="assets/audio/impact-bass-2.mp3" data-start="26.4" data-duration="2.59" data-track-index="20" data-volume="0.9"></audio>
+      <audio id="sfx-pov-0" class="clip" src="assets/audio/ping.mp3" data-start="28.9" data-duration="1.32" data-track-index="21" data-volume="0.25"></audio>
+      <audio id="sfx-pov-1" class="clip" src="assets/audio/ping.mp3" data-start="30.5" data-duration="1.32" data-track-index="22" data-volume="0.25"></audio>
+      <audio id="sfx-ambulance-0" class="clip" src="assets/audio/ping.mp3" data-start="32.2" data-duration="1.32" data-track-index="23" data-volume="0.3"></audio>
+      <audio id="sfx-ambulance-1" class="clip" src="assets/audio/ping.mp3" data-start="33.8" data-duration="1.32" data-track-index="24" data-volume="0.3"></audio>
+      <audio id="sfx-coma-0" class="clip" src="assets/audio/whoosh-cinematic.mp3" data-start="40.8" data-duration="5.54" data-track-index="20" data-volume="0.35"></audio>
+      <audio id="sfx-wake-0" class="clip" src="assets/audio/ping.mp3" data-start="42.7" data-duration="1.32" data-track-index="21" data-volume="0.25"></audio>
+      <audio id="sfx-wake-1" class="clip" src="assets/audio/chime.mp3" data-start="45.7" data-duration="2.5" data-track-index="22" data-volume="0.45"></audio>
+      <audio id="cut-road" class="clip" src="assets/audio/whoosh-short.mp3" data-start="3.52" data-duration="0.57" data-track-index="25" data-volume="0.22"></audio>
+      <audio id="cut-study" class="clip" src="assets/audio/whoosh.mp3" data-start="6.72" data-duration="0.57" data-track-index="25" data-volume="0.22"></audio>
+      <audio id="cut-work" class="clip" src="assets/audio/whoosh-short.mp3" data-start="9.92" data-duration="0.57" data-track-index="25" data-volume="0.22"></audio>
+      <audio id="cut-lunch" class="clip" src="assets/audio/whoosh.mp3" data-start="13.32" data-duration="0.57" data-track-index="25" data-volume="0.22"></audio>
+      <audio id="cut-game" class="clip" src="assets/audio/whoosh-short.mp3" data-start="16.32" data-duration="0.57" data-track-index="25" data-volume="0.22"></audio>
+      <audio id="cut-night" class="clip" src="assets/audio/whoosh.mp3" data-start="19.92" data-duration="0.57" data-track-index="25" data-volume="0.22"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<template>
+  <style>
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2190-22FF; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #05060b; }
+    canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .fontwarm { position:absolute; left:100px; top:600px; opacity:0; font-family:"KzSans"; font-weight:600; }
+    
+    .kicker { position:absolute; left:0; width:1080px; top:500px; text-align:center; font-family:"KzSans"; font-weight:800; font-size:44px; letter-spacing:18px; color:#9fb6e8; opacity:0; }
+    .pray { position:absolute; left:180px; width:720px; text-align:center; font-family:"KzSans"; font-weight:600; font-size:48px; line-height:1.22; color:#eef2ff; opacity:0; text-shadow:0 4px 24px rgba(0,0,0,0.8); }
+    #coma-l1 { top:590px; } #coma-l2 { top:670px; } #coma-l3 { top:745px; font-weight:800; color:#f0c46a; }
+  </style>
+  <div id="root" data-composition-id="coma" data-width="1080" data-height="1920" data-duration="6.8">
+    <canvas id="coma-cv" width="1080" height="1920"></canvas>
+    <span class="fontwarm">ҚӘМЕН</span>
+    
+    <div id="coma-k" class="kicker">КОМА</div>
+    <div id="coma-l1" class="pray">Құдайым...</div>
+    <div id="coma-l2" class="pray">Осыдан тірі шықсам,</div>
+    <div id="coma-l3" class="pray accent">енді ешқашан энергетик ішпеймін.</div>
+  </div>
+  <script>
+    (function () {
+      const L = window.Life, E = L.ease, lerp = L.lerp, clamp = L.clamp;
+function shake(t, t0, amp) { if (t < t0) return { x: 0, y: 0 }; const r = L.rng(Math.floor(t * 30) * 17 + 9), k = Math.exp(-(t - t0) * 5) * amp; return { x: (r() * 2 - 1) * k, y: (r() * 2 - 1) * k }; }
+// drinking window helper: returns {near, hold, tilt}
+function sip(t, a, b, rest) { const on = t > a && t < b; return { near: on ? 'drink' : rest, hold: on || (t > a - 0.35 && t < b + 0.3) ? 'can' : null, tilt: on ? -0.32 : 0 }; }
+function hud(time, place, n, t, tn, extra) { return Object.assign({ time, place, n, pop: tn == null ? 99 : t - tn }, extra || {}); }
+      function state(t) {
+  return { set: 'coma', bgBlur: 3, env: { beam: lerp(0.6, 1.4, E(t, 0, 6.8)) },
+    cam: { x: 40, y: -230, zoom: lerp(1.15, 1.35, E(t, 0, 6.8)), ay: 0.66 },
+    chars: [{ kind: 'gown', pose: 'kneel', x: 0, oy: -14 + 10 * Math.sin(t * 1.4), near: t > 1.4 ? 'dua' : 'hang', far: t > 1.4 ? 'dua' : 'hang', tilt: t > 1.4 ? -0.12 : 0.35, lean: 0.05, pale: true, label: 0 }],
+    ecg: { bpm: 30, y: 1640, x: 80, w: 920, h: 60, col: 'rgba(98,240,138,0.55)', lw: 3 },
+    flash: E(t, 6.0, 6.8) };
+      }
+      const tl = L.mount('coma-cv', 'coma', 6.8, state);
+      
+    tl.fromTo('#coma-k', { opacity: 0 }, { opacity: 0.9, duration: 0.6 }, 0.2);
+    tl.fromTo('#coma-l1', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.3);
+    tl.fromTo('#coma-l2', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 2.3);
+    tl.fromTo('#coma-l3', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 3.3);
+    tl.to(['#coma-k', '#coma-l1', '#coma-l2', '#coma-l3'], { opacity: 0, duration: 0.4 }, 6.2);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["coma"] = tl;
+    })();
+  </script>
+</template>
