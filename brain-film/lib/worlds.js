@@ -331,7 +331,7 @@
     }
     const end = C.glow(0xfff6e6, 18, 1, 0.3); end.position.set(0, 0, TZ - 60); S.scene.add(end);
     // ten figures, one lit (≈10 %)
-    const ten = []; for (let i = 0; i < 10; i++) { const f = C.human({ gown: i ? 0x86a8bd : 0x86a8be }); const ang = (i / 10) * Math.PI * 2; f.group.position.set(40 + Math.sin(ang) * 2.6, -2.2, Math.cos(ang) * 2.6); f.idle(i * 3.1, 1); f.group.rotation.y = ang + Math.PI; S.scene.add(f.group); ten.push(f); }
+    const ten = []; for (let i = 0; i < 10; i++) { const f = C.human({ shirt: [0x86a8bd, 0x9c6b5a, 0x6f8f6a, 0xc9b28a, 0x5b6f9c, 0x8a6f9c, 0xb7b7b7, 0x7a9c9a, 0xa0544c, 0x4f6178][i], pants: i % 2 ? 0x2c3442 : 0x4a4038 }); const ang = (i / 10) * Math.PI * 2; f.group.position.set(40 + Math.sin(ang) * 2.6, -2.2, Math.cos(ang) * 2.6); f.idle(i * 3.1, 1); f.group.rotation.y = ang + Math.PI; S.scene.add(f.group); ten.push(f); }
     const tenL = new T3.SpotLight(0xcfe2ff, 60, 14, 0.7, 0.6, 1.5); tenL.position.set(40, 6, 3); tenL.target.position.set(40, -2, 0); S.scene.add(tenL, tenL.target);
     const lit = C.glow(0xffd27a, 3.4, 0, 0.35); lit.position.copy(ten[0].group.position); lit.position.y = -0.8; S.scene.add(lit);
     const B = C.brain(); B.group.position.set(-40, 0, 0); S.scene.add(B.group);

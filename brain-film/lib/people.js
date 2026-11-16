@@ -1,4 +1,4 @@
-/* people.js — a modelled human (head, neck, torso, arms with hands, legs with feet, hospital gown)
+/* people.js — a modelled human (face with eyes and closed mouth, full hair, shirt with long sleeves, trousers, shoes)
  * and a hospital ward set (tiled walls, bed, monitor, IV drip, curtain, night window, ceiling lights).
  * Adds CINE.human, CINE.bed, CINE.hospital. Requires THREE and CINE. */
 (function () {
@@ -18,18 +18,30 @@
   // ------------------------------------------------------------------ the human (1.75 m, feet at y = 0, facing +z)
   C.human = function (o = {}) {
     const ghost = !!o.ghost, gm = ghost ? ghostMat() : null;
-    const mSkin = gm || skin(), mHair = gm || hair(), mGown = gm || gown(o.gown || 0x86a8bd);
+    const mSkin = gm || skin(), mHair = gm || hair();
+    const mGown = gm || new T3.MeshStandardMaterial({ color: o.shirt || o.gown || 0x86a8bd, roughness: 0.85 });   // shirt / pyjama top
+    const mPants = gm || M('pants' + (o.pants || 0x5d7f96), () => new T3.MeshStandardMaterial({ color: o.pants || 0x5d7f96, roughness: 0.9 }));
+    const mShoe = gm || M('shoe', () => new T3.MeshStandardMaterial({ color: 0x1d1d22, roughness: 0.45, metalness: 0.1 }));
+    const mBtn = gm || M('btn', () => new T3.MeshStandardMaterial({ color: 0xf2f2f2, roughness: 0.3 }));
     const root = new T3.Group();
     const add = (parent, geo, mat, x, y, z, sx = 1, sy = 1, sz = 1) => { const m = new T3.Mesh(geo, mat); m.position.set(x, y, z); m.scale.set(sx, sy, sz); parent.add(m); return m; };
-    // torso (gown) — chest, waist, hips, down to the knees
-    const torso = lathe([[0.001, 0.52], [0.2, 0.53], [0.21, 0.7], [0.2, 0.9], [0.165, 1.04], [0.155, 1.1], [0.175, 1.24], [0.185, 1.33], [0.17, 1.4], [0.13, 1.45], [0.06, 1.48], [0.001, 1.485]]);
+    // shirt: chest, waist, hem at the hips; trousers: pelvis
+    const torso = lathe([[0.001, 0.84], [0.185, 0.845], [0.19, 0.92], [0.168, 1.04], [0.16, 1.1], [0.178, 1.24], [0.188, 1.33], [0.172, 1.4], [0.13, 1.45], [0.06, 1.48], [0.001, 1.485]]);
     add(root, torso, mGown, 0, 0, 0, 1, 1, 0.62);
+    const pelvis = lathe([[0.001, 0.74], [0.17, 0.75], [0.185, 0.86], [0.178, 0.92], [0.001, 0.925]]);
+    add(root, pelvis, mPants, 0, 0, 0, 1, 1, 0.66);
+    if (!ghost) { for (let i = 0; i < 4; i++) add(root, new T3.SphereGeometry(0.008, 10, 8), mBtn, 0, 1.36 - i * 0.12, 0.118 - (i === 3 ? 0.004 : 0)); // buttons
+      const collar = add(root, new T3.TorusGeometry(0.06, 0.014, 8, 24), mGown, 0, 1.46, 0.0, 1, 1, 0.9); collar.rotation.x = Math.PI / 2; }
     // neck, head, face, hair
     add(root, new T3.CylinderGeometry(0.048, 0.055, 0.12, 20), mSkin, 0, 1.52, 0);
     const head = new T3.Group(); head.position.set(0, 1.64, 0.005); root.add(head);
     add(head, new T3.SphereGeometry(0.1, 32, 24), mSkin, 0, 0, 0, 0.9, 1.15, 1.0);
     add(head, new T3.SphereGeometry(0.06, 20, 16), mSkin, 0, -0.055, 0.015, 1.0, 0.8, 0.9);     // jaw
-    add(head, new T3.SphereGeometry(0.016, 16, 12), mSkin, 0, -0.012, 0.1, 0.85, 1.25, 1.1); // nose
+    // nose: bridge from between the eyes, a wide round bulb, side wings and two nostrils
+    const br = add(head, cap(0.0095, 0.032, 10), mSkin, 0, 0.0, 0.098, 1, 1, 0.9); br.rotation.x = -0.25;
+    add(head, new T3.SphereGeometry(0.02, 24, 16), mSkin, 0, -0.026, 0.108, 1.55, 1.05, 1.0);          // bulb
+    [-1, 1].forEach((s) => add(head, new T3.SphereGeometry(0.0135, 16, 12), mSkin, s * 0.024, -0.03, 0.1, 1, 0.95, 0.9)); // wings
+    if (!ghost) [-1, 1].forEach((s) => { const n = add(head, new T3.SphereGeometry(0.0062, 12, 8), M('nostril', () => new T3.MeshStandardMaterial({ color: 0x3a1a16, roughness: 0.8 })), s * 0.0125, -0.0405, 0.115, 1.1, 0.55, 0.8); n.rotation.z = s * 0.4; });
     [-1, 1].forEach((s) => add(head, new T3.SphereGeometry(0.022, 12, 10), mSkin, s * 0.09, 0, 0, 0.5, 1, 0.8)); // ears
     // face: eyes (white, iris, pupil, eyelid, brow) and mouth (lips)
     const lids = [];
@@ -46,21 +58,27 @@
         const lid = add(eye, new T3.SphereGeometry(0.0172, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2), mSkin, 0, 0, 0); lid.rotation.x = -0.35; lids.push(lid);
         const b = add(head, cap(0.0045, 0.03, 6), brow, s * 0.037, 0.047, 0.094); b.rotation.z = Math.PI / 2 + s * 0.12;
       });
-      const lipM = M('lip', () => new T3.MeshStandardMaterial({ color: 0xb4675c, roughness: 0.45 }));
-      const up = add(head, new T3.TorusGeometry(0.016, 0.0033, 8, 20, Math.PI), lipM, 0, -0.05, 0.091, 1, 0.3, 1); up.rotation.z = 0;
-      const lo = add(head, new T3.TorusGeometry(0.014, 0.004, 8, 20, Math.PI), lipM, 0, -0.051, 0.09, 1, 0.4, 1); lo.rotation.z = Math.PI;
-      add(head, new T3.BoxGeometry(0.028, 0.002, 0.004), M('mouthLine', () => new T3.MeshStandardMaterial({ color: 0x3a1512, roughness: 0.6 })), 0, -0.0505, 0.094);
+      // closed mouth: upper and lower lip meeting on a soft line
+      const lipM = M('lip', () => new T3.MeshStandardMaterial({ color: 0xb06a5e, roughness: 0.45 }));
+      const ul = add(head, cap(0.0042, 0.022, 8), lipM, 0, -0.056, 0.0905, 1, 1, 0.8); ul.rotation.z = Math.PI / 2;
+      const ll = add(head, cap(0.0052, 0.018, 8), lipM, 0, -0.062, 0.0895, 1, 1, 0.8); ll.rotation.z = Math.PI / 2;
+      const ml = add(head, cap(0.0012, 0.026, 6), M('mouthLine', () => new T3.MeshStandardMaterial({ color: 0x5a2420, roughness: 0.6 })), 0, -0.059, 0.094); ml.rotation.z = Math.PI / 2;
     }
-    const hcap = new T3.SphereGeometry(0.106, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.47);
-    const hc = add(head, hcap, mHair, 0, 0.016, -0.01, 0.94, 1.18, 1.05); hc.rotation.x = -0.2;
+    // hair: a full cap over the top, back and sides, a side-swept fringe and a few tufts for volume
+    const hcap = new T3.SphereGeometry(0.108, 40, 20, 0, Math.PI * 2, 0, Math.PI * 0.58);
+    const hc = add(head, hcap, mHair, 0, 0.012, -0.012, 0.95, 1.2, 1.06); hc.rotation.x = -0.55;
+    const fr = add(head, new T3.SphereGeometry(0.06, 20, 12), mHair, 0.018, 0.075, 0.055, 1.35, 0.42, 0.75); fr.rotation.z = -0.25;
+    [[-0.05, 0.09, 0.0], [0.045, 0.1, -0.01], [0.0, 0.115, -0.03], [-0.03, 0.1, -0.06], [0.04, 0.085, -0.07]].forEach(([x, y, z], i) => add(head, new T3.SphereGeometry(0.04, 14, 10), mHair, x, y, z, 1.1, 0.6, 1.0));
+    [-1, 1].forEach((s) => add(head, new T3.SphereGeometry(0.035, 14, 10), mHair, s * 0.083, 0.035, -0.02, 0.45, 1.0, 1.2));      // sideburns
     // arms: shoulder → elbow → hand, each joint a pivot group
     const arms = [-1, 1].map((s) => {
       const sh = new T3.Group(); sh.position.set(s * 0.215, 1.39, 0); root.add(sh);
       add(sh, new T3.SphereGeometry(0.06, 16, 12), mGown, 0, 0, 0);
-      add(sh, cap(0.058, 0.08), mGown, 0, -0.08, 0);                       // sleeve
-      add(sh, cap(0.043, 0.2), mSkin, 0, -0.16, 0);                        // upper arm
+      add(sh, cap(0.05, 0.22), mGown, 0, -0.15, 0);                        // long sleeve (upper arm)
       const el = new T3.Group(); el.position.set(0, -0.3, 0); sh.add(el);
-      add(el, cap(0.037, 0.2), mSkin, 0, -0.13, 0);                        // forearm
+      add(el, cap(0.043, 0.19), mGown, 0, -0.12, 0);                       // long sleeve (forearm)
+      add(el, new T3.CylinderGeometry(0.046, 0.046, 0.025, 16), mGown, 0, -0.225, 0);  // cuff
+      add(el, cap(0.026, 0.02, 8), mSkin, 0, -0.245, 0);                   // wrist
       add(el, new T3.SphereGeometry(0.04, 16, 12), mSkin, 0, -0.29, 0.005, 0.75, 1.4, 0.45); // hand
       add(el, cap(0.011, 0.04, 8), mSkin, s * -0.032, -0.27, 0.018).rotation.z = s * 0.5;  // thumb
       return { sh, el, s };
@@ -68,10 +86,11 @@
     // legs: hip → knee → foot
     const legs = [-1, 1].map((s) => {
       const hp = new T3.Group(); hp.position.set(s * 0.095, 0.9, 0); root.add(hp);
-      add(hp, cap(0.07, 0.3), mGown, 0, -0.2, 0);                          // thigh under the gown
+      add(hp, cap(0.075, 0.32), mPants, 0, -0.2, 0);                       // trouser leg (thigh)
       const kn = new T3.Group(); kn.position.set(0, -0.44, 0); hp.add(kn);
-      add(kn, cap(0.052, 0.32), mSkin, 0, -0.2, 0);                        // shin
-      add(kn, new T3.SphereGeometry(0.05, 16, 12), mSkin, 0, -0.43, 0.06, 0.85, 0.5, 1.9); // foot
+      add(kn, cap(0.06, 0.32), mPants, 0, -0.2, 0);                        // trouser leg (shin)
+      add(kn, new T3.SphereGeometry(0.055, 16, 12), mShoe, 0, -0.43, 0.05, 0.9, 0.55, 1.95); // shoe
+      add(kn, new T3.BoxGeometry(0.1, 0.012, 0.2), mShoe, 0, -0.455, 0.05);                  // sole
       return { hp, kn, s };
     });
     const H = { group: root, arms, legs, head, mat: gm || mGown, ghost };
