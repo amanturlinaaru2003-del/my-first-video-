@@ -1,0 +1,49 @@
+<template>
+  <style>
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0b0d18; }
+    canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .fontwarm { position:absolute; left:100px; top:400px; opacity:0; font-family:"KzSans"; font-weight:600; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920" data-duration="5">
+    <canvas id="s3-cv" width="1080" height="1920"></canvas>
+    <span class="fontwarm">ҚӘМОТИВАЦИЯ</span>
+  </div>
+  <script>
+    (function () {
+      const M = window.Mall, P = M.P, E = M.ease, lerp = M.lerp, D = M.D;
+const FG = [{ x: -260, y: -120, r: 190, a: 0.32 }, { x: 640, y: 700, r: 260, a: 0.22 }, { x: 900, y: -900, r: 150, a: 0.25 }];
+function follow(s, dx, dy) { const p = P(s); return { x: p.x + dx, y: p.y + dy }; }
+function shake(t, t0, amp) { if (t < t0) return { x: 0, y: 0 }; const r = M.rng(Math.floor(t * 30) * 17 + 9), k = Math.exp(-(t - t0) * 5) * amp; return { x: (r() * 2 - 1) * k, y: (r() * 2 - 1) * k }; }
+const RUN = (t) => 0;
+      function state(t) {
+      const run = 700 + 267 * Math.min(t, 2.6) + (t > 2.6 ? 230 * (1 - Math.exp(-(t - 2.6) * 2.2)) : 0);
+      const wa = Math.min(run, 1600);
+      const crashed = t > 3.75;
+      const bat = t < 2.3 ? 1 : lerp(1, 0.06, E(t, 2.3, 3.6));
+      const sh = shake(t, 3.75, 22);
+      return {
+        cam: { x: 1180 + sh.x, y: -700 + sh.y, zoom: 0.5, ay: 0.52 },
+        belt: 0, bgBlur: 4,
+        chars: [
+          { kind: 'calm', s0: 150, w: 300 + 100 * t, walking: true, hold: 'bottle', near: 'swing', far: 'swing', lean: 0.08, battery: 0.7, bpm: 74 },
+          crashed
+            ? { kind: 'energy', s0: 1900, w: 0, pose: 'sit', facing: -1, hold: 'can', near: 'head', far: 'head', lean: 0.6, tilt: 0.45, tremble: 2.5, battery: 0.06, bpm: 150 }
+            : { kind: 'energy', s0: 300, w: wa, walking: true, hold: 'can', near: 'swing', far: 'swing', armAmp: 1.7, lean: lerp(0.3, 0.5, E(t, 2.6, 3.6)), tremble: 1.6, speed: 1 - E(t, 2.4, 3.2), battery: bat, bpm: 140 + Math.round(10 * E(t, 2.5, 3.5)) },
+        ],
+      };
+      }
+      const tl = M.mount('s3-cv', 's3', 5, state);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s3"] = tl;
+    })();
+  </script>
+</template>

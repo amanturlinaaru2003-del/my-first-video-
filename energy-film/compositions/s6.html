@@ -1,0 +1,52 @@
+<template>
+  <style>
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-ext-500-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-ext-600-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-ext-800-normal.woff2") format("woff2"); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "KzSans"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0b0d18; }
+    canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .fontwarm { position:absolute; left:100px; top:400px; opacity:0; font-family:"KzSans"; font-weight:600; }
+    #s6-txt { position:absolute; left:150px; top:300px; width:780px; display:flex; flex-direction:column; gap:26px; }
+    .line { width:780px; text-align:center; font-family:"KzSans"; font-weight:600; font-size:52px; line-height:1.22; color:#ece8f2; opacity:0; text-shadow:0 4px 24px rgba(0,0,0,0.75); }
+    #s6-l2 { font-weight:800; font-size:58px; color:#9fe6b0; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920" data-duration="5.8">
+    <canvas id="s6-cv" width="1080" height="1920"></canvas>
+    <span class="fontwarm">ҚӘМОТИВАЦИЯ</span>
+    <div id="s6-txt">
+      <div id="s6-l1" class="line">Энергетик — қарызға алынған қуат.</div>
+      <div id="s6-l2" class="line accent">Нағыз қуат — ұйқы, су, қозғалыс.</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const M = window.Mall, P = M.P, E = M.ease, lerp = M.lerp, D = M.D;
+const FG = [{ x: -260, y: -120, r: 190, a: 0.32 }, { x: 640, y: 700, r: 260, a: 0.22 }, { x: 900, y: -900, r: 150, a: 0.25 }];
+function follow(s, dx, dy) { const p = P(s); return { x: p.x + dx, y: p.y + dy }; }
+function shake(t, t0, amp) { if (t < t0) return { x: 0, y: 0 }; const r = M.rng(Math.floor(t * 30) * 17 + 9), k = Math.exp(-(t - t0) * 5) * amp; return { x: (r() * 2 - 1) * k, y: (r() * 2 - 1) * k }; }
+const RUN = (t) => 0;
+      function state(t) {
+      const w = lerp(2000, 2444, E(t, 0, 2.6) * 0.5 + Math.min(1, t / 2.6) * 0.5);
+      return {
+        cam: { x: 2092 + 30 * E(t, 0, 5.8), y: -1300 + 170, zoom: lerp(0.66, 0.6, E(t, 0, 5.8)), ay: 0.64 },
+        belt: 0, bgBlur: 5, topGlow: E(t, 2.0, 3.4),
+        chars: [
+          { kind: 'energy', s0: 1900, w: 0, pose: 'sit', facing: -1, near: 'head', far: 'head', lean: 0.7, tilt: 0.45, tremble: 1.5, battery: 0.03, label: 0.75 },
+          { kind: 'calm', s0: 150, w, walking: t < 2.6, hold: 'bottle', near: t < 2.6 ? 'swing' : 'chest', far: t < 2.6 ? 'swing' : 'hang', lean: 0.08 * (1 - E(t, 2.3, 2.8)), battery: 0.7, bpm: 72, labelColor: '#9fe6b0' },
+        ],
+      };
+      }
+      const tl = M.mount('s6-cv', 's6', 5.8, state);
+      tl.fromTo('#s6-l1', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 2.4);
+      tl.fromTo('#s6-l2', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 3.2);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s6"] = tl;
+    })();
+  </script>
+</template>
