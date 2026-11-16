@@ -351,22 +351,23 @@
     const stand = new T3.Mesh(new T3.CylinderGeometry(0.04, 0.04, 2.2, 12), body.material); stand.position.y = -1.6; grp.add(stand);
     const M = { group: grp, glow };
     // amp: 1 = healthy EEG, 0 = flat line; heart: show ECG spikes until stopAt
-    M.set = function (T, amp, flatColor) {
+    M.set = function (T, amp, flatColor, ecg) {
       scr.draw((ctx, w, h) => {
         ctx.fillStyle = '#020806'; ctx.fillRect(0, 0, w, h);
         ctx.strokeStyle = 'rgba(40,140,80,0.25)'; ctx.lineWidth = 1;
         for (let x = 0; x < w; x += 32) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
         for (let y = 0; y < h; y += 32) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
-        const col = amp < 0.05 ? (flatColor || '#ff4a4a') : '#5dff9a';
+        const col = (ecg ? T > ecg.stop + 0.3 : amp < 0.05) ? (flatColor || '#ff4a4a') : '#5dff9a';
         ctx.strokeStyle = col; ctx.lineWidth = 4; ctx.shadowColor = col; ctx.shadowBlur = 14; ctx.beginPath();
         for (let x = 0; x <= w; x += 2) {
           const tt = T * 2.2 - (w - x) / 140; // scrolling
-          const a = amp * (Math.sin(tt * 23) * 0.5 + Math.sin(tt * 51 + 1) * 0.3 + noise3(tt * 9, 2, 3) * 0.9);
+          let a = amp * (Math.sin(tt * 23) * 0.5 + Math.sin(tt * 51 + 1) * 0.3 + noise3(tt * 9, 2, 3) * 0.9);
+          if (ecg) { const tw = T - (w - x) / 300; const ph = (tw * ecg.bpm / 60) % 1; a = tw > ecg.stop ? 0 : (Math.exp(-Math.pow((ph - 0.3) / 0.012, 2)) * 1.6 - Math.exp(-Math.pow((ph - 0.33) / 0.012, 2)) * 0.5 + Math.exp(-Math.pow((ph - 0.55) / 0.05, 2)) * 0.35); }
           const y = h * 0.5 - a * 70; x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
         }
         ctx.stroke(); ctx.shadowBlur = 0;
-        ctx.fillStyle = col; ctx.font = 'bold 34px KzSans, sans-serif'; ctx.fillText('EEG', 18, 44);
-        ctx.font = 'bold 30px KzSans, sans-serif'; ctx.fillText(amp < 0.05 ? '— —' : Math.round(8 + amp * 32) + ' Hz', w - 150, 44);
+        ctx.fillStyle = col; ctx.font = 'bold 34px KzSans, sans-serif'; ctx.fillText(ecg ? 'ECG' : 'EEG', 18, 44);
+        ctx.font = 'bold 30px KzSans, sans-serif'; ctx.fillText(ecg ? (T > ecg.stop ? '0' : ecg.bpm + ' ♥') : (amp < 0.05 ? '— —' : Math.round(8 + amp * 32) + ' Hz'), w - 150, 44);
       });
       M.glow.material.color.set(amp < 0.05 ? 0xff4040 : 0x40ff90);
     };

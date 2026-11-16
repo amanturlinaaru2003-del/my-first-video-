@@ -30,7 +30,7 @@
   function bodySet(S, o = {}) {
     const B = C.brain(); S.scene.add(B.group);
     const H = C.heart(); H.group.position.set(0.05, -2.95, 0.25); H.group.scale.setScalar(0.8); S.scene.add(H.group);
-    const fig = C.figure(0x8fb8ff, { ghost: true }); fig.group.scale.setScalar(5.6); fig.group.position.y = -9.07; S.scene.add(fig.group);
+    const fig = C.human({ ghost: true }); fig.group.scale.setScalar(8.6); fig.group.position.y = -1.64 * 8.6; S.scene.add(fig.group);
     fig.mat.opacity = 0.16;
     const curves = [
       new T3.CatmullRomCurve3([[0.1, -2.5, 0.3], [0.25, -1.9, 0.35], [0.22, -1.2, 0.2], [0.15, -0.55, 0.05], [0.1, 0.05, 0]].map((q) => new T3.Vector3(...q))),
@@ -50,16 +50,18 @@
 
   // ================================================================ c1 — the heart stops
   W.c1 = function (cv, a, b) {
-    const S = C.stage(cv, { fog: 0.05, seed: 1 , floorY: -9.1 });
+    const S = C.stage(cv, { fog: 0.05, seed: 1 , floorY: -14.2 });
     const { B, H, fig, streams } = bodySet(S);
     const STOP = 1.05;
+    const HX = 60, hosp = C.hospital(); hosp.group.position.set(HX, 0, 0); S.scene.add(hosp.group);
     const shots = [
-      { t: a, p: [0.9, -2.6, 4.6], q: [0.5, -2.75, 3.8], l: [0.05, -2.95, 0.2] },
+      { t: a, p: [HX + 1.7, 2.3, 3.5], q: [HX + 1.3, 2.05, 2.9], l: [HX - 0.25, 0.75, -0.35] },
       { t: g(1), p: [1.6, -1.2, 9.0], q: [0.9, -1.0, 7.8], l: [0, -1.0, 0], burst: false },
     ];
     return { renderAt(T) {
       const beat = H.beatAt(T, 78, STOP);
       const life = 1 - smooth(STOP, STOP + 0.6, T);
+      hosp.set(T, { amp: 1, ecg: { bpm: 78, stop: STOP } });
       H.set(T, { beat, life });
       streams.forEach((s) => s.set(T, 0.3 + 0.7 * life, 0.35 * life + 0.02));
       B.set(T, { act: 1 - smooth(2.4, 3.6, T) * 0.4, rotY: 0.4 + T * 0.1 });
@@ -72,7 +74,7 @@
 
   // ================================================================ c2 — a hungry organ
   W.c2 = function (cv, a, b) {
-    const S = C.stage(cv, { fog: 0.035, seed: 2 , floorY: -9.1 });
+    const S = C.stage(cv, { fog: 0.035, seed: 2 , floorY: -14.2 });
     const { B, H, fig, streams } = bodySet(S);
     const NS = [30, 0, 0], F = neuronSpace(S, NS, 7);
     const tank = C.holo(1.4, 1.4, 512, 512, (ctx, w, h) => {
@@ -106,19 +108,17 @@
 
   // ================================================================ c3 — the lights go out
   W.c3 = function (cv, a, b) {
-    const S = C.stage(cv, { fog: 0.04, seed: 3 , floorY: -9.1 });
+    const S = C.stage(cv, { fog: 0.04, seed: 3 , floorY: -14.2 });
     const { B, H, fig, streams } = bodySet(S);
     const NS = [30, 0, 0], F = neuronSpace(S, NS, 11);
-    const M = C.monitor(); M.group.position.set(-26, 0.4, 0); M.group.rotation.y = 0; S.scene.add(M.group);
-    const bed = new T3.Mesh(new T3.BoxGeometry(2.6, 0.3, 1.1), new T3.MeshStandardMaterial({ color: 0x20252e, roughness: 0.4, metalness: 0.7 })); bed.position.set(-24.4, -1.3, 0.6); S.scene.add(bed);
-    const patient = C.figure(0x7f8899); patient.group.rotation.z = Math.PI / 2; patient.group.position.set(-23.4, -1.05, 0.6); S.scene.add(patient.group);
+    const hosp = C.hospital(); hosp.group.position.set(-26, 0, 0); S.scene.add(hosp.group);
     const shots = [
       { t: a, p: [2.0, -1.2, 8.0], q: [1.4, -1.1, 7.2], l: [0, -1.0, 0] },                  // heart stops, blood stops
       { t: g(17), p: [0, 0.3, 4.4], q: [0, 0.2, 3.3], l: [0, 0.1, 0] },                     // consciousness fades
       { t: g(19), p: [30, 0, 7], q: [30, 0.3, 4], l: [30, 0, 0], burst: true },             // neurons without energy
       { t: g(21), p: [31.5, -1, 3], q: [30.8, -0.6, 1.8], l: [30, 0, -1] },                 // they stop talking
       { t: g(23), p: [-0.9, 0.5, 3.2], q: [-0.6, 0.35, 2.5], l: [0, 0, 0], burst: true },   // waves weaken
-      { t: g(25), p: [-26.5, 0.6, 5.4], q: [-26.2, 0.5, 4.2], l: [-26, 0.1, 0], burst: true }, // flat line
+      { t: g(25), p: [-25.1, 1.65, 2.6], q: [-25.5, 1.55, 1.6], l: [-26.9, 1.3, -1.0], burst: true }, // flat line
     ];
     return { renderAt(T) {
       H.set(T, { beat: 0, life: 0.15 });
@@ -129,7 +129,7 @@
       F.set(T, { act: Math.max(0.03, 0.9 - smooth(g(19), ge(22), T) * 0.87) });
       fig.mat.opacity = 0.05;
       const amp = 1 - smooth(g(25) - 1.2, g(26) + 0.1, T);
-      M.set(T, amp * 0.5 + 0.0001 * amp);
+      hosp.set(T, { amp: amp * 0.5 + 0.0001 * amp, dim: 0.8 });
       S.warm.intensity = 4;
       const burst = cam(S, T, shots, b);
       fin(S, T, a, b, burst, { exposure: 1 - smooth(a, b, T) * 0.2 });
@@ -163,8 +163,8 @@
     }, 0xffffff);
     manH.mesh.position.set(9, 0.4, -2); S.scene.add(manH.mesh);
     const beds = []; for (let i = 0; i < 4; i++) {
-      const bd = new T3.Mesh(new T3.BoxGeometry(0.9, 0.18, 2.1), new T3.MeshStandardMaterial({ color: 0x1b2029, roughness: 0.35, metalness: 0.8 })); bd.position.set(-2.4 + i * 1.6, -1.6, -24); S.scene.add(bd);
-      const f = C.figure(0x8a93a5); f.group.rotation.x = -Math.PI / 2; f.group.position.set(-2.4 + i * 1.6, -1.42, -23.2); f.group.scale.setScalar(0.95); S.scene.add(f.group);
+      const bd = C.bed(); bd.group.position.set(-2.4 + i * 1.6, -2.2, -24); S.scene.add(bd.group);
+      const f = C.patient(); bd.group.add(f.group);
       const gl = C.glow(0xffc46a, 1.4, 0, 0.35); gl.position.set(-2.4 + i * 1.6, -1.1, -24.75); S.scene.add(gl);
       beds.push({ f, gl, lit: i === 1 || i === 2 });
     }
@@ -267,7 +267,7 @@
 
   // ================================================================ c7 — not in a moment: minutes, hours, CPR
   W.c7 = function (cv, a, b) {
-    const S = C.stage(cv, { fog: 0.035, seed: 7 , floorY: -9.1 });
+    const S = C.stage(cv, { fog: 0.035, seed: 7 , floorY: -14.2 });
     const { B, H, fig, streams } = bodySet(S);
     const timer = C.holo(2.4, 1.0, 720, 300, () => {}, 0xffffff); timer.mesh.position.set(0, 1.25, 0.3);
     // the lab: glass cylinder, blue liquid, a second brain
@@ -320,10 +320,8 @@
   W.c8 = function (cv, a, b) {
     const S = C.stage(cv, { fog: 0.035, seed: 8 });
     // hospital bed + body + rising ghost
-    const bed = new T3.Mesh(new T3.BoxGeometry(1.1, 0.3, 2.6), new T3.MeshStandardMaterial({ color: 0x20252e, roughness: 0.4, metalness: 0.7 })); bed.position.set(0, -1.3, 0); S.scene.add(bed);
-    const body = C.figure(0x8f98aa); body.group.rotation.x = -Math.PI / 2; body.group.position.set(0, -1.05, 0.9); S.scene.add(body.group);
-    const ghost = C.figure(0x9fd4ff, { ghost: true }); ghost.group.rotation.x = -Math.PI / 2; ghost.group.position.set(0, -1.0, 0.9); S.scene.add(ghost.group);
-    const lamp = C.glow(0xbfe0ff, 3, 0.4, 0.4); lamp.position.set(0, 2.2, 0); S.scene.add(lamp);
+    const hosp = C.hospital(); hosp.group.position.set(0, -2.2, 0); S.scene.add(hosp.group);
+    const ghost = C.patient({ ghost: true }); hosp.group.add(ghost.group);
     // tunnel of light rings
     const TZ = -20; const rings = [];
     for (let i = 0; i < 26; i++) {
@@ -332,19 +330,21 @@
     }
     const end = C.glow(0xfff6e6, 18, 1, 0.3); end.position.set(0, 0, TZ - 60); S.scene.add(end);
     // ten figures, one lit (≈10 %)
-    const ten = []; for (let i = 0; i < 10; i++) { const f = C.figure(0x7d8596); const ang = (i / 10) * Math.PI * 2; f.group.position.set(40 + Math.sin(ang) * 2.6, -1.9, Math.cos(ang) * 2.6); f.group.rotation.y = ang + Math.PI; S.scene.add(f.group); ten.push(f); }
+    const ten = []; for (let i = 0; i < 10; i++) { const f = C.human({ gown: i ? 0x86a8bd : 0x86a8be }); const ang = (i / 10) * Math.PI * 2; f.group.position.set(40 + Math.sin(ang) * 2.6, -2.2, Math.cos(ang) * 2.6); f.idle(i * 3.1, 1); f.group.rotation.y = ang + Math.PI; S.scene.add(f.group); ten.push(f); }
+    const tenL = new T3.SpotLight(0xcfe2ff, 60, 14, 0.7, 0.6, 1.5); tenL.position.set(40, 6, 3); tenL.target.position.set(40, -2, 0); S.scene.add(tenL, tenL.target);
     const lit = C.glow(0xffd27a, 3.4, 0, 0.35); lit.position.copy(ten[0].group.position); lit.position.y = -0.8; S.scene.add(lit);
     const B = C.brain(); B.group.position.set(-40, 0, 0); S.scene.add(B.group);
     const shots = [
-      { t: a, p: [2.6, 0.8, 3.6], q: [1.8, 0.6, 3], l: [0, -1, 0.4] },
+      { t: a, p: [1.6, 0.25, 3.6], q: [1.2, 0.05, 3.0], l: [-0.15, -1.45, -0.3] },
       { t: g(91), p: [0, 0, TZ + 8], q: [0, 0, TZ - 30], l: [0, 0, TZ - 60], burst: true, float: 0.2 },
-      { t: g(93), p: [0, 1.6, 4.8], q: [0, 1.2, 4.2], l: [0, -0.4, 0.4], burst: true },
+      { t: g(93), p: [1.3, 0.2, 2.6], q: [1.0, 0.05, 2.2], l: [0, -1.0, 0.0], burst: true },
       { t: g(95), p: [40, 3.6, 8.5], q: [40, 3.0, 7.0], l: [40, -1, 0], burst: true },
       { t: g(99), p: [-40, 0.3, 3.6], q: [-40, 0.2, 2.8], l: [-40, 0, 0], burst: true },
     ];
     return { renderAt(T) {
       const rise = smooth(g(93), ge(94) + 0.6, T);
-      ghost.group.position.y = -1.0 + rise * 1.3; ghost.group.rotation.x = -Math.PI / 2 + rise * 0.25; ghost.mat.opacity = 0.05 + rise * 0.4;
+      ghost.group.position.y = 0.74 + rise * 1.1; ghost.group.rotation.x = -Math.PI / 2 + rise * 0.3; ghost.mat.opacity = 0.02 + rise * 0.4; ghost.mat.emissiveIntensity = 0.4 + rise * 0.8;
+      hosp.set(T, { amp: 0.0001, dim: 0.7 });
       rings.forEach((r, i) => { r.rotation.z = T * 0.3 + i * 0.2; r.material.opacity = 0.35 + 0.35 * Math.sin(T * 4 - i * 0.5); });
       end.material.opacity = 1; end.scale.setScalar(18 + smooth(g(92), ge(92), T) * 30);
       lit.material.opacity = smooth(g(98), g(98) + 0.5, T) * (0.8 + 0.2 * Math.sin(T * 7));
