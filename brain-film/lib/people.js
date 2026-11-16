@@ -38,10 +38,10 @@
     add(head, new T3.SphereGeometry(0.1, 32, 24), mSkin, 0, 0, 0, 0.9, 1.15, 1.0);
     add(head, new T3.SphereGeometry(0.06, 20, 16), mSkin, 0, -0.055, 0.015, 1.0, 0.8, 0.9);     // jaw
     // nose: bridge from between the eyes, a wide round bulb, side wings and two nostrils
-    const br = add(head, cap(0.0095, 0.032, 10), mSkin, 0, 0.0, 0.098, 1, 1, 0.9); br.rotation.x = -0.25;
-    add(head, new T3.SphereGeometry(0.02, 24, 16), mSkin, 0, -0.026, 0.108, 1.55, 1.05, 1.0);          // bulb
-    [-1, 1].forEach((s) => add(head, new T3.SphereGeometry(0.0135, 16, 12), mSkin, s * 0.024, -0.03, 0.1, 1, 0.95, 0.9)); // wings
-    if (!ghost) [-1, 1].forEach((s) => { const n = add(head, new T3.SphereGeometry(0.0062, 12, 8), M('nostril', () => new T3.MeshStandardMaterial({ color: 0x3a1a16, roughness: 0.8 })), s * 0.0125, -0.0405, 0.115, 1.1, 0.55, 0.8); n.rotation.z = s * 0.4; });
+    const br = add(head, cap(0.0068, 0.024, 10), mSkin, 0, -0.002, 0.097, 1, 1, 0.9); br.rotation.x = -0.25;
+    add(head, new T3.SphereGeometry(0.014, 24, 16), mSkin, 0, -0.022, 0.104, 1.45, 1.0, 1.0);          // bulb
+    [-1, 1].forEach((s) => add(head, new T3.SphereGeometry(0.0095, 16, 12), mSkin, s * 0.016, -0.025, 0.099, 1, 0.95, 0.9)); // wings
+    if (!ghost) [-1, 1].forEach((s) => { const n = add(head, new T3.SphereGeometry(0.0042, 12, 8), M('nostril', () => new T3.MeshStandardMaterial({ color: 0x3a1a16, roughness: 0.8 })), s * 0.0085, -0.0322, 0.109, 1.1, 0.55, 0.8); n.rotation.z = s * 0.4; });
     [-1, 1].forEach((s) => add(head, new T3.SphereGeometry(0.022, 12, 10), mSkin, s * 0.09, 0, 0, 0.5, 1, 0.8)); // ears
     // face: eyes (white, iris, pupil, eyelid, brow) and mouth (lips)
     const lids = [];
