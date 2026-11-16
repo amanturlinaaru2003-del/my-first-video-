@@ -1,0 +1,12 @@
+{
+  "name": "montazh-multik-market",
+  "description": "Плагин «Мультик под голос»",
+  "owner": { "name": "montazh-multik" },
+  "plugins": [
+    {
+      "name": "montazh-multik",
+      "source": "./",
+      "description": "Вертикальные мультики-истории с человечками под закадровый голос"
+    }
+  ]
+}

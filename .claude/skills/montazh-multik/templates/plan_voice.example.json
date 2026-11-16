@@ -1,0 +1,16 @@
+{
+  "source": "голос.mp3",
+  "words": "words.json",
+  "work_dir": "_work_multik",
+  "voice_gain_db": 0,
+  "cuts": {
+    "takes": [[0.0, 62.5]],
+    "max_gap": 0.1,
+    "keep_repeats": []
+  },
+  "subs": {
+    "lower": false,
+    "fix": {"12.34": "правильное слово"},
+    "replace": {}
+  }
+}

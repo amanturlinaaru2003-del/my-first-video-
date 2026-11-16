@@ -1,0 +1,23 @@
+{
+  "work_dir": "_work_multik",
+  "voice": "_work_multik/voice.wav",
+  "words": "_work_multik/words_out.json",
+  "out": "Название — мультик v1.mp4",
+  "tail": 0.4,
+  "xfade": 0.13,
+  "subs": {"size": 90, "y": 0.70, "outline": 5, "shadow": 3, "max_words": 2, "max_chars": 16, "short": 3,
+           "strip_end_punct": true},
+  "music": {"file": "<skill>/assets/music/playful.mp3", "from": 0, "volume": 0.2},
+  "sfx_volume": 0.6,
+  "scenes": [
+    {"id": "s01", "at_word": 0, "say": "В этом доме лифт едет так медленно"},
+    {"id": "s02", "at_word": 7, "say": "что жильцы завалили хозяина жалобами"},
+    {"id": "s03", "at_word": 12, "say": "Инженеры приносят смету"}
+  ],
+  "shots": [
+    {"id": "film", "media": "../film.mp4", "sfx": [
+      {"file": "<skill>/assets/sfx/whoosh.wav", "at": 2.2, "vol": 0.6},
+      {"file": "<skill>/assets/sfx/pop.wav", "at": 7.6, "vol": 0.9}
+    ]}
+  ]
+}

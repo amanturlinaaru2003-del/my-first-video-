@@ -25,3 +25,18 @@ Requires Node.js >= 22, FFmpeg and Chrome/Chromium (`npx hyperframes doctor` che
 - Music: generated locally with MusicGen-small (Meta, via `Xenova/musicgen-small`; model weights CC BY-NC 4.0, so non-commercial use) by `tools/musicgen.mjs`.
   The requested Pixabay track could not be downloaded automatically; replace `assets/audio/music.wav` with it to swap.
 - Sound effects: bundled with HyperFrames. Font: Montserrat (SIL OFL). GSAP 3.15 is vendored in `lib/`.
+
+## Монтаж скилдері (montazh-*)
+
+Claude Code үшін төрт монтаж скилі `.claude/skills/` ішінде:
+
+- `montazh-multik`: дауысқа тік мультфильм жасайды (адамшалар, Remotion, сөзбе-сөз субтитр).
+- `montazh-epizod`: 9:16, жоғарыда жүз, төменде экран; LUT, «зажми, чтобы ускорить» плашкасы.
+- `montazh-mani`: 9:16 сайт немесе құрал шолуы; жоғарыда браузер, төменде жүз.
+- `montazh-esse`: 16:9 YouTube видеоэссе, ақ фонда кинетикалық мәтін.
+
+Мысалдар мен сипаттама `montazh-materials/` ішінде: мысал видео, кадрлар, `.docx` нұсқаулығы, плагин манифесті.
+
+Талаптар: ffmpeg, Python 3 (`numpy`, `faster-whisper`), Node.js 18+ (multik, esse).
+`montazh-esse` және `montazh-multik` үшін `engine/` папкасында `npm ci` орындау керек.
+`montazh-esse` үшін SF Pro Display шрифтін developer.apple.com/fonts сайтынан жүктеп, `.claude/skills/montazh-esse/engine/assets/fonts/` ішіне салыңыз.
