@@ -213,7 +213,7 @@ def main():
     if len(graph) > 20000:
         fcp = os.path.join(work, "cut_filter.txt")
         open(fcp, "w", encoding="utf-8").write(graph)
-        fc_args = ["-/filter_complex", fcp]
+        fc_args = ["-filter_complex_script", fcp]
     else:
         fc_args = ["-filter_complex", graph]
     voice = os.path.join(work, "voice.wav")

@@ -1,0 +1,378 @@
+{
+ "source": "voice.wav",
+ "words": "words.json",
+ "cuts": {
+  "takes": [
+   [
+    0.0,
+    54.547
+   ]
+  ],
+  "max_gap": 0.4,
+  "verbatim": false
+ },
+ "subs": {
+  "lower": false
+ },
+ "scenes": [
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "💸",
+     "at": 0.13,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 420
+    }
+   ],
+   "at": 0.0
+  },
+  {
+   "kind": "text",
+   "size": 120,
+   "lines": [
+    "онда [50/30/20]",
+    {
+     "t": "ережесін тыңда",
+     "size": 0.6
+    }
+   ],
+   "at": 3.054
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "emoji": "👩‍💼",
+     "at": 6.407,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 380,
+     "label": "Элизабет Уоррен",
+     "label_size": 56
+    }
+   ],
+   "at": 5.797
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "text": "50",
+     "at": 10.535,
+     "x": 0.2,
+     "y": 0.36,
+     "size": 200
+    },
+    {
+     "text": "30",
+     "at": 10.735,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 200
+    },
+    {
+     "text": "20",
+     "at": 10.935,
+     "x": 0.8,
+     "y": 0.36,
+     "size": 200
+    }
+   ],
+   "at": 10.025
+  },
+  {
+   "kind": "counter",
+   "value": 50,
+   "from": 0,
+   "count_at": 11.703,
+   "suffix": "%",
+   "size": 360,
+   "sub": "қажеттілікке",
+   "sub_size": 100,
+   "at": 11.653
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🏠",
+     "at": 13.543,
+     "x": 0.28,
+     "y": 0.27,
+     "size": 220
+    },
+    {
+     "emoji": "🍞",
+     "at": 14.023,
+     "x": 0.72,
+     "y": 0.27,
+     "size": 220
+    },
+    {
+     "emoji": "🚌",
+     "at": 14.423,
+     "x": 0.28,
+     "y": 0.5,
+     "size": 220
+    },
+    {
+     "emoji": "💡",
+     "at": 14.643,
+     "x": 0.72,
+     "y": 0.5,
+     "size": 220
+    }
+   ],
+   "at": 13.493
+  },
+  {
+   "kind": "counter",
+   "value": 30,
+   "from": 0,
+   "count_at": 15.85,
+   "suffix": "%",
+   "size": 360,
+   "sub": "қалауыңа",
+   "sub_size": 100,
+   "at": 15.8
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "emoji": "☕",
+     "at": 17.51,
+     "x": 0.28,
+     "y": 0.27,
+     "size": 220
+    },
+    {
+     "emoji": "👕",
+     "at": 18.27,
+     "x": 0.72,
+     "y": 0.27,
+     "size": 220
+    },
+    {
+     "emoji": "🎬",
+     "at": 18.75,
+     "x": 0.28,
+     "y": 0.5,
+     "size": 220
+    },
+    {
+     "emoji": "✈️",
+     "at": 19.29,
+     "x": 0.72,
+     "y": 0.5,
+     "size": 220
+    }
+   ],
+   "at": 17.46
+  },
+  {
+   "kind": "counter",
+   "value": 20,
+   "from": 0,
+   "count_at": 20.345,
+   "suffix": "%",
+   "size": 360,
+   "sub": "болашағыңа",
+   "sub_size": 100,
+   "at": 19.995
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🐷",
+     "at": 22.365,
+     "x": 0.32,
+     "y": 0.34,
+     "size": 260
+    },
+    {
+     "emoji": "📈",
+     "at": 23.025,
+     "x": 0.7,
+     "y": 0.34,
+     "size": 260
+    }
+   ],
+   "at": 22.315
+  },
+  {
+   "kind": "counter",
+   "value": 300000,
+   "from": 0,
+   "count_at": 25.02,
+   "suffix": " ₸",
+   "size": 190,
+   "sub": "айлығың",
+   "sub_size": 100,
+   "at": 24.07
+  },
+  {
+   "kind": "text",
+   "size": 86,
+   "lines": [
+    "[150] мыңы — қажеттілікке",
+    "[90] мыңы — өзіңе",
+    "[60] мыңы — жинаққа"
+   ],
+   "at": 26.236
+  },
+  {
+   "kind": "counter",
+   "value": 720000,
+   "from": 0,
+   "count_at": 32.644,
+   "suffix": " ₸",
+   "size": 190,
+   "sub": "бір жылда",
+   "sub_size": 100,
+   "at": 31.969
+  },
+  {
+   "kind": "counter",
+   "value": 3600000,
+   "from": 720000,
+   "count_at": 35.522,
+   "suffix": " ₸",
+   "size": 160,
+   "sub": "бес жылда",
+   "sub_size": 100,
+   "at": 34.592
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🏝️",
+     "at": 37.664,
+     "x": 0.25,
+     "y": 0.34,
+     "size": 220
+    },
+    {
+     "emoji": "🚗",
+     "at": 38.504,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 220
+    },
+    {
+     "emoji": "😴",
+     "at": 40.704,
+     "x": 0.75,
+     "y": 0.34,
+     "size": 220
+    }
+   ],
+   "at": 37.234
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🛟",
+     "at": 43.079,
+     "x": 0.32,
+     "y": 0.34,
+     "size": 260,
+     "label": "3–6 ай",
+     "label_size": 60
+    },
+    {
+     "emoji": "📊",
+     "at": 44.699,
+     "x": 0.7,
+     "y": 0.34,
+     "size": 260
+    }
+   ],
+   "at": 41.769
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "emoji": "📅",
+     "at": 49.328,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 360,
+     "click": 50.088
+    }
+   ],
+   "at": 46.478
+  },
+  {
+   "kind": "text",
+   "size": 96,
+   "lines": [
+    "алдымен [өзіңе] төле,",
+    {
+     "t": "содан кейін басқаларға",
+     "size": 0.6
+    }
+   ],
+   "at": 51.371
+  }
+ ],
+ "out": "/home/user/my-first-video-/shorts/renders/08-50-30-20.mp4",
+ "width": 1080,
+ "height": 1920,
+ "fonts": {
+  "400": "InterDisplay-Regular.woff2",
+  "500": "InterDisplay-Medium.woff2",
+  "600": "InterDisplay-SemiBold.woff2",
+  "700": "InterDisplay-Bold.woff2"
+ },
+ "emoji": "system",
+ "fps": 30,
+ "tail": 0.9,
+ "sfx": true,
+ "sfx_volume": 0.8,
+ "music": {
+  "src": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "volume": 0.11,
+  "start": 0,
+  "fade_out": 1.5
+ },
+ "accent": [
+  "50/30/20",
+  "үш",
+  "Елу",
+  "Отыз",
+  "жиырма",
+  "өзіңе",
+  "төле"
+ ],
+ "phrase": {
+  "max_words": 2,
+  "max_chars": 16,
+  "gap": 0.35
+ },
+ "overlays": []
+}

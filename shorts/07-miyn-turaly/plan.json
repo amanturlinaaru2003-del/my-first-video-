@@ -1,0 +1,354 @@
+{
+ "source": "voice.wav",
+ "words": "words.json",
+ "cuts": {
+  "takes": [
+   [
+    0.0,
+    57.408
+   ]
+  ],
+  "max_gap": 0.4,
+  "verbatim": false
+ },
+ "subs": {
+  "lower": false
+ },
+ "scenes": [
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🧠",
+     "at": 0.13,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 440
+    }
+   ],
+   "at": 0.0
+  },
+  {
+   "kind": "counter",
+   "value": 2,
+   "from": 0,
+   "count_at": 6.06,
+   "suffix": "%",
+   "size": 380,
+   "sub": "денеңнің салмағы",
+   "sub_size": 100,
+   "at": 3.75
+  },
+  {
+   "kind": "counter",
+   "value": 20,
+   "from": 2,
+   "count_at": 8.637,
+   "suffix": "%",
+   "size": 380,
+   "sub": "энергияңның",
+   "sub_size": 100,
+   "at": 7.107
+  },
+  {
+   "kind": "counter",
+   "value": 86,
+   "from": 0,
+   "count_at": 11.286,
+   "suffix": " млрд",
+   "size": 230,
+   "sub": "нейрон",
+   "sub_size": 110,
+   "at": 10.336
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🌍",
+     "at": 13.978,
+     "x": 0.5,
+     "y": 0.3,
+     "size": 300
+    },
+    {
+     "text": "×10",
+     "at": 15.438,
+     "x": 0.5,
+     "y": 0.5,
+     "size": 200
+    }
+   ],
+   "at": 13.588
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "⚡",
+     "at": 17.735,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 400
+    }
+   ],
+   "at": 16.445
+  },
+  {
+   "kind": "counter",
+   "value": 400,
+   "from": 0,
+   "count_at": 18.835,
+   "suffix": " км/сағ",
+   "size": 200,
+   "plain": true,
+   "at": 18.785
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🚄",
+     "at": 22.122,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 380
+    }
+   ],
+   "at": 21.752
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "💡",
+     "at": 26.957,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 400,
+     "label": "20 ватт",
+     "label_size": 70
+    }
+   ],
+   "at": 23.867
+  },
+  {
+   "kind": "counter",
+   "value": 75,
+   "from": 0,
+   "count_at": 28.985,
+   "suffix": "%",
+   "size": 380,
+   "sub": "су",
+   "sub_size": 130,
+   "at": 28.495
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "💧",
+     "at": 31.283,
+     "x": 0.35,
+     "y": 0.34,
+     "size": 280
+    },
+    {
+     "emoji": "🐢",
+     "at": 32.823,
+     "x": 0.68,
+     "y": 0.34,
+     "size": 280
+    }
+   ],
+   "at": 30.633
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🧠",
+     "at": 33.9,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 360
+    },
+    {
+     "emoji": "🚫",
+     "at": 36.28,
+     "x": 0.68,
+     "y": 0.24,
+     "size": 180
+    }
+   ],
+   "at": 33.85
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🏥",
+     "at": 38.533,
+     "x": 0.32,
+     "y": 0.34,
+     "size": 280
+    },
+    {
+     "emoji": "👀",
+     "at": 39.673,
+     "x": 0.7,
+     "y": 0.34,
+     "size": 260
+    }
+   ],
+   "at": 37.683
+  },
+  {
+   "kind": "text",
+   "size": 160,
+   "at": 41.202
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🌙",
+     "at": 42.392,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 400
+    }
+   ],
+   "at": 42.042
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "😴",
+     "at": 44.028,
+     "x": 0.5,
+     "y": 0.26,
+     "size": 300
+    },
+    {
+     "emoji": "🗂️",
+     "at": 45.948,
+     "x": 0.3,
+     "y": 0.5,
+     "size": 220
+    },
+    {
+     "emoji": "🧹",
+     "at": 47.208,
+     "x": 0.7,
+     "y": 0.5,
+     "size": 220
+    }
+   ],
+   "at": 43.978
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🛤️",
+     "at": 49.885,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 380
+    }
+   ],
+   "at": 48.635
+  },
+  {
+   "kind": "text",
+   "size": 108,
+   "lines": [
+    "сондықтан үйренуге",
+    "[ешқашан] кеш емес"
+   ],
+   "at": 51.115
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🛏️",
+     "at": 54.69,
+     "x": 0.5,
+     "y": 0.3,
+     "size": 380
+    },
+    {
+     "emoji": "💚",
+     "at": 56.15,
+     "x": 0.5,
+     "y": 0.52,
+     "size": 200
+    }
+   ],
+   "at": 53.78
+  }
+ ],
+ "out": "/home/user/my-first-video-/shorts/renders/07-miyn-turaly.mp4",
+ "width": 1080,
+ "height": 1920,
+ "fonts": {
+  "400": "InterDisplay-Regular.woff2",
+  "500": "InterDisplay-Medium.woff2",
+  "600": "InterDisplay-SemiBold.woff2",
+  "700": "InterDisplay-Bold.woff2"
+ },
+ "emoji": "system",
+ "fps": 30,
+ "tail": 0.9,
+ "sfx": true,
+ "sfx_volume": 0.8,
+ "music": {
+  "src": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "volume": 0.11,
+  "start": 0,
+  "fade_out": 1.5
+ },
+ "accent": [
+  "бес",
+  "жиырма",
+  "он",
+  "жылдам",
+  "су",
+  "жоқ",
+  "демалмайды",
+  "ешқашан"
+ ],
+ "phrase": {
+  "max_words": 2,
+  "max_chars": 16,
+  "gap": 0.35
+ },
+ "overlays": []
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig } from "remotion";
-import { C, FONT, TRACK, appleIn, appleOut, clamp, easeInOut, lerp, norm, rnd } from "./theme";
+import { C, FONT, FH, FW, TRACK, appleIn, appleOut, clamp, easeInOut, lerp, norm, rnd } from "./theme";
 import type { Line, Plan, Word } from "./types";
 
 // Кинетический текст: фраза раскладывается заранее по центру, слова встают на места,
@@ -98,7 +98,7 @@ export function autoPhrases(words: Word[], t0: number, fps: number, plan: Plan, 
 // Оценка ширины строки в em для SF Pro Display Bold с плотным трекингом — чтобы строка не вылезала за кадр
 export const emWidth = (s: string) =>
   Array.from(s).reduce(
-    (a, ch) => a + (/[А-ЯЁA-Z]/.test(ch) ? 0.66 : /[0-9]/.test(ch) ? 0.56 : /\s/.test(ch) ? 0.26 : /[.,:;!?'"-]/.test(ch) ? 0.28 : 0.54) - 0.045,
+    (a, ch) => a + (/[А-ЯЁӘҒҚҢӨҰҮҺІA-Z]/.test(ch) ? 0.66 : /[0-9]/.test(ch) ? 0.56 : /\s/.test(ch) ? 0.26 : /[.,:;!?'"-]/.test(ch) ? 0.28 : 0.54) - 0.045,
     0,
   );
 
@@ -141,7 +141,7 @@ export const KText: React.FC<KProps> = ({ phrases, size, y = 0.5, dark, shadow, 
     exitT = nextF > start ? clamp((f - start) / (nextF - start)) : 0;
   }
   const eo = appleIn(exitT);
-  const maxW = 1720;
+  const maxW = FW * (FW < FH ? 0.8 : 0.896); // в вертикали оценка ширины казахского текста занижена — запас
 
   return (
     <div

@@ -1,0 +1,331 @@
+{
+ "source": "voice.wav",
+ "words": "words.json",
+ "cuts": {
+  "takes": [
+   [
+    0.0,
+    48.984
+   ]
+  ],
+  "max_gap": 0.4,
+  "verbatim": false
+ },
+ "subs": {
+  "lower": false
+ },
+ "scenes": [
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "📱",
+     "at": 0.13,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 420
+    }
+   ],
+   "at": 0.0
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "text": "10?",
+     "at": 3.131,
+     "x": 0.3,
+     "y": 0.36,
+     "size": 220
+    },
+    {
+     "text": "20?",
+     "at": 3.991,
+     "x": 0.7,
+     "y": 0.36,
+     "size": 220
+    }
+   ],
+   "at": 3.081
+  },
+  {
+   "kind": "counter",
+   "value": 100,
+   "from": 0,
+   "count_at": 8.304,
+   "size": 420,
+   "sub": "рет күніне",
+   "sub_size": 110,
+   "at": 4.674
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "⏱️",
+     "at": 10.595,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 400,
+     "label": "әр 10 минут",
+     "label_size": 70
+    }
+   ],
+   "at": 10.085
+  },
+  {
+   "kind": "counter",
+   "value": 4,
+   "from": 0,
+   "count_at": 14.21,
+   "suffix": "+ сағ",
+   "size": 270,
+   "sub": "экранға күніне",
+   "sub_size": 100,
+   "at": 12.66
+  },
+  {
+   "kind": "counter",
+   "value": 2,
+   "from": 0,
+   "count_at": 16.909,
+   "suffix": " ай",
+   "size": 360,
+   "sub": "жылына",
+   "sub_size": 110,
+   "at": 16.179
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🔔",
+     "at": 19.175,
+     "x": 0.3,
+     "y": 0.34,
+     "size": 260
+    },
+    {
+     "emoji": "🧠",
+     "at": 19.755,
+     "x": 0.7,
+     "y": 0.34,
+     "size": 260
+    }
+   ],
+   "at": 18.225
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🎁",
+     "at": 22.52,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 380
+    }
+   ],
+   "at": 22.11
+  },
+  {
+   "kind": "objects",
+   "size": 124,
+   "say": true,
+   "items": [
+    {
+     "emoji": "🎰",
+     "at": 25.103,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 420
+    }
+   ],
+   "at": 24.873
+  },
+  {
+   "kind": "text",
+   "size": 140,
+   "at": 27.309
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "text": "1",
+     "at": 29.373,
+     "x": 0.5,
+     "y": 0.16,
+     "size": 180
+    },
+    {
+     "emoji": "🔕",
+     "at": 29.793,
+     "x": 0.5,
+     "y": 0.4,
+     "size": 340,
+     "click": 31.353
+    }
+   ],
+   "at": 29.323
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "text": "2",
+     "at": 32.015,
+     "x": 0.5,
+     "y": 0.16,
+     "size": 180
+    },
+    {
+     "emoji": "🖤",
+     "at": 32.614,
+     "x": 0.35,
+     "y": 0.4,
+     "size": 260
+    },
+    {
+     "emoji": "🤍",
+     "at": 33.295,
+     "x": 0.65,
+     "y": 0.4,
+     "size": 260
+    }
+   ],
+   "at": 31.965
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "text": "3",
+     "at": 36.538,
+     "x": 0.5,
+     "y": 0.16,
+     "size": 180
+    },
+    {
+     "emoji": "🛏️",
+     "at": 37.018,
+     "x": 0.4,
+     "y": 0.4,
+     "size": 300
+    },
+    {
+     "emoji": "🚫",
+     "at": 38.498,
+     "x": 0.66,
+     "y": 0.34,
+     "size": 180
+    }
+   ],
+   "at": 36.488
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "text": "4",
+     "at": 39.337,
+     "x": 0.5,
+     "y": 0.16,
+     "size": 180
+    },
+    {
+     "emoji": "🌅",
+     "at": 40.257,
+     "x": 0.33,
+     "y": 0.4,
+     "size": 260
+    },
+    {
+     "emoji": "🥛",
+     "at": 42.657,
+     "x": 0.67,
+     "y": 0.4,
+     "size": 260
+    }
+   ],
+   "at": 39.287
+  },
+  {
+   "kind": "objects",
+   "size": 110,
+   "say": true,
+   "items": [
+    {
+     "emoji": "📵",
+     "at": 46.304,
+     "x": 0.3,
+     "y": 0.36,
+     "size": 260
+    },
+    {
+     "emoji": "🪟",
+     "at": 47.384,
+     "x": 0.7,
+     "y": 0.36,
+     "size": 260
+    }
+   ],
+   "at": 44.234
+  }
+ ],
+ "out": "/home/user/my-first-video-/shorts/renders/10-telefon.mp4",
+ "width": 1080,
+ "height": 1920,
+ "fonts": {
+  "400": "InterDisplay-Regular.woff2",
+  "500": "InterDisplay-Medium.woff2",
+  "600": "InterDisplay-SemiBold.woff2",
+  "700": "InterDisplay-Bold.woff2"
+ },
+ "emoji": "system",
+ "fps": 30,
+ "tail": 0.9,
+ "sfx": true,
+ "sfx_volume": 0.8,
+ "music": {
+  "src": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "volume": 0.11,
+  "start": 0,
+  "fade_out": 1.5
+ },
+ "accent": [
+  "100",
+  "он",
+  "төрт",
+  "екі",
+  "дофамин",
+  "өшір",
+  "ақ-қара",
+  "апарма",
+  "суға"
+ ],
+ "phrase": {
+  "max_words": 2,
+  "max_chars": 16,
+  "gap": 0.35
+ },
+ "overlays": []
+}

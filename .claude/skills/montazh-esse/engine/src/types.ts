@@ -35,6 +35,9 @@ export type Sfx = { at: number; src: string; volume?: number; dur?: number };
 
 export type Plan = {
   fps: number;
+  width?: number;
+  height?: number;
+  fonts?: Record<string, string>;
   duration: number;
   voice?: string;
   voice_volume?: number;

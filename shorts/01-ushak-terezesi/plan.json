@@ -1,0 +1,184 @@
+{
+ "work_dir": "_work_multik",
+ "voice": "_work_multik/voice.wav",
+ "words": "_work_multik/words_out.json",
+ "out": "/home/user/my-first-video-/shorts/renders/01-ushak-terezesi.mp4",
+ "tail": 0.5,
+ "xfade": 0.13,
+ "subs": {
+  "size": 92,
+  "y": 0.7,
+  "outline": 5,
+  "shadow": 3,
+  "max_words": 2,
+  "max_chars": 14,
+  "short": 3,
+  "strip_end_punct": true
+ },
+ "music": {
+  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "from": 0,
+  "volume": 0.26
+ },
+ "sfx_volume": 0.6,
+ "scenes": [
+  {
+   "id": "s01",
+   "at_word": 0,
+   "say": "Ұшақтың терезесі неге шаршы емес, дөңгелек? — иллюминатор макро"
+  },
+  {
+   "id": "s02",
+   "at_word": 6,
+   "say": "Үйдің терезесі шаршы — үй"
+  },
+  {
+   "id": "s03",
+   "at_word": 9,
+   "say": "автобустың терезесі де шаршы — автобус"
+  },
+  {
+   "id": "s04",
+   "at_word": 13,
+   "say": "Ал ұшақта әрқашан дөңгелек, бұрышы жоқ — ұшақ аспанда"
+  },
+  {
+   "id": "s05",
+   "at_word": 22,
+   "say": "Дизайнерлер әдемі болсын деп ойлады ма — суретші"
+  },
+  {
+   "id": "s06",
+   "at_word": 29,
+   "say": "Жоқ, мұның артында үлкен трагедия — найзағай"
+  },
+  {
+   "id": "s07",
+   "at_word": 35,
+   "say": "Бір кездері алғашқы реактивті ұшақ «Комета» — ұшу жолағы"
+  },
+  {
+   "id": "s08",
+   "at_word": 42,
+   "say": "аспанға көтеріледі — ұшып шығу"
+  },
+  {
+   "id": "s09",
+   "at_word": 44,
+   "say": "Терезелері кәдімгідей шаршы — шаршы терезелер"
+  },
+  {
+   "id": "s10",
+   "at_word": 47,
+   "say": "Бәрі мәз: жылдам, биік, жайлы — салон"
+  },
+  {
+   "id": "s11",
+   "at_word": 52,
+   "say": "екі ұшақ аспанда бөлшектеніп кетеді — апат"
+  },
+  {
+   "id": "s12",
+   "at_word": 61,
+   "say": "Инженерлер басын қатырады — инженерлер"
+  },
+  {
+   "id": "s13",
+   "at_word": 64,
+   "say": "бомба ма, найзағай ма? — ой бұлттары"
+  },
+  {
+   "id": "s14",
+   "at_word": 68,
+   "say": "ұшақты су толы алып бакқа салып — бак"
+  },
+  {
+   "id": "s15",
+   "at_word": 75,
+   "say": "мыңдаған рет сынайды — есептегіш"
+  },
+  {
+   "id": "s16",
+   "at_word": 78,
+   "say": "кінәлі — терезенің бұрышы — лупа"
+  },
+  {
+   "id": "s17",
+   "at_word": 84,
+   "say": "салон ауаға толып, шар сияқты кебеді — үрлену"
+  },
+  {
+   "id": "s18",
+   "at_word": 94,
+   "say": "Сол күш шаршы бұрышқа жиналады — бағыттар"
+  },
+  {
+   "id": "s19",
+   "at_word": 100,
+   "say": "металл шаршап, жарылады — жарықшақ"
+  },
+  {
+   "id": "s20",
+   "at_word": 103,
+   "say": "дөңгелек терезеде күш бірдей тарайды — дөңгелек"
+  },
+  {
+   "id": "s21",
+   "at_word": 112,
+   "say": "келесі жолы иллюминаторға қарасаң — жолаушы"
+  },
+  {
+   "id": "s22",
+   "at_word": 119,
+   "say": "бұл сенің аман-есен қонуың — қону"
+  }
+ ],
+ "shots": [
+  {
+   "id": "film",
+   "media": "../film.mp4",
+   "sfx": [
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 22.055,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 31.231,
+     "vol": 0.9
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 34.635,
+     "vol": 0.8
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 35.575,
+     "vol": 0.8
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 43.427,
+     "vol": 0.7
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 51.71,
+     "vol": 0.9
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/paper.wav",
+     "at": 39.731,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/fanfare.wav",
+     "at": 63.225,
+     "vol": 0.7
+    }
+   ]
+  }
+ ]
+}

@@ -1511,7 +1511,7 @@ def main():
         fc.append(f"{cat}concat=n={len(tl.keep)}:v=1:a=1[v][a]")
         fcp = os.path.join(work, "cut_filter.txt")
         open(fcp, "w", encoding="utf-8").write(";\n".join(fc))
-        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-/filter_complex", fcp,
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-filter_complex_script", fcp,
                         "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "ultrafast", "-crf", "12",
                         "-c:a", "pcm_s16le", cut_path], check=True)
         open(sig_path, "wb").write(sig)
@@ -1780,7 +1780,7 @@ def audio_mix(a, plan, ctx, els, layouts, work, rp, cut_path, vid_tmp, t_start, 
     out = a.out or rp(plan.get("out", "result.mp4"))
     if a.preview and not a.out:
         out = os.path.splitext(out)[0] + " (превью).mp4"
-    cmd = ["ffmpeg", "-y", "-loglevel", "error"] + inputs + ["-/filter_complex", fcp, "-map", "0:v", "-map", "[aout]",
+    cmd = ["ffmpeg", "-y", "-loglevel", "error"] + inputs + ["-filter_complex_script", fcp, "-map", "0:v", "-map", "[aout]",
                                                              "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", out]
     for lab, path in stems:
         cmd += ["-map", lab, "-c:a", "pcm_s16le", path]

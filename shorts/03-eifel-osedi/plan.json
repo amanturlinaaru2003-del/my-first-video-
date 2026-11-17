@@ -1,0 +1,184 @@
+{
+ "work_dir": "_work_multik",
+ "voice": "_work_multik/voice.wav",
+ "words": "_work_multik/words_out.json",
+ "out": "/home/user/my-first-video-/shorts/renders/03-eifel-osedi.mp4",
+ "tail": 0.5,
+ "xfade": 0.13,
+ "subs": {
+  "size": 92,
+  "y": 0.7,
+  "outline": 5,
+  "shadow": 3,
+  "max_words": 2,
+  "max_chars": 14,
+  "short": 3,
+  "strip_end_punct": true
+ },
+ "music": {
+  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "from": 0,
+  "volume": 0.26
+ },
+ "sfx_volume": 0.6,
+ "scenes": [
+  {
+   "id": "s01",
+   "at_word": 0,
+   "say": "Эйфель мұнарасы жазда өседі"
+  },
+  {
+   "id": "s02",
+   "at_word": 4,
+   "say": "он бес сантиметрге дейін — сызғыш"
+  },
+  {
+   "id": "s03",
+   "at_word": 12,
+   "say": "биіктігі шамамен 330 метр"
+  },
+  {
+   "id": "s04",
+   "at_word": 21,
+   "say": "туристер күледі — гүл ме?"
+  },
+  {
+   "id": "s05",
+   "at_word": 30,
+   "say": "ешқандай сиқыр жоқ"
+  },
+  {
+   "id": "s06",
+   "at_word": 35,
+   "say": "жеті мың тоннадан астам темір — таразы"
+  },
+  {
+   "id": "s07",
+   "at_word": 42,
+   "say": "темір қызса, ұлғаяды — от"
+  },
+  {
+   "id": "s08",
+   "at_word": 46,
+   "say": "жазғы күн, бөлшек созылады"
+  },
+  {
+   "id": "s09",
+   "at_word": 56,
+   "say": "бөлшектер 18 мыңнан асады"
+  },
+  {
+   "id": "s10",
+   "at_word": 63,
+   "say": "мұнараның басы көкке көтеріледі"
+  },
+  {
+   "id": "s11",
+   "at_word": 71,
+   "say": "таңертең аласа, түсте биік"
+  },
+  {
+   "id": "s12",
+   "at_word": 75,
+   "say": "мұнара дем алып тұрғандай"
+  },
+  {
+   "id": "s13",
+   "at_word": 79,
+   "say": "күн бір жағын қыздырады"
+  },
+  {
+   "id": "s14",
+   "at_word": 87,
+   "say": "басы күннен теріс иіледі"
+  },
+  {
+   "id": "s15",
+   "at_word": 97,
+   "say": "ұшы шеңбер сызады"
+  },
+  {
+   "id": "s16",
+   "at_word": 107,
+   "say": "қыста мұнара аласарады"
+  },
+  {
+   "id": "s17",
+   "at_word": 114,
+   "say": "көпір мен рельстерде саңылау"
+  },
+  {
+   "id": "s18",
+   "at_word": 121,
+   "say": "әйтпесе майысып кетер еді"
+  },
+  {
+   "id": "s19",
+   "at_word": 128,
+   "say": "бойым өсті десе, сенбе"
+  },
+  {
+   "id": "s20",
+   "at_word": 135,
+   "say": "сылтау тек Эйфельге жарасады"
+  }
+ ],
+ "shots": [
+  {
+   "id": "film",
+   "media": "../film.mp4",
+   "sfx": [
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/boing.wav",
+     "at": 1.25,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 3.336,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 10.465,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 14.892,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 17.878,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 24.381,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 27.963,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 51.933,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/boing.wav",
+     "at": 54.526,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/fanfare.wav",
+     "at": 57.389,
+     "vol": 0.5
+    }
+   ]
+  }
+ ]
+}

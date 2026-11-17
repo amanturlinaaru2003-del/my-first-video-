@@ -1,0 +1,189 @@
+{
+ "work_dir": "_work_multik",
+ "voice": "_work_multik/voice.wav",
+ "words": "_work_multik/words_out.json",
+ "out": "/home/user/my-first-video-/shorts/renders/02-dukendegi-nan.mp4",
+ "tail": 0.5,
+ "xfade": 0.13,
+ "subs": {
+  "size": 92,
+  "y": 0.7,
+  "outline": 5,
+  "shadow": 3,
+  "max_words": 2,
+  "max_chars": 14,
+  "short": 3,
+  "strip_end_punct": true
+ },
+ "music": {
+  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "from": 0,
+  "volume": 0.26
+ },
+ "sfx_volume": 0.6,
+ "scenes": [
+  {
+   "id": "s01",
+   "at_word": 0,
+   "say": "Сен дүкенге тек нан алуға кірдің — есік"
+  },
+  {
+   "id": "s02",
+   "at_word": 6,
+   "say": "шыққанда екі толы пакет"
+  },
+  {
+   "id": "s03",
+   "at_word": 12,
+   "say": "Таныс па?"
+  },
+  {
+   "id": "s04",
+   "at_word": 14,
+   "say": "Бұл жоспар — менеджер"
+  },
+  {
+   "id": "s05",
+   "at_word": 20,
+   "say": "нан мен сүт ең түкпірде — карта"
+  },
+  {
+   "id": "s06",
+   "at_word": 30,
+   "say": "бүкіл дүкенді аралап өтесің — ұзын қатар"
+  },
+  {
+   "id": "s07",
+   "at_word": 40,
+   "say": "гүлдер мен нанның иісі"
+  },
+  {
+   "id": "s08",
+   "at_word": 49,
+   "say": "әмияныңды ашасың"
+  },
+  {
+   "id": "s09",
+   "at_word": 53,
+   "say": "печенье, шоколад, акция"
+  },
+  {
+   "id": "s10",
+   "at_word": 59,
+   "say": "екеуін ал, үшіншісі тегін"
+  },
+  {
+   "id": "s11",
+   "at_word": 63,
+   "say": "жемістер кіре берісте"
+  },
+  {
+   "id": "s12",
+   "at_word": 71,
+   "say": "тәттілер кассаның жанында"
+  },
+  {
+   "id": "s13",
+   "at_word": 78,
+   "say": "қымбат тауар көз алдында"
+  },
+  {
+   "id": "s14",
+   "at_word": 86,
+   "say": "арзаны ең төменде"
+  },
+  {
+   "id": "s15",
+   "at_word": 95,
+   "say": "музыка да бекер ойнамайды"
+  },
+  {
+   "id": "s16",
+   "at_word": 100,
+   "say": "баяу әуен — баяу жүріс"
+  },
+  {
+   "id": "s17",
+   "at_word": 110,
+   "say": "арба да үлкен"
+  },
+  {
+   "id": "s18",
+   "at_word": 113,
+   "say": "бос арбаны толтырғың келеді"
+  },
+  {
+   "id": "s19",
+   "at_word": 117,
+   "say": "бәрі ойластырылған"
+  },
+  {
+   "id": "s20",
+   "at_word": 125,
+   "say": "тізіммен бар"
+  },
+  {
+   "id": "s21",
+   "at_word": 129,
+   "say": "тоқ қарынмен бар"
+  },
+  {
+   "id": "s22",
+   "at_word": 132,
+   "say": "несиемен шығасың"
+  }
+ ],
+ "shots": [
+  {
+   "id": "film",
+   "media": "../film.mp4",
+   "sfx": [
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 0.13,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/boing.wav",
+     "at": 3.545,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/paper.wav",
+     "at": 8.669,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/steps.wav",
+     "at": 14.871,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 20.972,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 24.924,
+     "vol": 0.7
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 36.989,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 49.605,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/sad.wav",
+     "at": 60.703,
+     "vol": 0.6
+    }
+   ]
+  }
+ ]
+}

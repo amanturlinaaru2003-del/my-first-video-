@@ -229,7 +229,7 @@ def main():
     # длинный граф — файлом (ffmpeg 7+), короткий — строкой: так работает и на старых сборках ffmpeg
     if len(chain) > 20000:
         open(os.path.join(work, "_video.fc"), "w", encoding="utf-8").write(chain)
-        fc_args = ["-/filter_complex", "_video.fc"]
+        fc_args = ["-filter_complex_script", "_video.fc"]
     else:
         fc_args = ["-filter_complex", chain]
     vid = os.path.join(work, "_video.mp4")

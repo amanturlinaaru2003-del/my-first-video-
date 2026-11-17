@@ -1,0 +1,36 @@
+{"accent": ["100", "он", "төрт", "екі", "дофамин", "өшір", "ақ-қара", "апарма", "суға"],
+ "music_volume": 0.11,
+ "scenes": [
+  {"w": 0, "kind": "objects", "size": 124, "say": true, "items": [{"emoji": "📱", "at": {"w": 0}, "x": 0.5, "y": 0.36, "size": 420}]},
+  {"w": 8, "kind": "objects", "size": 124, "say": true, "items": [
+     {"text": "10?", "at": {"w": 8}, "x": 0.3, "y": 0.36, "size": 220},
+     {"text": "20?", "at": {"w": 10}, "x": 0.7, "y": 0.36, "size": 220}]},
+  {"w": 11, "kind": "counter", "value": 100, "from": 0, "count_at": {"w": 18}, "size": 420, "sub": "рет күніне", "sub_size": 110},
+  {"w": 21, "kind": "objects", "size": 124, "say": true, "items": [{"emoji": "⏱️", "at": {"w": 23}, "x": 0.5, "y": 0.36, "size": 400, "label": "әр 10 минут", "label_size": 70}]},
+  {"w": 29, "kind": "counter", "value": 4, "from": 0, "count_at": {"w": 32}, "suffix": "+ сағ", "size": 270, "sub": "экранға күніне", "sub_size": 100},
+  {"w": 37, "kind": "counter", "value": 2, "from": 0, "count_at": {"w": 40}, "suffix": " ай", "size": 360, "sub": "жылына", "sub_size": 110},
+  {"w": 44, "kind": "objects", "size": 124, "say": true, "items": [
+     {"emoji": "🔔", "at": {"w": 46}, "x": 0.3, "y": 0.34, "size": 260},
+     {"emoji": "🧠", "at": {"w": 47}, "x": 0.7, "y": 0.34, "size": 260}]},
+  {"w": 51, "kind": "objects", "size": 124, "say": true, "items": [{"emoji": "🎁", "at": {"w": 53}, "x": 0.5, "y": 0.36, "size": 380}]},
+  {"w": 59, "kind": "objects", "size": 124, "say": true, "items": [{"emoji": "🎰", "at": {"w": 60}, "x": 0.5, "y": 0.36, "size": 420}]},
+  {"w": 64, "kind": "text", "size": 140},
+  {"w": 69, "kind": "objects", "size": 110, "say": true, "items": [
+     {"text": "1", "at": {"w": 69}, "x": 0.5, "y": 0.16, "size": 180},
+     {"emoji": "🔕", "at": {"w": 70}, "x": 0.5, "y": 0.4, "size": 340, "click": {"w": 72}}]},
+  {"w": 73, "kind": "objects", "size": 110, "say": true, "items": [
+     {"text": "2", "at": {"w": 73}, "x": 0.5, "y": 0.16, "size": 180},
+     {"emoji": "🖤", "at": {"w": 74}, "x": 0.35, "y": 0.4, "size": 260},
+     {"emoji": "🤍", "at": {"w": 75}, "x": 0.65, "y": 0.4, "size": 260}]},
+  {"w": 82, "kind": "objects", "size": 110, "say": true, "items": [
+     {"text": "3", "at": {"w": 82}, "x": 0.5, "y": 0.16, "size": 180},
+     {"emoji": "🛏️", "at": {"w": 83}, "x": 0.4, "y": 0.4, "size": 300},
+     {"emoji": "🚫", "at": {"w": 86}, "x": 0.66, "y": 0.34, "size": 180}]},
+  {"w": 87, "kind": "objects", "size": 110, "say": true, "items": [
+     {"text": "4", "at": {"w": 87}, "x": 0.5, "y": 0.16, "size": 180},
+     {"emoji": "🌅", "at": {"w": 88}, "x": 0.33, "y": 0.4, "size": 260},
+     {"emoji": "🥛", "at": {"w": 94}, "x": 0.67, "y": 0.4, "size": 260}]},
+  {"w": 98, "kind": "objects", "size": 110, "say": true, "items": [
+     {"emoji": "📵", "at": {"w": 105}, "x": 0.3, "y": 0.36, "size": 260},
+     {"emoji": "🪟", "at": {"w": 107}, "x": 0.7, "y": 0.36, "size": 260}]}
+ ]}

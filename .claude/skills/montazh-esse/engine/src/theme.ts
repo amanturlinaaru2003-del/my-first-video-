@@ -13,11 +13,22 @@ export const C = {
 };
 
 export const FONT = "SFPro, Helvetica Neue, Arial, sans-serif";
+
+// Размер кадра: 1920×1080 по умолчанию, plan.width/plan.height для вертикали (Main вызывает setFrame)
+export let FW = 1920;
+export let FH = 1080;
+export const setFrame = (w: number, h: number) => { FW = w; FH = h; };
 export const TRACK = "-0.045em"; // плотный трекинг, как в образце
 
-for (const [w, f] of [["400", "Regular"], ["500", "Medium"], ["600", "Semibold"], ["700", "Bold"]]) {
-  loadFont({ family: "SFPro", url: staticFile(`fonts/SFProDisplay-${f}.otf`), weight: w });
-}
+// Шрифт: по умолчанию SF Pro Display из assets/fonts; plan.fonts = {"700": "Inter.ttf", ...} — другой файл
+// (например, свободный Inter, если SF Pro нет: у Inter есть все буквы казахского алфавита).
+const SF = { "400": "SFProDisplay-Regular.otf", "500": "SFProDisplay-Medium.otf", "600": "SFProDisplay-Semibold.otf", "700": "SFProDisplay-Bold.otf" };
+let fontsLoaded = false;
+export const loadFonts = (files?: Record<string, string>) => {
+  if (fontsLoaded) return;
+  fontsLoaded = true;
+  for (const [w, f] of Object.entries(files ?? SF)) loadFont({ family: "SFPro", url: staticFile(`fonts/${f}`), weight: w });
+};
 
 export const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 export const easeOut = (t: number) => 1 - Math.pow(1 - clamp(t), 3);
@@ -43,4 +54,4 @@ export const rnd = (seed: number) => {
   return x - Math.floor(x);
 };
 
-export const norm = (s: string) => s.toLowerCase().replace(/ё/g, "е").replace(/[^a-zа-я0-9]/g, "");
+export const norm = (s: string) => s.toLowerCase().replace(/ё/g, "е").replace(/[^a-zа-яәғқңөұүһі0-9]/g, "");

@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { DARK_KINDS, KINDS } from "./scenes";
 import { setEmojiStyle } from "./media";
-import { C, FONT, appleIn, appleOut, clamp, easeInOut, lerp, norm } from "./theme";
+import { C, FONT, loadFonts, setFrame, appleIn, appleOut, clamp, easeInOut, lerp, norm } from "./theme";
 import type { Ctx, Plan, Scene, Sfx } from "./types";
 
 // Переходы, кадры при 30 к/с. pre — старое содержимое уходит ДО стыка (на стыке его уже нет — текст не налезает),
@@ -131,6 +131,8 @@ const autoSfx = (plan: Plan): Sfx[] => {
 };
 
 export const Main: React.FC<{ plan: Plan }> = ({ plan }) => {
+  setFrame(plan.width ?? 1920, plan.height ?? 1080);
+  loadFonts(plan.fonts);
   const { fps, durationInFrames } = useVideoConfig();
   setEmojiStyle(plan.emoji);
   const scenes = [...plan.scenes].sort((a, b) => a.at - b.at).map((sc) => ({ ...sc, dark: isDark(sc) }));

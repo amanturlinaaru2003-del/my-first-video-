@@ -125,7 +125,7 @@ def main():
         "voice_volume": plan.get("voice_volume", 1),
         "words": [{"w": w["w"], "s": w["s"], "e": w["e"]} for w in wo["words"]],
     }
-    for k in ("music", "sfx", "sfx_volume", "sfx_list", "accent", "emoji", "overlays", "phrase", "scenes"):
+    for k in ("width", "height", "fonts", "music", "sfx", "sfx_volume", "sfx_list", "accent", "emoji", "overlays", "phrase", "scenes"):
         if k in p: props[k] = p[k]
     lint(props["scenes"], props["duration"])
     props_path = os.path.join(work, "props.json")

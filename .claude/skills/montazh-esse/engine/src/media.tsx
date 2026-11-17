@@ -26,7 +26,7 @@ export const Pic: React.FC<{ src: string; style?: React.CSSProperties }> = ({ sr
     if (EMOJI_STYLE === "system")
       return (
         <div style={{ ...style, display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1 }}>
-          <span style={{ fontSize: "inherit" }}>{e}</span>
+          <span style={{ fontSize: typeof style?.width === "number" ? style.width * 0.84 : "inherit", fontFamily: "Noto Color Emoji, Apple Color Emoji, Segoe UI Emoji, sans-serif" }}>{e}</span>
         </div>
       );
     return <Img src={emojiUrl(e)} style={{ objectFit: "contain", ...style }} />;

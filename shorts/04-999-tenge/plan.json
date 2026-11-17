@@ -1,0 +1,164 @@
+{
+ "work_dir": "_work_multik",
+ "voice": "_work_multik/voice.wav",
+ "words": "_work_multik/words_out.json",
+ "out": "/home/user/my-first-video-/shorts/renders/04-999-tenge.mp4",
+ "tail": 0.5,
+ "xfade": 0.13,
+ "subs": {
+  "size": 92,
+  "y": 0.7,
+  "outline": 5,
+  "shadow": 3,
+  "max_words": 2,
+  "max_chars": 14,
+  "short": 3,
+  "strip_end_punct": true
+ },
+ "music": {
+  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "from": 0,
+  "volume": 0.26
+ },
+ "sfx_volume": 0.6,
+ "scenes": [
+  {
+   "id": "s01",
+   "at_word": 0,
+   "say": "бағалар неге 999 — баға белгісі"
+  },
+  {
+   "id": "s02",
+   "at_word": 6,
+   "say": "неге мың емес?"
+  },
+  {
+   "id": "s03",
+   "at_word": 9,
+   "say": "бір теңгенің айырмасы"
+  },
+  {
+   "id": "s04",
+   "at_word": 15,
+   "say": "миың олай ойламайды"
+  },
+  {
+   "id": "s05",
+   "at_word": 19,
+   "say": "солдан оңға оқиды, бірінші цифрға жабысады"
+  },
+  {
+   "id": "s06",
+   "at_word": 29,
+   "say": "999 — тоғыз жүз, 1000 — мың — таразы"
+  },
+  {
+   "id": "s07",
+   "at_word": 37,
+   "say": "айырмасы бір теңге, сезімі басқа"
+  },
+  {
+   "id": "s08",
+   "at_word": 44,
+   "say": "миың тоғыз жүз деп шешеді"
+  },
+  {
+   "id": "s09",
+   "at_word": 54,
+   "say": "ғалымдар: сол жақ цифр әсері"
+  },
+  {
+   "id": "s10",
+   "at_word": 62,
+   "say": "бір көйлек: 34, 39, 44"
+  },
+  {
+   "id": "s11",
+   "at_word": 72,
+   "say": "ең көп сатылғаны — 39"
+  },
+  {
+   "id": "s12",
+   "at_word": 81,
+   "say": "жеңілдік сияқты"
+  },
+  {
+   "id": "s13",
+   "at_word": 87,
+   "say": "киімде, телефонда, пәтерде"
+  },
+  {
+   "id": "s14",
+   "at_word": 98,
+   "say": "біле тұра алданамыз"
+  },
+  {
+   "id": "s15",
+   "at_word": 106,
+   "say": "дүкендер бір теңгені құрбан етеді"
+  },
+  {
+   "id": "s16",
+   "at_word": 113,
+   "say": "4990-ды бес мың деп оқы"
+  },
+  {
+   "id": "s17",
+   "at_word": 124,
+   "say": "бір теңгелік айла ұтып кетеді"
+  }
+ ],
+ "shots": [
+  {
+   "id": "film",
+   "media": "../film.mp4",
+   "sfx": [
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 1.39,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/boing.wav",
+     "at": 4.238,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 11.091,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 14.536,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 21.086,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 32.736,
+     "vol": 0.7
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/paper.wav",
+     "at": 35.899,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 49.339,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/sad.wav",
+     "at": 55.505,
+     "vol": 0.5
+    }
+   ]
+  }
+ ]
+}

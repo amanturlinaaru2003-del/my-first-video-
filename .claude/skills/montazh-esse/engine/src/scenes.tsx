@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { KText, Phrase, autoPhrases, linesPhrase } from "./text";
 import { MediaTrack, Pic, activeIndex, mediaTimes, toMedia } from "./media";
-import { C, FONT, TRACK, appleOut, clamp, easeInOut, lerp, pop } from "./theme";
+import { C, FONT, FH, FW, TRACK, appleOut, clamp, easeInOut, lerp, pop } from "./theme";
 import type { Caption, Ctx, Media } from "./types";
 
 // Все размеры — в пикселях кадра 1920×1080 (образец)
@@ -27,7 +27,7 @@ const SpeechText: React.FC<{ ctx: Ctx; size: number; y: number; dark?: boolean; 
       {shadow && ph.length > 0 && (
         <AbsoluteFill
           style={{
-            background: `radial-gradient(ellipse 70% ${Math.round((size * 2.4 * 100) / 1080)}% at 50% ${y * 100}%, rgba(0,0,0,0.55), rgba(0,0,0,0) 100%)`,
+            background: `radial-gradient(ellipse 70% ${Math.round((size * 2.4 * 100) / FH)}% at 50% ${y * 100}%, rgba(0,0,0,0.55), rgba(0,0,0,0) 100%)`,
           }}
         />
       )}
@@ -84,17 +84,17 @@ const CardScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
   const cap: Caption | undefined = cur?.caption ?? sc.caption;
   const hasCap = !!(sc.caption || media.some((m) => m.caption));
   const num: string | undefined = sc.num;
-  const w = sc.width ? sc.width * 1920 : hasCap ? 1335 : num ? 1435 : 1600;
+  const w = sc.width ? sc.width * FW : hasCap ? 1335 : num ? 1435 : 1600;
   const h = w / (sc.aspect ?? 16 / 9);
-  const x = sc.x !== undefined ? sc.x * 1920 - w / 2 : (1920 - w) / 2 + (num ? 125 : 0);
-  const y = sc.cy !== undefined ? sc.cy * 1080 - h / 2 : hasCap ? 75 : (1080 - h) / 2;
+  const x = sc.x !== undefined ? sc.x * FW - w / 2 : (FW - w) / 2 + (num ? 125 : 0);
+  const y = sc.cy !== undefined ? sc.cy * FH - h / 2 : hasCap ? 75 : (FH - h) / 2;
   return (
     <AbsoluteFill>
       {num && (
         <div
           style={{
             position: "absolute",
-            right: 1920 - x + 22,
+            right: FW - x + 22,
             top: y + h - 270,
             fontFamily: FONT,
             fontWeight: 700,
@@ -156,7 +156,7 @@ const ActScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
             position: "absolute",
             left: 0,
             right: 0,
-            top: 540 - size * 0.95,
+            top: FH / 2 - size * 0.95,
             textAlign: "center",
             fontFamily: FONT,
             fontWeight: 600,
@@ -216,7 +216,7 @@ const WallScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
     }
   return (
     <AbsoluteFill style={{ background: "#070707" }}>
-      <div style={{ position: "absolute", left: 960, top: 540, perspective: 1100, perspectiveOrigin: "0 0" }}>
+      <div style={{ position: "absolute", left: FW / 2, top: FH / 2, perspective: 1100, perspectiveOrigin: "0 0" }}>
         <div style={{ transformStyle: "preserve-3d", transform: `translateZ(${R - 380}px)` }}>{tiles}</div>
       </div>
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at center, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.85) 100%)" }} />
@@ -233,8 +233,8 @@ const GridScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
   const media: Media[] = (sc.media ?? []).map(toMedia);
   const cols = sc.cols ?? 3;
   const rows = Math.ceil(media.length / cols);
-  const w = 1920 / cols;
-  const h = 1080 / rows;
+  const w = FW / cols;
+  const h = FH / rows;
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {media.map((m, i) => {
@@ -285,8 +285,8 @@ const ObjectsScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
         const cf = it.click !== undefined ? (it.click - ctx.t0) * fps : null;
         const press = cf !== null ? 1 - 0.07 * Math.sin(Math.PI * clamp((f - cf) / (6 * (fps / 30)))) : 1;
         const src = it.emoji ? `emoji:${it.emoji}` : it.src;
-        const cx = (it.x ?? 0.5) * 1920;
-        const cy = (it.y ?? 0.42) * 1080;
+        const cx = (it.x ?? 0.5) * FW;
+        const cy = (it.y ?? 0.42) * FH;
         return (
           <div key={i} style={{ position: "absolute", left: cx - size / 2, top: cy - size / 2, width: size }}>
             <div style={{ width: size, height: size, transform: `scale(${p * press}) rotate(${(1 - clamp(p)) * -12}deg)` }}>
@@ -356,7 +356,7 @@ const QrScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
   const cy = sc.cy ?? 0.42;
   return (
     <AbsoluteFill>
-      <div style={{ position: "absolute", left: 960 - cw / 2, top: cy * 1080 - cw * 0.55, width: cw, transform: `scale(${p})` }}>
+      <div style={{ position: "absolute", left: FW / 2 - cw / 2, top: cy * FH - cw * 0.55, width: cw, transform: `scale(${p})` }}>
         <div style={{ position: "absolute", left: cw / 2 - 36, top: -40, width: 72, height: 72, borderRadius: 36, background: "#fff", boxShadow: SHADOW, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
           {sc.badge ? (
             <Pic src={sc.badge} style={{ width: 44, height: 44 }} />
@@ -379,7 +379,7 @@ const QrScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
             position: "absolute",
             left: 0,
             right: 0,
-            top: cy * 1080 + cw * 0.62,
+            top: cy * FH + cw * 0.62,
             textAlign: "center",
             fontFamily: FONT,
             fontWeight: 600,
@@ -394,7 +394,7 @@ const QrScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
           {sc.note}
         </div>
       ) : (
-        <SpeechText ctx={ctx} size={sc.size ?? 70} y={cy + (cw * 0.72) / 1080} />
+        <SpeechText ctx={ctx} size={sc.size ?? 70} y={cy + (cw * 0.72) / FH} />
       )}
     </AbsoluteFill>
   );
@@ -402,7 +402,7 @@ const QrScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
 
 // ---------------------------------------------------------------- stat: виджет статистики
 const fmt = (n: number, dec: number) =>
-  n.toLocaleString("ru-RU", { minimumFractionDigits: dec, maximumFractionDigits: dec }).replace(/ /g, ".");
+  n.toLocaleString("ru-RU", { minimumFractionDigits: dec, maximumFractionDigits: dec }).replace(/[\s\u202f\u00a0]/g, "\u00a0");
 
 const StatScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
   const f = useCurrentFrame();
@@ -426,8 +426,8 @@ const StatScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
       <div
         style={{
           position: "absolute",
-          left: (sc.x ?? 0.5) * 1920 - W / 2,
-          top: (sc.cy ?? 0.5) * 1080 - 150,
+          left: (sc.x ?? 0.5) * FW - W / 2,
+          top: (sc.cy ?? 0.5) * FH - 150,
           width: W,
           background: "#fff",
           borderRadius: 30,
@@ -505,8 +505,8 @@ const ChartScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
       <div
         style={{
           position: "absolute",
-          left: 960 - W / 2 - 40,
-          top: (sc.cy ?? 0.5) * 1080 - 230,
+          left: FW / 2 - W / 2 - 40,
+          top: (sc.cy ?? 0.5) * FH - 230,
           width: W + 80,
           background: "#fff",
           border: "3px solid #222",
@@ -563,7 +563,7 @@ const CounterScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
             position: "absolute",
             left: 0,
             right: 0,
-            top: cy * 1080,
+            top: cy * FH,
             transform: `translateY(-50%) scale(${lerp(1.08, 1, p)})`,
             filter: p < 0.999 ? `blur(${(1 - p) * 20}px)` : undefined,
             opacity: clamp(p * 1.6),
@@ -579,11 +579,11 @@ const CounterScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
           }}
         >
           {sc.prefix ?? ""}
-          {fmt(val, sc.decimals ?? 0)}
+          {sc.plain ? val.toFixed(sc.decimals ?? 0).replace(".", ",") : fmt(val, sc.decimals ?? 0)}
           {sc.suffix ?? ""}
         </div>
       )}
-      {sub.length > 0 && <KText phrases={sub} size={sc.sub_size ?? 96} y={cy + (size * 0.5 + 90) / 1080} />}
+      {sub.length > 0 && <KText phrases={sub} size={sc.sub_size ?? 96} y={cy + (size * 0.5 + 90) / FH} />}
     </AbsoluteFill>
   );
 };
@@ -596,8 +596,8 @@ const ChatScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
   const t = ctx.t0 + f / fps;
   const W = sc.w ?? 1240;
   const H = sc.h ?? 700;
-  const x = 960 - W / 2;
-  const y = (sc.cy ?? 0.5) * 1080 - H / 2;
+  const x = FW / 2 - W / 2;
+  const y = (sc.cy ?? 0.5) * FH - H / 2;
   const p = pop(f, fps, 0);
   const prompt: string = sc.prompt ?? "напиши текст про…";
   const typeAt = sc.type_at ?? ctx.t0 + 0.15;
@@ -722,8 +722,8 @@ const TiltScene: React.FC<{ ctx: Ctx }> = ({ ctx }) => {
             key={i}
             style={{
               position: "absolute",
-              left: xs[i] * 1920 - w / 2,
-              top: 540 - h / 2 + float,
+              left: xs[i] * FW - w / 2,
+              top: FH / 2 - h / 2 + float,
               width: w,
               height: h,
               borderRadius: 34,

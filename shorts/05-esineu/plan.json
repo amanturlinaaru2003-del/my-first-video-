@@ -1,0 +1,189 @@
+{
+ "work_dir": "_work_multik",
+ "voice": "_work_multik/voice.wav",
+ "words": "_work_multik/words_out.json",
+ "out": "/home/user/my-first-video-/shorts/renders/05-esineu.mp4",
+ "tail": 0.5,
+ "xfade": 0.13,
+ "subs": {
+  "size": 92,
+  "y": 0.7,
+  "outline": 5,
+  "shadow": 3,
+  "max_words": 2,
+  "max_chars": 14,
+  "short": 3,
+  "strip_end_punct": true
+ },
+ "music": {
+  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "from": 0,
+  "volume": 0.26
+ },
+ "sfx_volume": 0.6,
+ "scenes": [
+  {
+   "id": "s01",
+   "at_word": 0,
+   "say": "Қазір мен есінеймін — кейіпкер есінейді"
+  },
+  {
+   "id": "s02",
+   "at_word": 3,
+   "say": "ал сен де есінейсің — көрерменге нұсқайды"
+  },
+  {
+   "id": "s03",
+   "at_word": 7,
+   "say": "Сенбейсің бе? Күте тұр — секундомер"
+  },
+  {
+   "id": "s04",
+   "at_word": 11,
+   "say": "Есінеу — жұқпалы — ескерту белгісі"
+  },
+  {
+   "id": "s05",
+   "at_word": 14,
+   "say": "бөлмедегілердің жартысы ілеседі — бөлме"
+  },
+  {
+   "id": "s06",
+   "at_word": 20,
+   "say": "есінеу туралы оқудың өзі жеткілікті — кітап"
+  },
+  {
+   "id": "s07",
+   "at_word": 26,
+   "say": "мұғалім есінесе, бүкіл сынып — сынып"
+  },
+  {
+   "id": "s08",
+   "at_word": 32,
+   "say": "бастық есінесе, бәрі аузын жабады — жиналыс"
+  },
+  {
+   "id": "s09",
+   "at_word": 40,
+   "say": "Есінеу бізбен бірге туады — нәресте"
+  },
+  {
+   "id": "s10",
+   "at_word": 44,
+   "say": "анасының ішіндегі нәресте — УДЗ экраны"
+  },
+  {
+   "id": "s11",
+   "at_word": 49,
+   "say": "Ғалымдар ұзақ таласты — дау"
+  },
+  {
+   "id": "s12",
+   "at_word": 52,
+   "say": "біз неге есінейміз? — сұрақ"
+  },
+  {
+   "id": "s13",
+   "at_word": 55,
+   "say": "миды салқындатады — ми мен мұз"
+  },
+  {
+   "id": "s14",
+   "at_word": 61,
+   "say": "мида желдеткіш — желдеткіш"
+  },
+  {
+   "id": "s15",
+   "at_word": 69,
+   "say": "Ал неге жұғады? — сұрақ белгісі"
+  },
+  {
+   "id": "s16",
+   "at_word": 72,
+   "say": "жақындарымызды қайталаймыз — айна-достар"
+  },
+  {
+   "id": "s17",
+   "at_word": 77,
+   "say": "Зерттеулер: бөтен адамнан гөрі — график"
+  },
+  {
+   "id": "s18",
+   "at_word": 82,
+   "say": "досыңның есінеуі тезірек — дос"
+  },
+  {
+   "id": "s19",
+   "at_word": 86,
+   "say": "иттер де иесінен — ит"
+  },
+  {
+   "id": "s20",
+   "at_word": 92,
+   "say": "жанашырлықтың белгісі — жүрек"
+  },
+  {
+   "id": "s21",
+   "at_word": 97,
+   "say": "Ал енді шыныңды айт — жақын план"
+  },
+  {
+   "id": "s22",
+   "at_word": 101,
+   "say": "неше рет есінедің? — есептегіш"
+  }
+ ],
+ "shots": [
+  {
+   "id": "film",
+   "media": "../film.mp4",
+   "sfx": [
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/boing.wav",
+     "at": 0.71,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 4.08,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 5.687,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 8.765,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 24.214,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 30.837,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 39.847,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/boing.wav",
+     "at": 43.232,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/fanfare.wav",
+     "at": 51.012,
+     "vol": 0.5
+    }
+   ]
+  }
+ ]
+}

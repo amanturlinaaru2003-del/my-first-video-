@@ -211,7 +211,7 @@ def main():
     fcp = os.path.join(work, "cut_filter.txt")
     open(fcp, "w", encoding="utf-8").write(";\n".join(fc))
     voice = os.path.join(work, "voice.wav")
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-/filter_complex", fcp, "-map", "[a]",
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-filter_complex_script", fcp, "-map", "[a]",
                     "-ar", "48000", "-ac", "2", "-c:a", "pcm_s16le", voice], check=True)
 
     subs = plan.get("subs", {})

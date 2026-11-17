@@ -458,7 +458,7 @@ def prepare_cut(plan, rp, src, dur, fps, work):
         fc.append(f"[vc]{gr or TO_RGB + ',' + TO_YUV}[v]")
         fcp = os.path.join(work, "cut_filter.txt")
         open(fcp, "w", encoding="utf-8").write(";\n".join(fc))
-        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-/filter_complex", fcp,
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-filter_complex_script", fcp,
                         "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "ultrafast", "-crf", "8",
                         "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
                         "-c:a", "pcm_s16le", cut_path], check=True)

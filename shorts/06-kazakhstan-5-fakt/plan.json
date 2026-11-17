@@ -1,0 +1,410 @@
+{
+ "source": "voice.wav",
+ "words": "words.json",
+ "cuts": {
+  "takes": [
+   [
+    0.0,
+    68.09
+   ]
+  ],
+  "max_gap": 0.4,
+  "verbatim": false
+ },
+ "subs": {
+  "lower": false
+ },
+ "scenes": [
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🇰🇿",
+     "at": 0.13,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 413
+    }
+   ],
+   "size": 124,
+   "at": 0.0
+  },
+  {
+   "kind": "act",
+   "label": "факт 1:",
+   "title": "Бірінші",
+   "size": 200,
+   "at": 3.7
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🌍",
+     "at": 4.41,
+     "x": 0.5,
+     "y": 0.34,
+     "size": 436
+    }
+   ],
+   "size": 124,
+   "at": 5.04
+  },
+  {
+   "kind": "counter",
+   "value": 9,
+   "from": 1,
+   "count_at": 6.71,
+   "suffix": "",
+   "size": 360,
+   "sub": "орын",
+   "sub_size": 130,
+   "at": 6.66
+  },
+  {
+   "kind": "counter",
+   "value": 2.7,
+   "from": 0,
+   "decimals": 1,
+   "plain": true,
+   "count_at": 8.816,
+   "suffix": " млн км²",
+   "size": 190,
+   "at": 8.126
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🌊",
+     "at": 12.009,
+     "x": 0.3,
+     "y": 0.32,
+     "size": 287
+    },
+    {
+     "emoji": "🚫",
+     "at": 13.089,
+     "x": 0.7,
+     "y": 0.32,
+     "size": 287
+    },
+    {
+     "emoji": "🥇",
+     "at": 14.629,
+     "x": 0.5,
+     "y": 0.55,
+     "size": 345
+    }
+   ],
+   "size": 124,
+   "at": 11.819
+  },
+  {
+   "kind": "act",
+   "label": "факт 2:",
+   "title": "Екінші",
+   "size": 200,
+   "at": 15.91
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🚀",
+     "at": 17.68,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 459
+    }
+   ],
+   "size": 124,
+   "at": 17.63
+  },
+  {
+   "kind": "text",
+   "lines": [
+    "Байқоңыр",
+    {
+     "t": "әлемдегі [алғашқы] әрі ең ірі ғарыш айлағы",
+     "size": 0.42
+    }
+   ],
+   "size": 150,
+   "at": 20.31
+  },
+  {
+   "kind": "counter",
+   "value": 1957,
+   "from": 1900,
+   "plain": true,
+   "count_at": 24.847,
+   "size": 300,
+   "at": 24.797
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🛰️",
+     "at": 28.407,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 436
+    }
+   ],
+   "size": 124,
+   "at": 26.677
+  },
+  {
+   "kind": "counter",
+   "value": 1961,
+   "from": 1957,
+   "plain": true,
+   "count_at": 30.53,
+   "size": 300,
+   "at": 30.24
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "👨‍🚀",
+     "at": 32.41,
+     "x": 0.5,
+     "y": 0.32,
+     "size": 413,
+     "label": "Юрий Гагарин",
+     "label_size": 52
+    }
+   ],
+   "size": 124,
+   "at": 32.36
+  },
+  {
+   "kind": "act",
+   "label": "факт 3:",
+   "title": "Үшінші",
+   "size": 200,
+   "at": 36.248
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🍎",
+     "at": 36.998,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 459
+    }
+   ],
+   "size": 124,
+   "at": 37.448
+  },
+  {
+   "kind": "text",
+   "size": 150,
+   "at": 38.879
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "⛰️",
+     "at": 42.969,
+     "x": 0.5,
+     "y": 0.28,
+     "size": 368
+    },
+    {
+     "emoji": "🍏",
+     "at": 44.169,
+     "x": 0.5,
+     "y": 0.52,
+     "size": 252,
+     "label": "Сиверс алмасы",
+     "label_size": 48
+    }
+   ],
+   "size": 124,
+   "at": 42.919
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🌳",
+     "at": 46.646,
+     "x": 0.28,
+     "y": 0.4,
+     "size": 299
+    },
+    {
+     "emoji": "🌳",
+     "at": 47.366,
+     "x": 0.72,
+     "y": 0.4,
+     "size": 299
+    },
+    {
+     "emoji": "🍎",
+     "at": 48.668,
+     "x": 0.5,
+     "y": 0.3,
+     "size": 184
+    }
+   ],
+   "size": 124,
+   "at": 45.476
+  },
+  {
+   "kind": "act",
+   "label": "факт 4:",
+   "title": "Төртінші",
+   "size": 200,
+   "at": 49.993
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🌊",
+     "at": 50.683,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 459
+    }
+   ],
+   "size": 124,
+   "at": 51.453
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🌊",
+     "at": 56.679,
+     "x": 0.25,
+     "y": 0.38,
+     "size": 299,
+     "label": "Каспий",
+     "label_size": 52
+    },
+    {
+     "text": "≈",
+     "at": 58.659,
+     "x": 0.5,
+     "y": 0.38,
+     "size": 229
+    },
+    {
+     "emoji": "🗾",
+     "at": 57.779,
+     "x": 0.75,
+     "y": 0.38,
+     "size": 299,
+     "label": "Жапония",
+     "label_size": 52
+    }
+   ],
+   "size": 124,
+   "at": 56.629
+  },
+  {
+   "kind": "act",
+   "label": "факт 5:",
+   "title": "Бесінші",
+   "size": 200,
+   "at": 60.169
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "🌾",
+     "at": 61.079,
+     "x": 0.3,
+     "y": 0.36,
+     "size": 322
+    },
+    {
+     "emoji": "🐎",
+     "at": 61.379,
+     "x": 0.7,
+     "y": 0.36,
+     "size": 322
+    }
+   ],
+   "size": 124,
+   "at": 61.329
+  },
+  {
+   "kind": "objects",
+   "say": true,
+   "items": [
+    {
+     "emoji": "💬",
+     "at": 66.654,
+     "x": 0.5,
+     "y": 0.36,
+     "size": 436,
+     "click": 66.954
+    }
+   ],
+   "size": 124,
+   "at": 64.964
+  }
+ ],
+ "out": "/home/user/my-first-video-/shorts/renders/06-kazakhstan-5-fakt.mp4",
+ "width": 1080,
+ "height": 1920,
+ "fonts": {
+  "400": "InterDisplay-Regular.woff2",
+  "500": "InterDisplay-Medium.woff2",
+  "600": "InterDisplay-SemiBold.woff2",
+  "700": "InterDisplay-Bold.woff2"
+ },
+ "emoji": "system",
+ "fps": 30,
+ "tail": 0.9,
+ "sfx": true,
+ "sfx_volume": 0.8,
+ "music": {
+  "src": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "volume": 0.11,
+  "start": 0,
+  "fade_out": 1.5
+ },
+ "accent": [
+  "бес",
+  "үшіншісін",
+  "тоғыз",
+  "ең",
+  "үлкені",
+  "алғашқы",
+  "Гагарин",
+  "отаны",
+  "Каспий",
+  "үлкен",
+  "құрғақ"
+ ],
+ "phrase": {
+  "max_words": 2,
+  "max_chars": 16,
+  "gap": 0.35
+ },
+ "overlays": []
+}
