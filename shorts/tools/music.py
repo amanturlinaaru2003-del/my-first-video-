@@ -192,6 +192,36 @@ def dreamy():
     return reverb(L + P, 3.0, 0.4)
 
 
+def accordion(m, d, vel=1.0):
+    t = T(d); fr = f(m) * (1 + 0.003 * np.sin(2 * np.pi * 5.5 * t))
+    ph = 2 * np.pi * np.cumsum(fr) / SR
+    x = sum(np.sign(np.sin(ph * k + 0.3 * k)) / k ** 1.6 for k in (1, 2, 3)) + 0.4 * np.sin(ph * 1.003)
+    e = np.minimum(t / 0.05, 1) * np.minimum((d - t) / 0.08, 1)
+    return lp(x * e * vel, 2200) * 0.22
+
+
+def pirate():
+    """Sea-shanty feel: 6/8, D minor, guitar strums, accordion tune, low drum."""
+    bpm = 120; e8 = 60 / bpm / 2; L = np.zeros(int(LEN * SR)); D = np.zeros_like(L)
+    prog = [(62, "m"), (62, "m"), (60, "maj"), (62, "m"), (65, "maj"), (60, "maj"), (57, "maj"), (62, "m")]
+    tune = [[74, 74, 72, 74, 77, 74], [72, 69, 69, 72, 74, 72], [72, 72, 70, 72, 76, 72], [74, 72, 69, 69, 0, 0],
+            [77, 77, 76, 77, 81, 77], [76, 72, 72, 76, 77, 76], [73, 73, 76, 73, 69, 73], [74, 74, 74, 74, 0, 0]]
+    bar = 6 * e8; t = 0.0; k = 0
+    while t < LEN:
+        root, kind = prog[k % 8]; notes = chord_notes(root, kind)
+        for s8, gain in ((0, 0.3), (2, 0.18), (3, 0.26), (5, 0.18)):
+            for j, n in enumerate(notes + [notes[0] + 12]):
+                place(L, pluck(n - 12, 0.7, 0.5), t + s8 * e8 + j * 0.01, gain)
+        place(L, pluck(root - 24, 1.4, 0.3, 0.998), t, 0.55); place(L, pluck(root - 17, 1.0, 0.3, 0.998), t + 3 * e8, 0.4)
+        if k >= 4:
+            for j, n in enumerate(tune[k % 8]):
+                if n: place(L, accordion(n, e8 * 1.05, 0.9), t + j * e8)
+        place(D, kick(0.6), t); place(D, kick(0.4), t + 3 * e8)
+        for j in range(6): place(D, shaker(0.5 if j % 3 == 0 else 0.3), t + j * e8)
+        t += bar; k += 1
+    return lp(reverb(L, 1.6, 0.25), 6000) + lp(D, 7000) * 0.6
+
+
 def master(x, name, out):
     x = hp(x, 35)
     fade = np.ones_like(x); n = int(2.5 * SR); fade[-n:] = np.linspace(1, 0, n); fade[:int(0.3 * SR)] = np.linspace(0, 1, int(0.3 * SR))
@@ -210,6 +240,6 @@ def master(x, name, out):
 
 if __name__ == "__main__":
     out = sys.argv[1]; os.makedirs(out, exist_ok=True)
-    which = sys.argv[2:] or ["lofi", "bright", "steppe", "dreamy"]
+    which = sys.argv[2:] or ["lofi", "bright", "steppe", "dreamy", "pirate"]
     for nm in which:
         master(globals()[nm](), nm, out)
