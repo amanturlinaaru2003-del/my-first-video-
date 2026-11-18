@@ -1,304 +1,199 @@
 {
- "source": "voice.wav",
- "words": "words.json",
- "cuts": {
-  "takes": [
-   [
-    0.0,
-    49.658
-   ]
-  ],
-  "max_gap": 0.4,
-  "verbatim": false
- },
+ "work_dir": "_work_multik",
+ "voice": "_work_multik/voice.wav",
+ "words": "_work_multik/words_out.json",
+ "out": "/home/user/my-first-video-/shorts/renders/09-bir-paiyz.mp4",
+ "tail": 0.5,
+ "xfade": 0.13,
  "subs": {
-  "lower": false
+  "size": 92,
+  "y": 0.7,
+  "outline": 5,
+  "shadow": 3,
+  "max_words": 2,
+  "max_chars": 14,
+  "short": 3,
+  "strip_end_punct": true
  },
+ "music": {
+  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "from": 0,
+  "volume": 0.26
+ },
+ "sfx_volume": 0.6,
  "scenes": [
   {
-   "kind": "counter",
-   "value": 1,
-   "from": 0,
-   "count_at": 1.25,
-   "suffix": "%",
-   "size": 420,
-   "sub": "күн сайын",
-   "sub_size": 110,
-   "at": 0.0
+   "id": "s01",
+   "at_word": 0,
+   "say": "күн сайын 1% жақсарсаң — баспалдақ"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🤏",
-     "at": 3.417,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 400
-    }
-   ],
-   "at": 3.367
+   "id": "s02",
+   "at_word": 9,
+   "say": "1% түк емес сияқты — лупа"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "emoji": "📖",
-     "at": 5.668,
-     "x": 0.5,
-     "y": 0.18,
-     "size": 230
-    },
-    {
-     "emoji": "🏃",
-     "at": 6.568,
-     "x": 0.5,
-     "y": 0.38,
-     "size": 230
-    },
-    {
-     "emoji": "🔤",
-     "at": 7.808,
-     "x": 0.5,
-     "y": 0.58,
-     "size": 230
-    }
-   ],
-   "at": 5.618
+   "id": "s03",
+   "at_word": 15,
+   "say": "бір бет кітап"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🧮",
-     "at": 9.658,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 400
-    }
-   ],
-   "at": 9.288
+   "id": "s04",
+   "at_word": 18,
+   "say": "бес минут жаттығу"
   },
   {
-   "kind": "text",
-   "size": 130,
-   "lines": [
-    "1,01³⁶⁵",
-    {
-     "t": "≈ [37]",
-     "size": 1.4
-    }
-   ],
-   "at": 11.46
+   "id": "s05",
+   "at_word": 21,
+   "say": "он жаңа сөз"
   },
   {
-   "kind": "counter",
-   "value": 37,
-   "from": 1,
-   "count_at": 17.306,
-   "suffix": "×",
-   "size": 420,
-   "sub": "мықты",
-   "sub_size": 120,
-   "at": 16.356
+   "id": "s06",
+   "at_word": 24,
+   "say": "математика басқаша айтады — профессор"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "📉",
-     "at": 20.25,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 400
-    }
-   ],
-   "at": 19.26
+   "id": "s07",
+   "at_word": 28,
+   "say": "1,01^365 ≈ 37 — калькулятор"
   },
   {
-   "kind": "counter",
-   "value": 0.03,
-   "from": 1,
-   "decimals": 2,
-   "count_at": 22.044,
-   "size": 360,
-   "accent": false,
-   "sub": "0,99³⁶⁵",
-   "sub_size": 110,
-   "at": 21.994
+   "id": "s08",
+   "at_word": 35,
+   "say": "37 есе мықты — суперкейіпкер"
   },
   {
-   "kind": "text",
-   "big": true,
-   "text": "НӨЛ",
-   "at": 26.918
+   "id": "s09",
+   "at_word": 43,
+   "say": "күн сайын нашарласаң — диван"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "emoji": "📅",
-     "at": 28.835,
-     "x": 0.3,
-     "y": 0.36,
-     "size": 260
-    },
-    {
-     "emoji": "🤷",
-     "at": 29.275,
-     "x": 0.7,
-     "y": 0.36,
-     "size": 260
-    }
-   ],
-   "at": 28.045
+   "id": "s10",
+   "at_word": 50,
+   "say": "0,99^365 = 0,03"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🦸",
-     "at": 33.341,
-     "x": 0.3,
-     "y": 0.36,
-     "size": 300,
-     "label": "1,01",
-     "label_size": 70
-    },
-    {
-     "emoji": "🛋️",
-     "at": 33.541,
-     "x": 0.7,
-     "y": 0.36,
-     "size": 300,
-     "label": "0,99",
-     "label_size": 70
-    }
-   ],
-   "at": 31.891
+   "id": "s11",
+   "at_word": 57,
+   "say": "нөлге жуық — кішірейеді"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🇯🇵",
-     "at": 34.485,
-     "x": 0.5,
-     "y": 0.3,
-     "size": 300,
-     "label": "改善 · кайдзен",
-     "label_size": 70
-    }
-   ],
-   "at": 34.435
+   "id": "s12",
+   "at_word": 59,
+   "say": "бір күнде көрінбейді — егіздер"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "emoji": "👣",
-     "at": 36.165,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 360
-    }
-   ],
-   "at": 36.115
+   "id": "s13",
+   "at_word": 63,
+   "say": "бір аптада да"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "emoji": "📘",
-     "at": 39.348,
-     "x": 0.5,
-     "y": 0.34,
-     "size": 360,
-     "label": "«Атомдық әдеттер»",
-     "label_size": 64
-    }
-   ],
-   "at": 38.418
+   "id": "s14",
+   "at_word": 67,
+   "say": "бір жылдан кейін екі бөлек адам"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🗳️",
-     "at": 43.869,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 380
-    }
-   ],
-   "at": 42.099
+   "id": "s15",
+   "at_word": 76,
+   "say": "жапондар кайдзен дейді"
   },
   {
-   "kind": "counter",
-   "value": 1,
-   "from": 0,
-   "count_at": 45.893,
-   "suffix": "%",
-   "size": 420,
-   "sub": "бүгін неге жұмсайсың?",
-   "sub_size": 84,
-   "at": 44.823
+   "id": "s16",
+   "at_word": 80,
+   "say": "кішкентай күнделікті қадам — тау жолы"
+  },
+  {
+   "id": "s17",
+   "at_word": 84,
+   "say": "Джеймс Клир, Атомдық әдеттер — кітап"
+  },
+  {
+   "id": "s18",
+   "at_word": 92,
+   "say": "әр әдет — бір дауыс — сайлау жәшігі"
+  },
+  {
+   "id": "s19",
+   "at_word": 100,
+   "say": "бүгінгі 1% — неге жұмсайсың?"
   }
  ],
- "out": "/home/user/my-first-video-/shorts/renders/09-bir-paiyz.mp4",
- "width": 1080,
- "height": 1920,
- "fonts": {
-  "400": "InterDisplay-Regular.woff2",
-  "500": "InterDisplay-Medium.woff2",
-  "600": "InterDisplay-SemiBold.woff2",
-  "700": "InterDisplay-Bold.woff2"
- },
- "emoji": "system",
- "fps": 30,
- "tail": 0.9,
- "sfx": true,
- "sfx_volume": 0.8,
- "music": {
-  "src": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
-  "volume": 0.11,
-  "start": 0,
-  "fade_out": 1.5
- },
- "accent": [
-  "бір",
-  "37",
-  "мықты",
-  "нашарласаң",
-  "нөлге",
-  "екі",
-  "кайдзен",
-  "дауыс"
- ],
- "phrase": {
-  "max_words": 2,
-  "max_chars": 16,
-  "gap": 0.35
- },
- "overlays": []
+ "shots": [
+  {
+   "id": "film",
+   "media": "../film.mp4",
+   "sfx": [
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 1.29,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/paper.wav",
+     "at": 6.339,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/steps.wav",
+     "at": 7.419,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 9.259,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 13.156,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 16.347,
+     "vol": 0.7
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/fanfare.wav",
+     "at": 19.957,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/sad.wav",
+     "at": 22.822,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 24.059,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/boing.wav",
+     "at": 29.989,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 36.71,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 38.952,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/paper.wav",
+     "at": 49.098,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 51.165,
+     "vol": 0.6
+    }
+   ]
+  }
+ ]
 }

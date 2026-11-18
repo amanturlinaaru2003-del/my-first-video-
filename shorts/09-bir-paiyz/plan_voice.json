@@ -1,0 +1,22 @@
+{
+ "source": "voice.wav",
+ "words": "words.json",
+ "work_dir": "_work_multik",
+ "voice_gain_db": 0,
+ "cuts": {
+  "takes": [
+   [
+    0.0,
+    57.77
+   ]
+  ],
+  "max_gap": 0.4,
+  "keep_repeats": [],
+  "verbatim": false
+ },
+ "subs": {
+  "lower": false,
+  "fix": {},
+  "replace": {}
+ }
+}

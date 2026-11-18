@@ -1,354 +1,194 @@
 {
- "source": "voice.wav",
- "words": "words.json",
- "cuts": {
-  "takes": [
-   [
-    0.0,
-    57.408
-   ]
-  ],
-  "max_gap": 0.4,
-  "verbatim": false
- },
+ "work_dir": "_work_multik",
+ "voice": "_work_multik/voice.wav",
+ "words": "_work_multik/words_out.json",
+ "out": "/home/user/my-first-video-/shorts/renders/07-miyn-turaly.mp4",
+ "tail": 0.5,
+ "xfade": 0.13,
  "subs": {
-  "lower": false
+  "size": 92,
+  "y": 0.7,
+  "outline": 5,
+  "shadow": 3,
+  "max_words": 2,
+  "max_chars": 14,
+  "short": 3,
+  "strip_end_punct": true
  },
+ "music": {
+  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "from": 0,
+  "volume": 0.26
+ },
+ "sfx_volume": 0.6,
  "scenes": [
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🧠",
-     "at": 0.13,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 440
-    }
-   ],
-   "at": 0.0
+   "id": "s01",
+   "at_word": 0,
+   "say": "Миың туралы бес факт — сахнадағы Ми"
   },
   {
-   "kind": "counter",
-   "value": 2,
-   "from": 0,
-   "count_at": 6.06,
-   "suffix": "%",
-   "size": 380,
-   "sub": "денеңнің салмағы",
-   "sub_size": 100,
-   "at": 3.75
+   "id": "s02",
+   "at_word": 4,
+   "say": "соңғысы ойландырады — ойлану"
   },
   {
-   "kind": "counter",
-   "value": 20,
-   "from": 2,
-   "count_at": 8.637,
-   "suffix": "%",
-   "size": 380,
-   "sub": "энергияңның",
-   "sub_size": 100,
-   "at": 7.107
+   "id": "s03",
+   "at_word": 7,
+   "say": "салмағы денеңнің 2 пайызы — таразы"
   },
   {
-   "kind": "counter",
-   "value": 86,
-   "from": 0,
-   "count_at": 11.286,
-   "suffix": " млрд",
-   "size": 230,
-   "sub": "нейрон",
-   "sub_size": 110,
-   "at": 10.336
+   "id": "s04",
+   "at_word": 14,
+   "say": "энергияның 20 пайызы — Ми жейді"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🌍",
-     "at": 13.978,
-     "x": 0.5,
-     "y": 0.3,
-     "size": 300
-    },
-    {
-     "text": "×10",
-     "at": 15.438,
-     "x": 0.5,
-     "y": 0.5,
-     "size": 200
-    }
-   ],
-   "at": 13.588
+   "id": "s05",
+   "at_word": 21,
+   "say": "86 миллиард нейрон — желі"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "⚡",
-     "at": 17.735,
-     "x": 0.5,
-     "y": 0.34,
-     "size": 400
-    }
-   ],
-   "at": 16.445
+   "id": "s06",
+   "at_word": 27,
+   "say": "Жердегі адамдардан 10 есе көп"
   },
   {
-   "kind": "counter",
-   "value": 400,
-   "from": 0,
-   "count_at": 18.835,
-   "suffix": " км/сағ",
-   "size": 200,
-   "plain": true,
-   "at": 18.785
+   "id": "s07",
+   "at_word": 35,
+   "say": "нейрондар арасындағы сигнал"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🚄",
-     "at": 22.122,
-     "x": 0.5,
-     "y": 0.34,
-     "size": 380
-    }
-   ],
-   "at": 21.752
+   "id": "s08",
+   "at_word": 39,
+   "say": "сағатына 400 шақырым — спидометр"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "💡",
-     "at": 26.957,
-     "x": 0.5,
-     "y": 0.34,
-     "size": 400,
-     "label": "20 ватт",
-     "label_size": 70
-    }
-   ],
-   "at": 23.867
+   "id": "s09",
+   "at_word": 45,
+   "say": "жүрдек пойыздан жылдам — жарыс"
   },
   {
-   "kind": "counter",
-   "value": 75,
-   "from": 0,
-   "count_at": 28.985,
-   "suffix": "%",
-   "size": 380,
-   "sub": "су",
-   "sub_size": 130,
-   "at": 28.495
+   "id": "s10",
+   "at_word": 51,
+   "say": "қуаты 20 ватт — шам"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "💧",
-     "at": 31.283,
-     "x": 0.35,
-     "y": 0.34,
-     "size": 280
-    },
-    {
-     "emoji": "🐢",
-     "at": 32.823,
-     "x": 0.68,
-     "y": 0.34,
-     "size": 280
-    }
-   ],
-   "at": 30.633
+   "id": "s11",
+   "at_word": 62,
+   "say": "төрттен үші су — бак"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🧠",
-     "at": 33.9,
-     "x": 0.5,
-     "y": 0.34,
-     "size": 360
-    },
-    {
-     "emoji": "🚫",
-     "at": 36.28,
-     "x": 0.68,
-     "y": 0.24,
-     "size": 180
-    }
-   ],
-   "at": 33.85
+   "id": "s12",
+   "at_word": 67,
+   "say": "су аз ішсең ой баяулайды"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🏥",
-     "at": 38.533,
-     "x": 0.32,
-     "y": 0.34,
-     "size": 280
-    },
-    {
-     "emoji": "👀",
-     "at": 39.673,
-     "x": 0.7,
-     "y": 0.34,
-     "size": 260
-    }
-   ],
-   "at": 37.683
+   "id": "s13",
+   "at_word": 74,
+   "say": "ауырсынуды сезбейді — балға"
   },
   {
-   "kind": "text",
-   "size": 160,
-   "at": 41.202
+   "id": "s14",
+   "at_word": 81,
+   "say": "операция ояу кезде"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🌙",
-     "at": 42.392,
-     "x": 0.5,
-     "y": 0.34,
-     "size": 400
-    }
-   ],
-   "at": 42.042
+   "id": "s15",
+   "at_word": 89,
+   "say": "ең қызығы"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "😴",
-     "at": 44.028,
-     "x": 0.5,
-     "y": 0.26,
-     "size": 300
-    },
-    {
-     "emoji": "🗂️",
-     "at": 45.948,
-     "x": 0.3,
-     "y": 0.5,
-     "size": 220
-    },
-    {
-     "emoji": "🧹",
-     "at": 47.208,
-     "x": 0.7,
-     "y": 0.5,
-     "size": 220
-    }
-   ],
-   "at": 43.978
+   "id": "s16",
+   "at_word": 92,
+   "say": "ми түнде демалмайды"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🛤️",
-     "at": 49.885,
-     "x": 0.5,
-     "y": 0.34,
-     "size": 380
-    }
-   ],
-   "at": 48.635
+   "id": "s17",
+   "at_word": 95,
+   "say": "естеліктерді сұрыптап, қоқысты тазалайды"
   },
   {
-   "kind": "text",
-   "size": 108,
-   "lines": [
-    "сондықтан үйренуге",
-    "[ешқашан] кеш емес"
-   ],
-   "at": 51.115
+   "id": "s18",
+   "at_word": 103,
+   "say": "жаңа дағды — жаңа жол"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🛏️",
-     "at": 54.69,
-     "x": 0.5,
-     "y": 0.3,
-     "size": 380
-    },
-    {
-     "emoji": "💚",
-     "at": 56.15,
-     "x": 0.5,
-     "y": 0.52,
-     "size": 200
-    }
-   ],
-   "at": 53.78
+   "id": "s19",
+   "at_word": 110,
+   "say": "үйренуге ешқашан кеш емес"
+  },
+  {
+   "id": "s20",
+   "at_word": 115,
+   "say": "бүгін ерте жат"
+  },
+  {
+   "id": "s21",
+   "at_word": 119,
+   "say": "Миың рахмет айтады"
   }
  ],
- "out": "/home/user/my-first-video-/shorts/renders/07-miyn-turaly.mp4",
- "width": 1080,
- "height": 1920,
- "fonts": {
-  "400": "InterDisplay-Regular.woff2",
-  "500": "InterDisplay-Medium.woff2",
-  "600": "InterDisplay-SemiBold.woff2",
-  "700": "InterDisplay-Bold.woff2"
- },
- "emoji": "system",
- "fps": 30,
- "tail": 0.9,
- "sfx": true,
- "sfx_volume": 0.8,
- "music": {
-  "src": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
-  "volume": 0.11,
-  "start": 0,
-  "fade_out": 1.5
- },
- "accent": [
-  "бес",
-  "жиырма",
-  "он",
-  "жылдам",
-  "су",
-  "жоқ",
-  "демалмайды",
-  "ешқашан"
- ],
- "phrase": {
-  "max_words": 2,
-  "max_chars": 16,
-  "gap": 0.35
- },
- "overlays": []
+ "shots": [
+  {
+   "id": "film",
+   "media": "../film.mp4",
+   "sfx": [
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 0.13,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/boing.wav",
+     "at": 6.022,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 10.504,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 13.055,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 20.21,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 24.734,
+     "vol": 0.7
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 29.096,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 37.82,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/boing.wav",
+     "at": 38.56,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/paper.wav",
+     "at": 52.115,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/fanfare.wav",
+     "at": 63.154,
+     "vol": 0.5
+    }
+   ]
+  }
+ ]
 }

@@ -1,331 +1,189 @@
 {
- "source": "voice.wav",
- "words": "words.json",
- "cuts": {
-  "takes": [
-   [
-    0.0,
-    48.984
-   ]
-  ],
-  "max_gap": 0.4,
-  "verbatim": false
- },
+ "work_dir": "_work_multik",
+ "voice": "_work_multik/voice.wav",
+ "words": "_work_multik/words_out.json",
+ "out": "/home/user/my-first-video-/shorts/renders/10-telefon.mp4",
+ "tail": 0.5,
+ "xfade": 0.13,
  "subs": {
-  "lower": false
+  "size": 92,
+  "y": 0.7,
+  "outline": 5,
+  "shadow": 3,
+  "max_words": 2,
+  "max_chars": 14,
+  "short": 3,
+  "strip_end_punct": true
  },
+ "music": {
+  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "from": 0,
+  "volume": 0.26
+ },
+ "sfx_volume": 0.6,
  "scenes": [
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "📱",
-     "at": 0.13,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 420
-    }
-   ],
-   "at": 0.0
+   "id": "s01",
+   "at_word": 0,
+   "say": "телефонды неше рет аласың — жабысқан кейіпкер"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "text": "10?",
-     "at": 3.131,
-     "x": 0.3,
-     "y": 0.36,
-     "size": 220
-    },
-    {
-     "text": "20?",
-     "at": 3.991,
-     "x": 0.7,
-     "y": 0.36,
-     "size": 220
-    }
-   ],
-   "at": 3.081
+   "id": "s02",
+   "at_word": 8,
+   "say": "он рет? жиырма? — ой бұлттары"
   },
   {
-   "kind": "counter",
-   "value": 100,
-   "from": 0,
-   "count_at": 8.304,
-   "size": 420,
-   "sub": "рет күніне",
-   "sub_size": 110,
-   "at": 4.674
+   "id": "s03",
+   "at_word": 11,
+   "say": "зерттеулер бойынша — ғалым"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "⏱️",
-     "at": 10.595,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 400,
-     "label": "әр 10 минут",
-     "label_size": 70
-    }
-   ],
-   "at": 10.085
+   "id": "s04",
+   "at_word": 18,
+   "say": "күніне 100 рет — есептегіш"
   },
   {
-   "kind": "counter",
-   "value": 4,
-   "from": 0,
-   "count_at": 14.21,
-   "suffix": "+ сағ",
-   "size": 270,
-   "sub": "экранға күніне",
-   "sub_size": 100,
-   "at": 12.66
+   "id": "s05",
+   "at_word": 21,
+   "say": "әр он минут сайын — сағат"
   },
   {
-   "kind": "counter",
-   "value": 2,
-   "from": 0,
-   "count_at": 16.909,
-   "suffix": " ай",
-   "size": 360,
-   "sub": "жылына",
-   "sub_size": 110,
-   "at": 16.179
+   "id": "s06",
+   "at_word": 29,
+   "say": "экранға 4 сағат — зомби"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🔔",
-     "at": 19.175,
-     "x": 0.3,
-     "y": 0.34,
-     "size": 260
-    },
-    {
-     "emoji": "🧠",
-     "at": 19.755,
-     "x": 0.7,
-     "y": 0.34,
-     "size": 260
-    }
-   ],
-   "at": 18.225
+   "id": "s07",
+   "at_word": 37,
+   "say": "жылына екі ай — күнтізбе"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🎁",
-     "at": 22.52,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 380
-    }
-   ],
-   "at": 22.11
+   "id": "s08",
+   "at_word": 44,
+   "say": "хабарлама миға дофамин"
   },
   {
-   "kind": "objects",
-   "size": 124,
-   "say": true,
-   "items": [
-    {
-     "emoji": "🎰",
-     "at": 25.103,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 420
-    }
-   ],
-   "at": 24.873
+   "id": "s09",
+   "at_word": 51,
+   "say": "ми сыйлық деп күтеді"
   },
   {
-   "kind": "text",
-   "size": 140,
-   "at": 27.309
+   "id": "s10",
+   "at_word": 59,
+   "say": "казинодағы ойын автоматы"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "text": "1",
-     "at": 29.373,
-     "x": 0.5,
-     "y": 0.16,
-     "size": 180
-    },
-    {
-     "emoji": "🔕",
-     "at": 29.793,
-     "x": 0.5,
-     "y": 0.4,
-     "size": 340,
-     "click": 31.353
-    }
-   ],
-   "at": 29.323
+   "id": "s11",
+   "at_word": 64,
+   "say": "қалай тоқтатамыз?"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "text": "2",
-     "at": 32.015,
-     "x": 0.5,
-     "y": 0.16,
-     "size": 180
-    },
-    {
-     "emoji": "🖤",
-     "at": 32.614,
-     "x": 0.35,
-     "y": 0.4,
-     "size": 260
-    },
-    {
-     "emoji": "🤍",
-     "at": 33.295,
-     "x": 0.65,
-     "y": 0.4,
-     "size": 260
-    }
-   ],
-   "at": 31.965
+   "id": "s12",
+   "at_word": 69,
+   "say": "бірінші: хабарламаны өшір"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "text": "3",
-     "at": 36.538,
-     "x": 0.5,
-     "y": 0.16,
-     "size": 180
-    },
-    {
-     "emoji": "🛏️",
-     "at": 37.018,
-     "x": 0.4,
-     "y": 0.4,
-     "size": 300
-    },
-    {
-     "emoji": "🚫",
-     "at": 38.498,
-     "x": 0.66,
-     "y": 0.34,
-     "size": 180
-    }
-   ],
-   "at": 36.488
+   "id": "s13",
+   "at_word": 73,
+   "say": "екінші: ақ-қара режим"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "text": "4",
-     "at": 39.337,
-     "x": 0.5,
-     "y": 0.16,
-     "size": 180
-    },
-    {
-     "emoji": "🌅",
-     "at": 40.257,
-     "x": 0.33,
-     "y": 0.4,
-     "size": 260
-    },
-    {
-     "emoji": "🥛",
-     "at": 42.657,
-     "x": 0.67,
-     "y": 0.4,
-     "size": 260
-    }
-   ],
-   "at": 39.287
+   "id": "s14",
+   "at_word": 82,
+   "say": "үшінші: жатын бөлмеге апарма"
   },
   {
-   "kind": "objects",
-   "size": 110,
-   "say": true,
-   "items": [
-    {
-     "emoji": "📵",
-     "at": 46.304,
-     "x": 0.3,
-     "y": 0.36,
-     "size": 260
-    },
-    {
-     "emoji": "🪟",
-     "at": 47.384,
-     "x": 0.7,
-     "y": 0.36,
-     "size": 260
-    }
-   ],
-   "at": 44.234
+   "id": "s15",
+   "at_word": 87,
+   "say": "төртінші: таңертең су"
+  },
+  {
+   "id": "s16",
+   "at_word": 98,
+   "say": "телефонды қойып, терезеге қара"
   }
  ],
- "out": "/home/user/my-first-video-/shorts/renders/10-telefon.mp4",
- "width": 1080,
- "height": 1920,
- "fonts": {
-  "400": "InterDisplay-Regular.woff2",
-  "500": "InterDisplay-Medium.woff2",
-  "600": "InterDisplay-SemiBold.woff2",
-  "700": "InterDisplay-Bold.woff2"
- },
- "emoji": "system",
- "fps": 30,
- "tail": 0.9,
- "sfx": true,
- "sfx_volume": 0.8,
- "music": {
-  "src": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
-  "volume": 0.11,
-  "start": 0,
-  "fade_out": 1.5
- },
- "accent": [
-  "100",
-  "он",
-  "төрт",
-  "екі",
-  "дофамин",
-  "өшір",
-  "ақ-қара",
-  "апарма",
-  "суға"
- ],
- "phrase": {
-  "max_words": 2,
-  "max_chars": 16,
-  "gap": 0.35
- },
- "overlays": []
+ "shots": [
+  {
+   "id": "film",
+   "media": "../film.mp4",
+   "sfx": [
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 1.19,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 3.688,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/paper.wav",
+     "at": 5.174,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 8.694,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 11.69,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/sad.wav",
+     "at": 18.436,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/ding.wav",
+     "at": 21.041,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 24.91,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 29.061,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/fanfare.wav",
+     "at": 29.681,
+     "vol": 0.4
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 36.305,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 38.352,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/click.wav",
+     "at": 44.846,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 49.657,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 55.526,
+     "vol": 0.5
+    }
+   ]
+  }
+ ]
 }

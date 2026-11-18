@@ -1,410 +1,224 @@
 {
- "source": "voice.wav",
- "words": "words.json",
- "cuts": {
-  "takes": [
-   [
-    0.0,
-    68.09
-   ]
-  ],
-  "max_gap": 0.4,
-  "verbatim": false
- },
+ "work_dir": "_work_multik",
+ "voice": "_work_multik/voice.wav",
+ "words": "_work_multik/words_out.json",
+ "out": "/home/user/my-first-video-/shorts/renders/06-kazakhstan-5-fakt.mp4",
+ "tail": 0.5,
+ "xfade": 0.13,
  "subs": {
-  "lower": false
+  "size": 92,
+  "y": 0.7,
+  "outline": 5,
+  "shadow": 3,
+  "max_words": 2,
+  "max_chars": 14,
+  "short": 3,
+  "strip_end_punct": true
  },
+ "music": {
+  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "from": 0,
+  "volume": 0.26
+ },
+ "sfx_volume": 0.6,
  "scenes": [
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🇰🇿",
-     "at": 0.13,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 413
-    }
-   ],
-   "size": 124,
-   "at": 0.0
+   "id": "s01",
+   "at_word": 0,
+   "say": "Қазақстан туралы бес факт — дала, ту желбірейді"
   },
   {
-   "kind": "act",
-   "label": "факт 1:",
-   "title": "Бірінші",
-   "size": 200,
-   "at": 3.7
+   "id": "s02",
+   "at_word": 4,
+   "say": "үшіншісін көп адам білмейді — құпия"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🌍",
-     "at": 4.41,
-     "x": 0.5,
-     "y": 0.34,
-     "size": 436
-    }
-   ],
-   "size": 124,
-   "at": 5.04
+   "id": "s03",
+   "at_word": 8,
+   "say": "Бірінші — 1 белгісі"
   },
   {
-   "kind": "counter",
-   "value": 9,
-   "from": 1,
-   "count_at": 6.71,
-   "suffix": "",
-   "size": 360,
-   "sub": "орын",
-   "sub_size": 130,
-   "at": 6.66
+   "id": "s04",
+   "at_word": 9,
+   "say": "ең үлкен тоғыз елдің бірі — глобус"
   },
   {
-   "kind": "counter",
-   "value": 2.7,
-   "from": 0,
-   "decimals": 1,
-   "plain": true,
-   "count_at": 8.816,
-   "suffix": " млн км²",
-   "size": 190,
-   "at": 8.126
+   "id": "s05",
+   "at_word": 17,
+   "say": "2,7 миллион шаршы шақырым — карта"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🌊",
-     "at": 12.009,
-     "x": 0.3,
-     "y": 0.32,
-     "size": 287
-    },
-    {
-     "emoji": "🚫",
-     "at": 13.089,
-     "x": 0.7,
-     "y": 0.32,
-     "size": 287
-    },
-    {
-     "emoji": "🥇",
-     "at": 14.629,
-     "x": 0.5,
-     "y": 0.55,
-     "size": 345
-    }
-   ],
-   "size": 124,
-   "at": 11.819
+   "id": "s06",
+   "at_word": 22,
+   "say": "теңізге шығатын жолы жоқ — жағасыз"
   },
   {
-   "kind": "act",
-   "label": "факт 2:",
-   "title": "Екінші",
-   "size": 200,
-   "at": 15.91
+   "id": "s07",
+   "at_word": 30,
+   "say": "ең үлкені — тұғыр №1"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🚀",
-     "at": 17.68,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 459
-    }
-   ],
-   "size": 124,
-   "at": 17.63
+   "id": "s08",
+   "at_word": 32,
+   "say": "Екінші — 2 белгісі"
   },
   {
-   "kind": "text",
-   "lines": [
-    "Байқоңыр",
-    {
-     "t": "әлемдегі [алғашқы] әрі ең ірі ғарыш айлағы",
-     "size": 0.42
-    }
-   ],
-   "size": 150,
-   "at": 20.31
+   "id": "s09",
+   "at_word": 33,
+   "say": "ғарышқа жол осы жерден — зымыран далада"
   },
   {
-   "kind": "counter",
-   "value": 1957,
-   "from": 1900,
-   "plain": true,
-   "count_at": 24.847,
-   "size": 300,
-   "at": 24.797
+   "id": "s10",
+   "at_word": 39,
+   "say": "Байқоңыр — алғашқы ғарыш айлағы"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🛰️",
-     "at": 28.407,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 436
-    }
-   ],
-   "size": 124,
-   "at": 26.677
+   "id": "s11",
+   "at_word": 48,
+   "say": "1957 жыл — күнтізбе"
   },
   {
-   "kind": "counter",
-   "value": 1961,
-   "from": 1957,
-   "plain": true,
-   "count_at": 30.53,
-   "size": 300,
-   "at": 30.24
+   "id": "s12",
+   "at_word": 50,
+   "say": "алғашқы жасанды серік — спутник"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "👨‍🚀",
-     "at": 32.41,
-     "x": 0.5,
-     "y": 0.32,
-     "size": 413,
-     "label": "Юрий Гагарин",
-     "label_size": 52
-    }
-   ],
-   "size": 124,
-   "at": 32.36
+   "id": "s13",
+   "at_word": 55,
+   "say": "1961 жылы Гагарин — ғарышкер"
   },
   {
-   "kind": "act",
-   "label": "факт 3:",
-   "title": "Үшінші",
-   "size": 200,
-   "at": 36.248
+   "id": "s14",
+   "at_word": 65,
+   "say": "Үшінші — 3 белгісі"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🍎",
-     "at": 36.998,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 459
-    }
-   ],
-   "size": 124,
-   "at": 37.448
+   "id": "s15",
+   "at_word": 66,
+   "say": "Алманың отаны — Қазақстан"
   },
   {
-   "kind": "text",
-   "size": 150,
-   "at": 38.879
+   "id": "s16",
+   "at_word": 70,
+   "say": "ғалымдар: алманың атасы"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "⛰️",
-     "at": 42.969,
-     "x": 0.5,
-     "y": 0.28,
-     "size": 368
-    },
-    {
-     "emoji": "🍏",
-     "at": 44.169,
-     "x": 0.5,
-     "y": 0.52,
-     "size": 252,
-     "label": "Сиверс алмасы",
-     "label_size": 48
-    }
-   ],
-   "size": 124,
-   "at": 42.919
+   "id": "s17",
+   "at_word": 77,
+   "say": "Алатаудағы жабайы Сиверс алмасы — ата-алма"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🌳",
-     "at": 46.646,
-     "x": 0.28,
-     "y": 0.4,
-     "size": 299
-    },
-    {
-     "emoji": "🌳",
-     "at": 47.366,
-     "x": 0.72,
-     "y": 0.4,
-     "size": 299
-    },
-    {
-     "emoji": "🍎",
-     "at": 48.668,
-     "x": 0.5,
-     "y": 0.3,
-     "size": 184
-    }
-   ],
-   "size": 124,
-   "at": 45.476
+   "id": "s18",
+   "at_word": 81,
+   "say": "тау баурайында әлі өседі — алма орманы"
   },
   {
-   "kind": "act",
-   "label": "факт 4:",
-   "title": "Төртінші",
-   "size": 200,
-   "at": 49.993
+   "id": "s19",
+   "at_word": 91,
+   "say": "Төртінші — 4 белгісі"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🌊",
-     "at": 50.683,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 459
-    }
-   ],
-   "size": 124,
-   "at": 51.453
+   "id": "s20",
+   "at_word": 92,
+   "say": "Каспий — ең үлкен көл"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🌊",
-     "at": 56.679,
-     "x": 0.25,
-     "y": 0.38,
-     "size": 299,
-     "label": "Каспий",
-     "label_size": 52
-    },
-    {
-     "text": "≈",
-     "at": 58.659,
-     "x": 0.5,
-     "y": 0.38,
-     "size": 229
-    },
-    {
-     "emoji": "🗾",
-     "at": 57.779,
-     "x": 0.75,
-     "y": 0.38,
-     "size": 299,
-     "label": "Жапония",
-     "label_size": 52
-    }
-   ],
-   "size": 124,
-   "at": 56.629
+   "id": "s21",
+   "at_word": 99,
+   "say": "ұзын жағалауы бізде"
   },
   {
-   "kind": "act",
-   "label": "факт 5:",
-   "title": "Бесінші",
-   "size": 200,
-   "at": 60.169
+   "id": "s22",
+   "at_word": 104,
+   "say": "ауданы Жапониямен шамалас — таразы"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "🌾",
-     "at": 61.079,
-     "x": 0.3,
-     "y": 0.36,
-     "size": 322
-    },
-    {
-     "emoji": "🐎",
-     "at": 61.379,
-     "x": 0.7,
-     "y": 0.36,
-     "size": 322
-    }
-   ],
-   "size": 124,
-   "at": 61.329
+   "id": "s23",
+   "at_word": 110,
+   "say": "Бесінші — 5 белгісі"
   },
   {
-   "kind": "objects",
-   "say": true,
-   "items": [
-    {
-     "emoji": "💬",
-     "at": 66.654,
-     "x": 0.5,
-     "y": 0.36,
-     "size": 436,
-     "click": 66.954
-    }
-   ],
-   "size": 124,
-   "at": 64.964
+   "id": "s24",
+   "at_word": 111,
+   "say": "Қазақ даласы — ең үлкен құрғақ дала"
+  },
+  {
+   "id": "s25",
+   "at_word": 119,
+   "say": "Қай факт таңғалдырды?"
+  },
+  {
+   "id": "s26",
+   "at_word": 123,
+   "say": "Пікірге жаз"
   }
  ],
- "out": "/home/user/my-first-video-/shorts/renders/06-kazakhstan-5-fakt.mp4",
- "width": 1080,
- "height": 1920,
- "fonts": {
-  "400": "InterDisplay-Regular.woff2",
-  "500": "InterDisplay-Medium.woff2",
-  "600": "InterDisplay-SemiBold.woff2",
-  "700": "InterDisplay-Bold.woff2"
- },
- "emoji": "system",
- "fps": 30,
- "tail": 0.9,
- "sfx": true,
- "sfx_volume": 0.8,
- "music": {
-  "src": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
-  "volume": 0.11,
-  "start": 0,
-  "fade_out": 1.5
- },
- "accent": [
-  "бес",
-  "үшіншісін",
-  "тоғыз",
-  "ең",
-  "үлкені",
-  "алғашқы",
-  "Гагарин",
-  "отаны",
-  "Каспий",
-  "үлкен",
-  "құрғақ"
- ],
- "phrase": {
-  "max_words": 2,
-  "max_chars": 16,
-  "gap": 0.35
- },
- "overlays": []
+ "shots": [
+  {
+   "id": "film",
+   "media": "../film.mp4",
+   "sfx": [
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 0.13,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 3.75,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 6.71,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 15.96,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/whoosh.wav",
+     "at": 26.727,
+     "vol": 0.8
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/fanfare.wav",
+     "at": 32.41,
+     "vol": 0.5
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 36.298,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 36.998,
+     "vol": 0.7
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 50.043,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/paper.wav",
+     "at": 56.679,
+     "vol": 0.4
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/hit.wav",
+     "at": 60.219,
+     "vol": 0.6
+    },
+    {
+     "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/sfx/pop.wav",
+     "at": 66.654,
+     "vol": 0.7
+    }
+   ]
+  }
+ ]
 }
