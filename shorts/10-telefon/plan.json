@@ -16,9 +16,9 @@
   "strip_end_punct": true
  },
  "music": {
-  "file": "/home/user/my-first-video-/.claude/skills/montazh-multik/assets/music/playful.mp3",
+  "file": "/home/user/my-first-video-/shorts/music/lofi.mp3",
   "from": 0,
-  "volume": 0.26
+  "volume": 0.25
  },
  "sfx_volume": 0.6,
  "scenes": [

@@ -65,4 +65,6 @@
 - Мультиктер: `montazh-multik` скилі (Remotion), сахналар `*/engine/src/shots.tsx`, ортақ заттар `tools/mykit.tsx`,
   басқару `tools/multik.py`.
 - Бұрынғы мәтіндік нұсқа: `montazh-esse` скилі тік форматқа бейімделген, басқару `tools/esse.py` (қазір қолданылмайды).
-- Музыка мен дыбыстар: `montazh-multik/assets` (скриптпен синтезделген, бөтен жазба жоқ).
+- Музыка: `music/` (lofi, bright, steppe, dreamy) — `tools/music.py` арқылы нөлден синтезделген, бөтен жазба жоқ.
+  01, 05, 08, 10 — lofi; 02, 04, 09 — bright; 03, 07 — dreamy; 06 — steppe (домбыра сарынды).
+- Дыбыс эффектілері: `montazh-multik/assets/sfx` (скриптпен синтезделген).

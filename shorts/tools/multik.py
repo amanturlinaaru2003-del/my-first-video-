@@ -38,7 +38,7 @@ if cmd == "prep":
             "out": os.path.join(OUT_DIR, f"{os.path.basename(vd)}.mp4"), "tail": 0.5, "xfade": 0.13,
             "subs": {"size": 92, "y": 0.70, "outline": 5, "shadow": 3, "max_words": 2, "max_chars": 14, "short": 3,
                      "strip_end_punct": True},
-            "music": {"file": os.path.join(SKILL, "assets", "music", "playful.mp3"), "from": sc.get("music_from", 0),
+            "music": {"file": os.path.join(os.path.dirname(HERE), "music", sc.get("music", "lofi") + ".mp3"), "from": sc.get("music_from", 0),
                       "volume": sc.get("music_volume", 0.26)},
             "sfx_volume": sc.get("sfx_volume", 0.6),
             "scenes": [{"id": f"s{i + 1:02d}", "at_word": a, "say": say} for i, (a, say) in enumerate(sc["scenes"])],
